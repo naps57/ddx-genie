@@ -1,0 +1,8 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+external/
+.streamlit/secrets.toml
+# written by genie-worksheets on import
+prompts.log

@@ -1,0 +1,19 @@
+# One place to swap models. Any LiteLLM model string works
+# (e.g. "gpt-4o-mini", "anthropic/claude-...", "together_ai/...").
+# Keys are read from .env (OPENAI_API_KEY, ANTHROPIC_API_KEY, ...).
+#
+# gpt-4o-mini is a placeholder until we can read Arda's baseline and match its model.
+
+model: gpt-4o-mini            # expert side: question writer, field tagger, option ranker
+patient_model: gpt-4o-mini    # MediQ FactSelectPatient
+temperature: 0.0
+
+# Stock MediQ *asks* for 50 tokens per patient answer but its helper ignores that and
+# uses its default of 256. We reproduce the effective stock behaviour (256). See NOTES.md.
+patient_max_tokens: 256
+
+# Agent policy (our minimal baseline, demo/agent.py)
+answer_confidence_threshold: 0.8   # commit once top option confidence >= this
+
+# MediQ data location (pinned clone, see README)
+mediq_dir: external/mediQ
