@@ -16,7 +16,7 @@
     "HPI.character",
     "HPI.associated_symptoms"
   ],
-  "initial_tagger_raw": "```json\n{\"fields\": {\"HPI.character\": \"bloody diarrhea\", \"HPI.associated_symptoms\": \"seizure\"}}\n```",
+  "initial_tagger_raw": "{\"fields\": {\"HPI.character\": \"bloody diarrhea\", \"HPI.associated_symptoms\": \"seizure\"}}",
   "initial_worksheet_snapshot": {
     "HPI.onset": null,
     "HPI.duration": null,
@@ -49,17 +49,17 @@
     {
       "option": "D",
       "label": "Hemolytic-uremic syndrome",
-      "confidence": 0.88
+      "confidence": 0.85
     },
     {
       "option": "A",
       "label": "Disseminated intravascular coagulation",
-      "confidence": 0.05
+      "confidence": 0.07
     },
     {
       "option": "C",
       "label": "Systemic vasculitis",
-      "confidence": 0.04
+      "confidence": 0.05
     },
     {
       "option": "B",
@@ -72,326 +72,7 @@
       "turn": 1,
       "chart_section": "Social",
       "target_field": "travel",
-      "question": "Has she recently eaten undercooked ground beef, unpasteurized milk or juice, or visited a petting zoo or farm, or has anyone around her had similar diarrhea?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": "bloody diarrhea",
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": "seizure",
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "D",
-          "label": "Hemolytic-uremic syndrome",
-          "confidence": 0.92
-        },
-        {
-          "option": "A",
-          "label": "Disseminated intravascular coagulation",
-          "confidence": 0.03
-        },
-        {
-          "option": "C",
-          "label": "Systemic vasculitis",
-          "confidence": 0.03
-        },
-        {
-          "option": "B",
-          "label": "Henoch-Schonlein purpura",
-          "confidence": 0.02
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "{\"A\": 0.03, \"B\": 0.02, \"C\": 0.03, \"D\": 0.92}",
-      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.travel\", \"question\": \"Has she recently eaten undercooked ground beef, unpasteurized milk or juice, or visited a petting zoo or farm, or has anyone around her had similar diarrhea?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 2,
-      "chart_section": "HPI",
-      "target_field": "onset",
-      "question": "When did the diarrhea start, and was it watery at first before it turned bloody?",
-      "patient_answer": "2. The parents",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": "bloody diarrhea",
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": "seizure",
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "D",
-          "label": "Hemolytic-uremic syndrome",
-          "confidence": 0.88
-        },
-        {
-          "option": "A",
-          "label": "Disseminated intravascular coagulation",
-          "confidence": 0.05
-        },
-        {
-          "option": "C",
-          "label": "Systemic vasculitis",
-          "confidence": 0.04
-        },
-        {
-          "option": "B",
-          "label": "Henoch-Schonlein purpura",
-          "confidence": 0.03
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.03, \"C\": 0.04, \"D\": 0.88}\n```",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.onset\", \"question\": \"When did the diarrhea start, and was it watery at first before it turned bloody?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 3,
-      "chart_section": "ROS",
-      "target_field": "ros_positives",
-      "question": "Has she been passing less urine than usual, or has she looked pale or had any unusual bruising or rash?",
-      "patient_answer": "11. On physical examination, she looks pale",
-      "fields_filled": [
-        "ExamLabs.exam_findings"
-      ],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": "bloody diarrhea",
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": "seizure",
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": "Looks pale on physical examination",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "D",
-          "label": "Hemolytic-uremic syndrome",
-          "confidence": 0.93
-        },
-        {
-          "option": "A",
-          "label": "Disseminated intravascular coagulation",
-          "confidence": 0.03
-        },
-        {
-          "option": "B",
-          "label": "Henoch-Schonlein purpura",
-          "confidence": 0.02
-        },
-        {
-          "option": "C",
-          "label": "Systemic vasculitis",
-          "confidence": 0.02
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {\"ExamLabs.exam_findings\": \"Looks pale on physical examination\"}}",
-      "ranker_raw": "{\"A\": 0.03, \"B\": 0.02, \"C\": 0.02, \"D\": 0.93}",
-      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"Has she been passing less urine than usual, or has she looked pale or had any unusual bruising or rash?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 4,
-      "chart_section": "ExamLabs",
-      "target_field": "lab_results",
-      "question": "Has she had any blood tests yet, such as a blood count, platelet count, or kidney function (creatinine) or clotting results, and what did they show?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": "bloody diarrhea",
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": "seizure",
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": "Looks pale on physical examination",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "D",
-          "label": "Hemolytic-uremic syndrome",
-          "confidence": 0.92
-        },
-        {
-          "option": "A",
-          "label": "Disseminated intravascular coagulation",
-          "confidence": 0.04
-        },
-        {
-          "option": "B",
-          "label": "Henoch-Schonlein purpura",
-          "confidence": 0.02
-        },
-        {
-          "option": "C",
-          "label": "Systemic vasculitis",
-          "confidence": 0.02
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "{\"A\": 0.04, \"B\": 0.02, \"C\": 0.02, \"D\": 0.92}",
-      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Has she had any blood tests yet, such as a blood count, platelet count, or kidney function (creatinine) or clotting results, and what did they show?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 5,
-      "chart_section": "ExamLabs",
-      "target_field": "vitals",
-      "question": "Was her blood pressure checked today, and do you know if it was high or low?",
-      "patient_answer": "7. Her blood pressure is 130/85 mm Hg.",
-      "fields_filled": [
-        "ExamLabs.vitals"
-      ],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": "bloody diarrhea",
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": "seizure",
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": "Blood pressure 130/85 mm Hg",
-        "ExamLabs.exam_findings": "Looks pale on physical examination",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "D",
-          "label": "Hemolytic-uremic syndrome",
-          "confidence": 0.9
-        },
-        {
-          "option": "A",
-          "label": "Disseminated intravascular coagulation",
-          "confidence": 0.05
-        },
-        {
-          "option": "B",
-          "label": "Henoch-Schonlein purpura",
-          "confidence": 0.03
-        },
-        {
-          "option": "C",
-          "label": "Systemic vasculitis",
-          "confidence": 0.02
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {\"ExamLabs.vitals\": \"Blood pressure 130/85 mm Hg\"}}",
-      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.03, \"C\": 0.02, \"D\": 0.90}\n```",
-      "question_writer_raw": "```json\n{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.vitals\", \"question\": \"Was her blood pressure checked today, and do you know if it was high or low?\"}\n```",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 6,
-      "chart_section": "Medications",
-      "target_field": "recent_changes",
-      "question": "Has she been given any antibiotics or anti-diarrheal medicine for this diarrhea, or started any new medicines or vaccines recently?",
+      "question": "In the past 1 to 2 weeks, has she eaten undercooked ground beef, drunk unpasteurized milk or juice, swum in lakes or pools, or been around farm animals or a petting zoo?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
@@ -418,8 +99,8 @@
         "Family.family_history": null,
         "ROS.ros_positives": null,
         "ROS.ros_negatives": null,
-        "ExamLabs.vitals": "Blood pressure 130/85 mm Hg",
-        "ExamLabs.exam_findings": "Looks pale on physical examination",
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
         "ExamLabs.lab_results": null
       },
       "differential": [
@@ -447,88 +128,31 @@
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
       "ranker_raw": "{\"A\": 0.04, \"B\": 0.03, \"C\": 0.03, \"D\": 0.90}",
-      "question_writer_raw": "{\"chart_section\": \"Medications\", \"target_field\": \"Medications.recent_changes\", \"question\": \"Has she been given any antibiotics or anti-diarrheal medicine for this diarrhea, or started any new medicines or vaccines recently?\"}",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.travel\", \"question\": \"In the past 1 to 2 weeks, has she eaten undercooked ground beef, drunk unpasteurized milk or juice, swum in lakes or pools, or been around farm animals or a petting zoo?\"}",
       "question_writer_fallback": false
     },
     {
-      "turn": 7,
+      "turn": 2,
       "chart_section": "ROS",
-      "target_field": "ros_negatives",
-      "question": "Has she had any joint pain or swelling, or any belly pain or swelling in her legs or buttocks, or been less active than usual?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": "bloody diarrhea",
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": "seizure",
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": "Blood pressure 130/85 mm Hg",
-        "ExamLabs.exam_findings": "Looks pale on physical examination",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "D",
-          "label": "Hemolytic-uremic syndrome",
-          "confidence": 0.9
-        },
-        {
-          "option": "A",
-          "label": "Disseminated intravascular coagulation",
-          "confidence": 0.04
-        },
-        {
-          "option": "B",
-          "label": "Henoch-Schonlein purpura",
-          "confidence": 0.03
-        },
-        {
-          "option": "C",
-          "label": "Systemic vasculitis",
-          "confidence": 0.03
-        }
+      "target_field": "ros_positives",
+      "question": "Has she had any fever, paleness, unusual bruising or rash, joint pain, or been passing much less urine than usual?",
+      "patient_answer": "2. The parents say she started having fever, abdominal pain, and diarrhea about 3 days ago.\n10. Her temperature is 39.2\u00b0C (102.6\u00b0F).\n11. On physical examination, she looks pale and sleepy.\n14. The skin assessment reveals the presence of disseminated pinpoint petechiae.",
+      "fields_filled": [
+        "HPI.onset",
+        "HPI.duration",
+        "HPI.associated_symptoms",
+        "ExamLabs.vitals",
+        "ExamLabs.exam_findings"
       ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.03, \"C\": 0.03, \"D\": 0.90}\n```",
-      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_negatives\", \"question\": \"Has she had any joint pain or swelling, or any belly pain or swelling in her legs or buttocks, or been less active than usual?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 8,
-      "chart_section": "HPI",
-      "target_field": "duration",
-      "question": "How many days ago did the diarrhea start, and how many days passed between the first watery stools and the first bloody stools?",
-      "patient_answer": "",
-      "fields_filled": [],
       "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
+        "HPI.onset": "Fever, abdominal pain, and diarrhea started about 3 days ago",
+        "HPI.duration": "About 3 days",
         "HPI.character": "bloody diarrhea",
         "HPI.location": null,
         "HPI.severity": null,
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": "seizure",
+        "HPI.associated_symptoms": "seizure; Fever, abdominal pain, diarrhea",
         "PMH.chronic_conditions": null,
         "PMH.prior_episodes": null,
         "PMH.surgeries": null,
@@ -544,134 +168,8 @@
         "Family.family_history": null,
         "ROS.ros_positives": null,
         "ROS.ros_negatives": null,
-        "ExamLabs.vitals": "Blood pressure 130/85 mm Hg",
-        "ExamLabs.exam_findings": "Looks pale on physical examination",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "D",
-          "label": "Hemolytic-uremic syndrome",
-          "confidence": 0.9
-        },
-        {
-          "option": "A",
-          "label": "Disseminated intravascular coagulation",
-          "confidence": 0.04
-        },
-        {
-          "option": "B",
-          "label": "Henoch-Schonlein purpura",
-          "confidence": 0.03
-        },
-        {
-          "option": "C",
-          "label": "Systemic vasculitis",
-          "confidence": 0.03
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "```json\n{\"fields\": {}}\n```",
-      "ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.03, \"C\": 0.03, \"D\": 0.90}\n```",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.duration\", \"question\": \"How many days ago did the diarrhea start, and how many days passed between the first watery stools and the first bloody stools?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 9,
-      "chart_section": "Social",
-      "target_field": "occupation",
-      "question": "Has your daughter been in contact with farm animals, a petting zoo, or raw or undercooked ground beef, or has anyone else in the household had similar diarrhea?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": "bloody diarrhea",
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": "seizure",
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": "Blood pressure 130/85 mm Hg",
-        "ExamLabs.exam_findings": "Looks pale on physical examination",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "D",
-          "label": "Hemolytic-uremic syndrome",
-          "confidence": 0.9
-        },
-        {
-          "option": "A",
-          "label": "Disseminated intravascular coagulation",
-          "confidence": 0.04
-        },
-        {
-          "option": "B",
-          "label": "Henoch-Schonlein purpura",
-          "confidence": 0.03
-        },
-        {
-          "option": "C",
-          "label": "Systemic vasculitis",
-          "confidence": 0.03
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.03, \"C\": 0.03, \"D\": 0.90}\n```",
-      "question_writer_raw": "```json\n{\"chart_section\": \"Social\", \"target_field\": \"Social.occupation\", \"question\": \"Has your daughter been in contact with farm animals, a petting zoo, or raw or undercooked ground beef, or has anyone else in the household had similar diarrhea?\"}\n```",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 10,
-      "chart_section": "Family",
-      "target_field": "family_history",
-      "question": "Does anyone in your family have kidney problems, bleeding or clotting disorders, or a history of similar episodes of bloody diarrhea, and if so, at what age did it start?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": "bloody diarrhea",
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": "seizure",
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": "Blood pressure 130/85 mm Hg",
-        "ExamLabs.exam_findings": "Looks pale on physical examination",
+        "ExamLabs.vitals": "Temperature 39.2\u00b0C (102.6\u00b0F)",
+        "ExamLabs.exam_findings": "Looks pale and sleepy; disseminated pinpoint petechiae on skin",
         "ExamLabs.lab_results": null
       },
       "differential": [
@@ -683,23 +181,539 @@
         {
           "option": "A",
           "label": "Disseminated intravascular coagulation",
+          "confidence": 0.04
+        },
+        {
+          "option": "B",
+          "label": "Henoch-Schonlein purpura",
+          "confidence": 0.02
+        },
+        {
+          "option": "C",
+          "label": "Systemic vasculitis",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"HPI.onset\": \"Fever, abdominal pain, and diarrhea started about 3 days ago\", \"HPI.duration\": \"About 3 days\", \"HPI.associated_symptoms\": \"Fever, abdominal pain, diarrhea\", \"ExamLabs.vitals\": \"Temperature 39.2\u00b0C (102.6\u00b0F)\", \"ExamLabs.exam_findings\": \"Looks pale and sleepy; disseminated pinpoint petechiae on skin\"}}",
+      "ranker_raw": "{\"A\": 0.04, \"B\": 0.02, \"C\": 0.02, \"D\": 0.92}",
+      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"Has she had any fever, paleness, unusual bruising or rash, joint pain, or been passing much less urine than usual?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 3,
+      "chart_section": "ROS",
+      "target_field": "ros_negatives",
+      "question": "Has she been passing less urine than usual, and when did she last urinate?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Fever, abdominal pain, and diarrhea started about 3 days ago",
+        "HPI.duration": "About 3 days",
+        "HPI.character": "bloody diarrhea",
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "seizure; Fever, abdominal pain, diarrhea",
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 39.2\u00b0C (102.6\u00b0F)",
+        "ExamLabs.exam_findings": "Looks pale and sleepy; disseminated pinpoint petechiae on skin",
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Hemolytic-uremic syndrome",
+          "confidence": 0.9
+        },
+        {
+          "option": "A",
+          "label": "Disseminated intravascular coagulation",
+          "confidence": 0.05
+        },
+        {
+          "option": "B",
+          "label": "Henoch-Schonlein purpura",
           "confidence": 0.03
         },
         {
           "option": "C",
           "label": "Systemic vasculitis",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "{\"A\": 0.05, \"B\": 0.03, \"C\": 0.02, \"D\": 0.90}",
+      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_negatives\", \"question\": \"Has she been passing less urine than usual, and when did she last urinate?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 4,
+      "chart_section": "ExamLabs",
+      "target_field": "lab_results",
+      "question": "Has she had any blood or urine tests done, such as a blood count, kidney function test, or urine test, and do you know the results?",
+      "patient_answer": "15. The urinalysis show hematuria.\n16. The Coombs test is negative.\n17. The Hemoglobin is 7 g/dL.\n18. The Hematocrit is 25 %.\n19. The Leukocyte count is 17,000/mm3.\n20. The Neutrophils are 70%.\n21. The Bands are 2%.\n22. The Eosinophils are 1%.\n23. The Basophils are 0%.\n24. The Lymphocytes are 22%.\n25. The Monocytes are 5%.\n26. The Platelet count is 7,000/mm3.\n27. The Partial thromboplastin time (activated) is 30 seconds.\n28. The Prothrombin time is 12 seconds.\n29. The Reticulocyte count is 1 %.\n30. The Thrombin time is < 2 seconds deviation from control.",
+      "fields_filled": [
+        "ExamLabs.lab_results"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Fever, abdominal pain, and diarrhea started about 3 days ago",
+        "HPI.duration": "About 3 days",
+        "HPI.character": "bloody diarrhea",
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "seizure; Fever, abdominal pain, diarrhea",
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 39.2\u00b0C (102.6\u00b0F)",
+        "ExamLabs.exam_findings": "Looks pale and sleepy; disseminated pinpoint petechiae on skin",
+        "ExamLabs.lab_results": "Urinalysis: hematuria. Coombs test: negative. Hemoglobin 7 g/dL. Hematocrit 25%. Leukocyte count 17,000/mm3. Neutrophils 70%. Bands 2%. Eosinophils 1%. Basophils 0%. Lymphocytes 22%. Monocytes 5%. Platelet count 7,000/mm3. aPTT 30 seconds. Prothrombin time 12 seconds. Reticulocyte count 1%. Thrombin time less than 2 seconds deviation from control."
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Hemolytic-uremic syndrome",
+          "confidence": 0.92
+        },
+        {
+          "option": "A",
+          "label": "Disseminated intravascular coagulation",
+          "confidence": 0.04
+        },
+        {
+          "option": "B",
+          "label": "Henoch-Schonlein purpura",
+          "confidence": 0.02
+        },
+        {
+          "option": "C",
+          "label": "Systemic vasculitis",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"ExamLabs.lab_results\": \"Urinalysis: hematuria. Coombs test: negative. Hemoglobin 7 g/dL. Hematocrit 25%. Leukocyte count 17,000/mm3. Neutrophils 70%. Bands 2%. Eosinophils 1%. Basophils 0%. Lymphocytes 22%. Monocytes 5%. Platelet count 7,000/mm3. aPTT 30 seconds. Prothrombin time 12 seconds. Reticulocyte count 1%. Thrombin time less than 2 seconds deviation from control.\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.02, \"C\": 0.02, \"D\": 0.92}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Has she had any blood or urine tests done, such as a blood count, kidney function test, or urine test, and do you know the results?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 5,
+      "chart_section": "Family",
+      "target_field": "family_history",
+      "question": "Does anyone in her family have kidney problems, unexplained anemia, easy bleeding or bruising, or a similar illness, and at what age did it start?",
+      "patient_answer": "Her 4-year-old brother had a similar case with bloody diarrhea 2 weeks ago.",
+      "fields_filled": [
+        "Family.family_history"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Fever, abdominal pain, and diarrhea started about 3 days ago",
+        "HPI.duration": "About 3 days",
+        "HPI.character": "bloody diarrhea",
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "seizure; Fever, abdominal pain, diarrhea",
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": "Brother, age 4, had a similar illness with bloody diarrhea 2 weeks ago",
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 39.2\u00b0C (102.6\u00b0F)",
+        "ExamLabs.exam_findings": "Looks pale and sleepy; disseminated pinpoint petechiae on skin",
+        "ExamLabs.lab_results": "Urinalysis: hematuria. Coombs test: negative. Hemoglobin 7 g/dL. Hematocrit 25%. Leukocyte count 17,000/mm3. Neutrophils 70%. Bands 2%. Eosinophils 1%. Basophils 0%. Lymphocytes 22%. Monocytes 5%. Platelet count 7,000/mm3. aPTT 30 seconds. Prothrombin time 12 seconds. Reticulocyte count 1%. Thrombin time less than 2 seconds deviation from control."
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Hemolytic-uremic syndrome",
+          "confidence": 0.93
+        },
+        {
+          "option": "A",
+          "label": "Disseminated intravascular coagulation",
           "confidence": 0.03
         },
         {
           "option": "B",
           "label": "Henoch-Schonlein purpura",
           "confidence": 0.02
+        },
+        {
+          "option": "C",
+          "label": "Systemic vasculitis",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"Family.family_history\": \"Brother, age 4, had a similar illness with bloody diarrhea 2 weeks ago\"}}",
+      "ranker_raw": "{\"A\": 0.03, \"B\": 0.02, \"C\": 0.02, \"D\": 0.93}",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Family\", \"target_field\": \"Family.family_history\", \"question\": \"Does anyone in her family have kidney problems, unexplained anemia, easy bleeding or bruising, or a similar illness, and at what age did it start?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 6,
+      "chart_section": "Medications",
+      "target_field": "recent_changes",
+      "question": "Has she taken any antibiotics or anti-diarrheal medicines recently, or had any vaccinations in the last few weeks?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Fever, abdominal pain, and diarrhea started about 3 days ago",
+        "HPI.duration": "About 3 days",
+        "HPI.character": "bloody diarrhea",
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "seizure; Fever, abdominal pain, diarrhea",
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": "Brother, age 4, had a similar illness with bloody diarrhea 2 weeks ago",
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 39.2\u00b0C (102.6\u00b0F)",
+        "ExamLabs.exam_findings": "Looks pale and sleepy; disseminated pinpoint petechiae on skin",
+        "ExamLabs.lab_results": "Urinalysis: hematuria. Coombs test: negative. Hemoglobin 7 g/dL. Hematocrit 25%. Leukocyte count 17,000/mm3. Neutrophils 70%. Bands 2%. Eosinophils 1%. Basophils 0%. Lymphocytes 22%. Monocytes 5%. Platelet count 7,000/mm3. aPTT 30 seconds. Prothrombin time 12 seconds. Reticulocyte count 1%. Thrombin time less than 2 seconds deviation from control."
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Hemolytic-uremic syndrome",
+          "confidence": 0.9
+        },
+        {
+          "option": "A",
+          "label": "Disseminated intravascular coagulation",
+          "confidence": 0.05
+        },
+        {
+          "option": "B",
+          "label": "Henoch-Schonlein purpura",
+          "confidence": 0.03
+        },
+        {
+          "option": "C",
+          "label": "Systemic vasculitis",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.03, \"C\": 0.02, \"D\": 0.90}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Medications\", \"target_field\": \"Medications.recent_changes\", \"question\": \"Has she taken any antibiotics or anti-diarrheal medicines recently, or had any vaccinations in the last few weeks?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 7,
+      "chart_section": "PMH",
+      "target_field": "chronic_conditions",
+      "question": "Does your daughter have any ongoing medical conditions, such as immune problems, a bleeding disorder, or a long-term illness?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Fever, abdominal pain, and diarrhea started about 3 days ago",
+        "HPI.duration": "About 3 days",
+        "HPI.character": "bloody diarrhea",
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "seizure; Fever, abdominal pain, diarrhea",
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": "Brother, age 4, had a similar illness with bloody diarrhea 2 weeks ago",
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 39.2\u00b0C (102.6\u00b0F)",
+        "ExamLabs.exam_findings": "Looks pale and sleepy; disseminated pinpoint petechiae on skin",
+        "ExamLabs.lab_results": "Urinalysis: hematuria. Coombs test: negative. Hemoglobin 7 g/dL. Hematocrit 25%. Leukocyte count 17,000/mm3. Neutrophils 70%. Bands 2%. Eosinophils 1%. Basophils 0%. Lymphocytes 22%. Monocytes 5%. Platelet count 7,000/mm3. aPTT 30 seconds. Prothrombin time 12 seconds. Reticulocyte count 1%. Thrombin time less than 2 seconds deviation from control."
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Hemolytic-uremic syndrome",
+          "confidence": 0.92
+        },
+        {
+          "option": "A",
+          "label": "Disseminated intravascular coagulation",
+          "confidence": 0.04
+        },
+        {
+          "option": "B",
+          "label": "Henoch-Schonlein purpura",
+          "confidence": 0.02
+        },
+        {
+          "option": "C",
+          "label": "Systemic vasculitis",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "{\"A\": 0.04, \"B\": 0.02, \"C\": 0.02, \"D\": 0.92}",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Does your daughter have any ongoing medical conditions, such as immune problems, a bleeding disorder, or a long-term illness?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 8,
+      "chart_section": "HPI",
+      "target_field": "severity",
+      "question": "How many bloody stools has she had in a day, and has the diarrhea and her overall condition been getting worse since it started?",
+      "patient_answer": "The facts do not state how many bloody stools she has had in a day, or whether her condition has been getting worse. The following facts describe the timeline of her symptoms:\n\n2. The parents say she started having fever, abdominal pain, and diarrhea about 3 days ago.\n3. The bloody diarrhea started 12 hours ago.\n4. The seizure was the last symptom to appear 3 hours ago.",
+      "fields_filled": [
+        "HPI.duration",
+        "HPI.onset",
+        "HPI.associated_symptoms"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Fever, abdominal pain, and diarrhea started about 3 days ago; Bloody diarrhea started 12 hours ago",
+        "HPI.duration": "About 3 days; Fever, abdominal pain, and diarrhea started about 3 days ago",
+        "HPI.character": "bloody diarrhea",
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "seizure; Fever, abdominal pain, diarrhea; Fever, abdominal pain, and seizure (seizure was the last symptom to appear, 3 hours ago)",
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": "Brother, age 4, had a similar illness with bloody diarrhea 2 weeks ago",
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 39.2\u00b0C (102.6\u00b0F)",
+        "ExamLabs.exam_findings": "Looks pale and sleepy; disseminated pinpoint petechiae on skin",
+        "ExamLabs.lab_results": "Urinalysis: hematuria. Coombs test: negative. Hemoglobin 7 g/dL. Hematocrit 25%. Leukocyte count 17,000/mm3. Neutrophils 70%. Bands 2%. Eosinophils 1%. Basophils 0%. Lymphocytes 22%. Monocytes 5%. Platelet count 7,000/mm3. aPTT 30 seconds. Prothrombin time 12 seconds. Reticulocyte count 1%. Thrombin time less than 2 seconds deviation from control."
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Hemolytic-uremic syndrome",
+          "confidence": 0.92
+        },
+        {
+          "option": "A",
+          "label": "Disseminated intravascular coagulation",
+          "confidence": 0.04
+        },
+        {
+          "option": "B",
+          "label": "Henoch-Schonlein purpura",
+          "confidence": 0.02
+        },
+        {
+          "option": "C",
+          "label": "Systemic vasculitis",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "```json\n{\"fields\": {\"HPI.duration\": \"Fever, abdominal pain, and diarrhea started about 3 days ago\", \"HPI.onset\": \"Bloody diarrhea started 12 hours ago\", \"HPI.associated_symptoms\": \"Fever, abdominal pain, and seizure (seizure was the last symptom to appear, 3 hours ago)\"}}\n```",
+      "ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.02, \"C\": 0.02, \"D\": 0.92}\n```",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.severity\", \"question\": \"How many bloody stools has she had in a day, and has the diarrhea and her overall condition been getting worse since it started?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 9,
+      "chart_section": "PMH",
+      "target_field": "prior_episodes",
+      "question": "Has your daughter ever had an earlier episode of similar illness, such as bloody diarrhea, kidney problems, or purple rash on her legs or buttocks with joint pain or swelling?",
+      "patient_answer": "6. Her 4-year-old brother had a similar case with bloody diarrhea 2 weeks ago.",
+      "fields_filled": [
+        "Family.family_history"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Fever, abdominal pain, and diarrhea started about 3 days ago; Bloody diarrhea started 12 hours ago",
+        "HPI.duration": "About 3 days; Fever, abdominal pain, and diarrhea started about 3 days ago",
+        "HPI.character": "bloody diarrhea",
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "seizure; Fever, abdominal pain, diarrhea; Fever, abdominal pain, and seizure (seizure was the last symptom to appear, 3 hours ago)",
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": "Brother, age 4, had a similar illness with bloody diarrhea 2 weeks ago; 4-year-old brother had a similar illness with bloody diarrhea 2 weeks ago",
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 39.2\u00b0C (102.6\u00b0F)",
+        "ExamLabs.exam_findings": "Looks pale and sleepy; disseminated pinpoint petechiae on skin",
+        "ExamLabs.lab_results": "Urinalysis: hematuria. Coombs test: negative. Hemoglobin 7 g/dL. Hematocrit 25%. Leukocyte count 17,000/mm3. Neutrophils 70%. Bands 2%. Eosinophils 1%. Basophils 0%. Lymphocytes 22%. Monocytes 5%. Platelet count 7,000/mm3. aPTT 30 seconds. Prothrombin time 12 seconds. Reticulocyte count 1%. Thrombin time less than 2 seconds deviation from control."
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Hemolytic-uremic syndrome",
+          "confidence": 0.9
+        },
+        {
+          "option": "A",
+          "label": "Disseminated intravascular coagulation",
+          "confidence": 0.05
+        },
+        {
+          "option": "B",
+          "label": "Henoch-Schonlein purpura",
+          "confidence": 0.03
+        },
+        {
+          "option": "C",
+          "label": "Systemic vasculitis",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "```json\n{\"fields\": {\"Family.family_history\": \"4-year-old brother had a similar illness with bloody diarrhea 2 weeks ago\"}}\n```",
+      "ranker_raw": "{\"A\": 0.05, \"B\": 0.03, \"C\": 0.02, \"D\": 0.90}",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Has your daughter ever had an earlier episode of similar illness, such as bloody diarrhea, kidney problems, or purple rash on her legs or buttocks with joint pain or swelling?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 10,
+      "chart_section": "Social",
+      "target_field": "occupation",
+      "question": "Does she attend daycare or preschool, or has anyone else she lives with or spends time with had diarrhea or bloody stools recently?",
+      "patient_answer": "6. Her 4-year-old brother had a similar case with bloody diarrhea 2 weeks ago.",
+      "fields_filled": [
+        "Family.family_history"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Fever, abdominal pain, and diarrhea started about 3 days ago; Bloody diarrhea started 12 hours ago",
+        "HPI.duration": "About 3 days; Fever, abdominal pain, and diarrhea started about 3 days ago",
+        "HPI.character": "bloody diarrhea",
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "seizure; Fever, abdominal pain, diarrhea; Fever, abdominal pain, and seizure (seizure was the last symptom to appear, 3 hours ago)",
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": "Brother, age 4, had a similar illness with bloody diarrhea 2 weeks ago; 4-year-old brother had a similar illness with bloody diarrhea 2 weeks ago; Brother (age 4) had a similar case with bloody diarrhea 2 weeks ago",
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 39.2\u00b0C (102.6\u00b0F)",
+        "ExamLabs.exam_findings": "Looks pale and sleepy; disseminated pinpoint petechiae on skin",
+        "ExamLabs.lab_results": "Urinalysis: hematuria. Coombs test: negative. Hemoglobin 7 g/dL. Hematocrit 25%. Leukocyte count 17,000/mm3. Neutrophils 70%. Bands 2%. Eosinophils 1%. Basophils 0%. Lymphocytes 22%. Monocytes 5%. Platelet count 7,000/mm3. aPTT 30 seconds. Prothrombin time 12 seconds. Reticulocyte count 1%. Thrombin time less than 2 seconds deviation from control."
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Hemolytic-uremic syndrome",
+          "confidence": 0.93
+        },
+        {
+          "option": "A",
+          "label": "Disseminated intravascular coagulation",
+          "confidence": 0.03
+        },
+        {
+          "option": "B",
+          "label": "Henoch-Schonlein purpura",
+          "confidence": 0.02
+        },
+        {
+          "option": "C",
+          "label": "Systemic vasculitis",
+          "confidence": 0.02
         }
       ],
       "decision": "answer",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.03, \"B\": 0.02, \"C\": 0.03, \"D\": 0.92}\n```",
-      "question_writer_raw": "{\"chart_section\": \"Family\", \"target_field\": \"Family.family_history\", \"question\": \"Does anyone in your family have kidney problems, bleeding or clotting disorders, or a history of similar episodes of bloody diarrhea, and if so, at what age did it start?\"}",
+      "tagger_raw": "{\"fields\": {\"Family.family_history\": \"Brother (age 4) had a similar case with bloody diarrhea 2 weeks ago\"}}",
+      "ranker_raw": "{\"A\": 0.03, \"B\": 0.02, \"C\": 0.02, \"D\": 0.93}",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.occupation\", \"question\": \"Does she attend daycare or preschool, or has anyone else she lives with or spends time with had diarrhea or bloody stools recently?\"}",
       "question_writer_fallback": false
     }
   ],
@@ -715,17 +729,17 @@
     {
       "option": "D",
       "label": "Hemolytic-uremic syndrome",
-      "confidence": 0.93
+      "confidence": 0.91
     },
     {
       "option": "A",
       "label": "Disseminated intravascular coagulation",
-      "confidence": 0.03
+      "confidence": 0.04
     },
     {
       "option": "B",
       "label": "Henoch-Schonlein purpura",
-      "confidence": 0.02
+      "confidence": 0.03
     },
     {
       "option": "C",
@@ -733,7 +747,7 @@
       "confidence": 0.02
     }
   ],
-  "ceiling_ranker_raw": "{\"A\": 0.03, \"B\": 0.02, \"C\": 0.02, \"D\": 0.93}",
+  "ceiling_ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.03, \"C\": 0.02, \"D\": 0.91}\n```",
   "full_context": "A 3-year-old girl is brought by her parents to the office for bloody diarrhea and a seizure. The parents say she started having fever, abdominal pain, and diarrhea about 3 days ago, but the bloody diarrhea started 12 hours ago. The seizure was the last symptom to appear 3 hours ago, and it consisted of repetitive movement of arms and legs with loss of consciousness. Her 4-year-old brother had a similar case with bloody diarrhea 2 weeks ago. Her vital signs include: blood pressure is 130/85 mm Hg, her respiratory rate is 25/min, her heart rate is 120/min, and her temperature is 39.2\u00b0C (102.6\u00b0F). On physical examination, she looks pale and sleepy, the cardiopulmonary auscultation is normal, the abdomen is painful on palpation, and the skin assessment reveals the presence of disseminated pinpoint petechiae. The urinalysis show hematuria. The Coombs test is negative. The complete blood count results are as follows: | Hemoglobin 7 g/dL | Hematocrit 25 % | Leukocyte count 17,000/mm3 | Neutrophils 70% | Bands 2% | Eosinophils 1% | Basophils 0% | Lymphocytes 22% | Monocytes 5% | Platelet count 7,000/mm3 | Her coagulation tests are as follows: | Partial thromboplastin time (activated) 30 seconds | Prothrombin time 12 seconds | Reticulocyte count 1 % | Thrombin time < 2 seconds deviation from control | .",
   "patient_facts": [
     "1. A 3-year-old girl is brought by her parents to the office.",
@@ -772,20 +786,20 @@
     "stop_rule": "fixed",
     "answer_confidence_threshold": 0.8,
     "temperature": null,
-    "seconds": 136.4,
-    "timestamp": "2026-11-13T05:04:12+00:00",
+    "seconds": 116.1,
+    "timestamp": "2026-11-13T05:25:39+00:00",
     "usage": {
-      "num_calls": 42,
+      "num_calls": 39,
       "calls_by_tag": {
-        "tagger": 10,
+        "tagger": 7,
         "ranker": 11,
         "question_writer": 10,
         "patient": 10,
         "ceiling_ranker": 1
       },
-      "prompt_tokens": 42269,
-      "completion_tokens": 10224,
-      "cost_usd": 0.009339
+      "prompt_tokens": 48045,
+      "completion_tokens": 13780,
+      "cost_usd": 0.011695
     }
   }
 }

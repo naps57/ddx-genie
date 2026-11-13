@@ -12,13 +12,15 @@
     "D": "Piperacillin and tazobactam"
   },
   "gold_answer": "A",
-  "initial_fields_filled": [],
-  "initial_tagger_raw": "{\"fields\": {\"HPI.location\": \"joint (unspecified joint)\", \"HPI.character\": \"joint pain\", \"Social.occupation\": \"unknown\"}}\n\nWait, I should correct that: the answer does not state a location beyond \"joint,\" and it does not mention occupation at all, so I should not include Social.occupation. Corrected output:\n\n{\"fields\": {\"HPI.location\": \"joints (unspecified which)\", \"HPI.character\": \"joint pain\"}}",
+  "initial_fields_filled": [
+    "HPI.location"
+  ],
+  "initial_tagger_raw": "```json\n{\"fields\": {\"HPI.location\": \"joints (specific joints not stated)\"}}\n```",
   "initial_worksheet_snapshot": {
     "HPI.onset": null,
     "HPI.duration": null,
     "HPI.character": null,
-    "HPI.location": null,
+    "HPI.location": "joints (specific joints not stated)",
     "HPI.severity": null,
     "HPI.timing": null,
     "HPI.aggravating_relieving": null,
@@ -46,22 +48,22 @@
     {
       "option": "B",
       "label": "Ceftriaxone",
-      "confidence": 0.78
+      "confidence": 0.72
     },
     {
       "option": "C",
       "label": "Ceftriaxone and vancomycin",
-      "confidence": 0.11
+      "confidence": 0.15
     },
     {
       "option": "A",
       "label": "Cefixime and azithromycin",
-      "confidence": 0.07
+      "confidence": 0.08
     },
     {
       "option": "D",
       "label": "Piperacillin and tazobactam",
-      "confidence": 0.04
+      "confidence": 0.05
     }
   ],
   "turns": [
@@ -69,14 +71,16 @@
       "turn": 1,
       "chart_section": "Social",
       "target_field": "sexual_history",
-      "question": "Are you sexually active, and if so, how many partners have you had recently, and do you use condoms?",
-      "patient_answer": "",
-      "fields_filled": [],
+      "question": "Have you had any new or recent sexual partners, and do you use condoms?",
+      "patient_answer": "7. The patient is sexually active.",
+      "fields_filled": [
+        "Social.sexual_history"
+      ],
       "worksheet_snapshot": {
         "HPI.onset": null,
         "HPI.duration": null,
         "HPI.character": null,
-        "HPI.location": null,
+        "HPI.location": "joints (specific joints not stated)",
         "HPI.severity": null,
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
@@ -92,7 +96,7 @@
         "Social.drugs": null,
         "Social.occupation": null,
         "Social.travel": null,
-        "Social.sexual_history": null,
+        "Social.sexual_history": "Sexually active; no information provided on new or recent partners or condom use",
         "Family.family_history": null,
         "ROS.ros_positives": null,
         "ROS.ros_negatives": null,
@@ -104,42 +108,47 @@
         {
           "option": "B",
           "label": "Ceftriaxone",
-          "confidence": 0.8
+          "confidence": 0.7
         },
         {
           "option": "A",
           "label": "Cefixime and azithromycin",
-          "confidence": 0.12
+          "confidence": 0.2
         },
         {
           "option": "C",
           "label": "Ceftriaxone and vancomycin",
-          "confidence": 0.04
+          "confidence": 0.05
         },
         {
           "option": "D",
           "label": "Piperacillin and tazobactam",
-          "confidence": 0.04
+          "confidence": 0.05
         }
       ],
       "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.12, \"B\": 0.8, \"C\": 0.04, \"D\": 0.04}\n```",
-      "question_writer_raw": "```json\n{\"chart_section\": \"Social\", \"target_field\": \"Social.sexual_history\", \"question\": \"Are you sexually active, and if so, how many partners have you had recently, and do you use condoms?\"}\n```",
+      "tagger_raw": "{\"fields\": {\"Social.sexual_history\": \"Sexually active; no information provided on new or recent partners or condom use\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.2, \"B\": 0.7, \"C\": 0.05, \"D\": 0.05}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.sexual_history\", \"question\": \"Have you had any new or recent sexual partners, and do you use condoms?\"}",
       "question_writer_fallback": false
     },
     {
       "turn": 2,
-      "chart_section": "HPI",
-      "target_field": "associated_symptoms",
-      "question": "Along with the joint pain, have you had any fever, skin rash or sores, pain or swelling in your fingers, wrists, or tendons, or any discharge from your penis?",
-      "patient_answer": "",
-      "fields_filled": [],
+      "chart_section": "ROS",
+      "target_field": "ros_positives",
+      "question": "Have you had any fever, chills, or rash, such as small skin spots or blisters, or pain in your tendons or wrists?",
+      "patient_answer": "3. Today he noticed a rash.\n9. His temperature is 101\u00b0F (38.3\u00b0C).\n14. Physical exam reveals pustular skin lesions.",
+      "fields_filled": [
+        "HPI.onset",
+        "ROS.ros_positives",
+        "ExamLabs.vitals",
+        "ExamLabs.exam_findings"
+      ],
       "worksheet_snapshot": {
-        "HPI.onset": null,
+        "HPI.onset": "Rash noticed today",
         "HPI.duration": null,
         "HPI.character": null,
-        "HPI.location": null,
+        "HPI.location": "joints (specific joints not stated)",
         "HPI.severity": null,
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
@@ -155,12 +164,77 @@
         "Social.drugs": null,
         "Social.occupation": null,
         "Social.travel": null,
-        "Social.sexual_history": null,
+        "Social.sexual_history": "Sexually active; no information provided on new or recent partners or condom use",
         "Family.family_history": null,
-        "ROS.ros_positives": null,
+        "ROS.ros_positives": "rash",
         "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
+        "ExamLabs.vitals": "Temperature 101\u00b0F (38.3\u00b0C)",
+        "ExamLabs.exam_findings": "Pustular skin lesions",
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Ceftriaxone",
+          "confidence": 0.8
+        },
+        {
+          "option": "C",
+          "label": "Ceftriaxone and vancomycin",
+          "confidence": 0.1
+        },
+        {
+          "option": "A",
+          "label": "Cefixime and azithromycin",
+          "confidence": 0.07
+        },
+        {
+          "option": "D",
+          "label": "Piperacillin and tazobactam",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"HPI.onset\": \"Rash noticed today\", \"ROS.ros_positives\": \"rash\", \"ExamLabs.vitals\": \"Temperature 101\u00b0F (38.3\u00b0C)\", \"ExamLabs.exam_findings\": \"Pustular skin lesions\"}}",
+      "ranker_raw": "{\"A\": 0.07, \"B\": 0.8, \"C\": 0.1, \"D\": 0.03}",
+      "question_writer_raw": "```json\n{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"Have you had any fever, chills, or rash, such as small skin spots or blisters, or pain in your tendons or wrists?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 3,
+      "chart_section": "Social",
+      "target_field": "drugs",
+      "question": "Do you use any recreational or illicit drugs, including injecting drugs or sharing needles?",
+      "patient_answer": "8. The patient uses cocaine occasionally.",
+      "fields_filled": [
+        "Social.drugs"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Rash noticed today",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": "joints (specific joints not stated)",
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": "cocaine, occasional use",
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Sexually active; no information provided on new or recent partners or condom use",
+        "Family.family_history": null,
+        "ROS.ros_positives": "rash",
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 101\u00b0F (38.3\u00b0C)",
+        "ExamLabs.exam_findings": "Pustular skin lesions",
         "ExamLabs.lab_results": null
       },
       "differential": [
@@ -172,12 +246,12 @@
         {
           "option": "A",
           "label": "Cefixime and azithromycin",
-          "confidence": 0.12
+          "confidence": 0.1
         },
         {
           "option": "C",
           "label": "Ceftriaxone and vancomycin",
-          "confidence": 0.08
+          "confidence": 0.1
         },
         {
           "option": "D",
@@ -186,88 +260,23 @@
         }
       ],
       "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.12, \"B\": 0.75, \"C\": 0.08, \"D\": 0.05}\n```",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.associated_symptoms\", \"question\": \"Along with the joint pain, have you had any fever, skin rash or sores, pain or swelling in your fingers, wrists, or tendons, or any discharge from your penis?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 3,
-      "chart_section": "ROS",
-      "target_field": "ros_positives",
-      "question": "Have you had any fever, chills, or sweats along with the joint pain, and have you noticed any rash, sores, or pustules on your skin?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "Ceftriaxone",
-          "confidence": 0.62
-        },
-        {
-          "option": "C",
-          "label": "Ceftriaxone and vancomycin",
-          "confidence": 0.16
-        },
-        {
-          "option": "A",
-          "label": "Cefixime and azithromycin",
-          "confidence": 0.15
-        },
-        {
-          "option": "D",
-          "label": "Piperacillin and tazobactam",
-          "confidence": 0.07
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.15, \"B\": 0.62, \"C\": 0.16, \"D\": 0.07}\n```",
-      "question_writer_raw": "```json\n{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"Have you had any fever, chills, or sweats along with the joint pain, and have you noticed any rash, sores, or pustules on your skin?\"}\n```",
+      "tagger_raw": "{\"fields\": {\"Social.drugs\": \"cocaine, occasional use\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.75, \"C\": 0.1, \"D\": 0.05}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Social\", \"target_field\": \"Social.drugs\", \"question\": \"Do you use any recreational or illicit drugs, including injecting drugs or sharing needles?\"}\n```",
       "question_writer_fallback": false
     },
     {
       "turn": 4,
-      "chart_section": "Social",
-      "target_field": "drugs",
-      "question": "Do you use any recreational or illicit drugs, including injecting drugs or sharing needles?",
-      "patient_answer": "The patient uses cocaine occasionally.",
-      "fields_filled": [
-        "Social.drugs"
-      ],
+      "chart_section": "HPI",
+      "target_field": "associated_symptoms",
+      "question": "Along with the joint pain and rash, have you had any chest pain, shortness of breath, or swelling in your legs or belly?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
       "worksheet_snapshot": {
-        "HPI.onset": null,
+        "HPI.onset": "Rash noticed today",
         "HPI.duration": null,
         "HPI.character": null,
-        "HPI.location": null,
+        "HPI.location": "joints (specific joints not stated)",
         "HPI.severity": null,
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
@@ -283,12 +292,12 @@
         "Social.drugs": "cocaine, occasional use",
         "Social.occupation": null,
         "Social.travel": null,
-        "Social.sexual_history": null,
+        "Social.sexual_history": "Sexually active; no information provided on new or recent partners or condom use",
         "Family.family_history": null,
-        "ROS.ros_positives": null,
+        "ROS.ros_positives": "rash",
         "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
+        "ExamLabs.vitals": "Temperature 101\u00b0F (38.3\u00b0C)",
+        "ExamLabs.exam_findings": "Pustular skin lesions",
         "ExamLabs.lab_results": null
       },
       "differential": [
@@ -300,12 +309,12 @@
         {
           "option": "C",
           "label": "Ceftriaxone and vancomycin",
-          "confidence": 0.09
+          "confidence": 0.12
         },
         {
           "option": "A",
           "label": "Cefixime and azithromycin",
-          "confidence": 0.08
+          "confidence": 0.05
         },
         {
           "option": "D",
@@ -314,28 +323,30 @@
         }
       ],
       "decision": "ask",
-      "tagger_raw": "{\"fields\": {\"Social.drugs\": \"cocaine, occasional use\"}}",
-      "ranker_raw": "```json\n{\"A\": 0.08, \"B\": 0.8, \"C\": 0.09, \"D\": 0.03}\n```",
-      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.drugs\", \"question\": \"Do you use any recreational or illicit drugs, including injecting drugs or sharing needles?\"}",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.8, \"C\": 0.12, \"D\": 0.03}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"HPI\", \"target_field\": \"HPI.associated_symptoms\", \"question\": \"Along with the joint pain and rash, have you had any chest pain, shortness of breath, or swelling in your legs or belly?\"}\n```",
       "question_writer_fallback": false
     },
     {
       "turn": 5,
-      "chart_section": "ExamLabs",
-      "target_field": "vitals",
-      "question": "Have you checked your temperature recently, and has it been high, or have you felt feverish or unwell with chills?",
-      "patient_answer": "9",
-      "fields_filled": [],
+      "chart_section": "PMH",
+      "target_field": "chronic_conditions",
+      "question": "Do you have any known heart valve problems, a past heart infection, or HIV?",
+      "patient_answer": "The patient does not have a significant past medical history.",
+      "fields_filled": [
+        "PMH.chronic_conditions"
+      ],
       "worksheet_snapshot": {
-        "HPI.onset": null,
+        "HPI.onset": "Rash noticed today",
         "HPI.duration": null,
         "HPI.character": null,
-        "HPI.location": null,
+        "HPI.location": "joints (specific joints not stated)",
         "HPI.severity": null,
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
+        "PMH.chronic_conditions": "No significant past medical history reported",
         "PMH.prior_episodes": null,
         "PMH.surgeries": null,
         "Medications.current_meds": null,
@@ -346,12 +357,333 @@
         "Social.drugs": "cocaine, occasional use",
         "Social.occupation": null,
         "Social.travel": null,
-        "Social.sexual_history": null,
+        "Social.sexual_history": "Sexually active; no information provided on new or recent partners or condom use",
         "Family.family_history": null,
-        "ROS.ros_positives": null,
+        "ROS.ros_positives": "rash",
         "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
+        "ExamLabs.vitals": "Temperature 101\u00b0F (38.3\u00b0C)",
+        "ExamLabs.exam_findings": "Pustular skin lesions",
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Ceftriaxone",
+          "confidence": 0.5
+        },
+        {
+          "option": "A",
+          "label": "Cefixime and azithromycin",
+          "confidence": 0.2
+        },
+        {
+          "option": "C",
+          "label": "Ceftriaxone and vancomycin",
+          "confidence": 0.2
+        },
+        {
+          "option": "D",
+          "label": "Piperacillin and tazobactam",
+          "confidence": 0.1
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "```json\n{\"fields\": {\"PMH.chronic_conditions\": \"No significant past medical history reported\"}}\n```",
+      "ranker_raw": "```json\n{\"A\": 0.2, \"B\": 0.5, \"C\": 0.2, \"D\": 0.1}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Do you have any known heart valve problems, a past heart infection, or HIV?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 6,
+      "chart_section": "HPI",
+      "target_field": "duration",
+      "question": "When did this start, and how has it changed?",
+      "patient_answer": "2. He states that since yesterday he has had joint pain.\n3. Today he noticed a rash.",
+      "fields_filled": [
+        "HPI.onset",
+        "ROS.ros_positives"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Rash noticed today; Joint pain began yesterday",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": "joints (specific joints not stated)",
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "No significant past medical history reported",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": "cocaine, occasional use",
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Sexually active; no information provided on new or recent partners or condom use",
+        "Family.family_history": null,
+        "ROS.ros_positives": "rash; Rash, noticed today",
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 101\u00b0F (38.3\u00b0C)",
+        "ExamLabs.exam_findings": "Pustular skin lesions",
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Ceftriaxone",
+          "confidence": 0.72
+        },
+        {
+          "option": "C",
+          "label": "Ceftriaxone and vancomycin",
+          "confidence": 0.17
+        },
+        {
+          "option": "A",
+          "label": "Cefixime and azithromycin",
+          "confidence": 0.07
+        },
+        {
+          "option": "D",
+          "label": "Piperacillin and tazobactam",
+          "confidence": 0.04
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "```json\n{\"fields\": {\"HPI.onset\": \"Joint pain began yesterday\", \"ROS.ros_positives\": \"Rash, noticed today\"}}\n```",
+      "ranker_raw": "{\"A\": 0.07, \"B\": 0.72, \"C\": 0.17, \"D\": 0.04}",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.drugs\", \"question\": \"When you use cocaine, do you inject it, or do you snort or smoke it? Have you ever shared needles or other drug equipment?\"}",
+      "question_writer_fallback": true
+    },
+    {
+      "turn": 7,
+      "chart_section": "HPI",
+      "target_field": "character",
+      "question": "When did this start, and how has it changed?",
+      "patient_answer": "He states that since yesterday he has had joint pain.\nToday he noticed a rash.",
+      "fields_filled": [
+        "HPI.onset",
+        "ROS.ros_positives"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Rash noticed today; Joint pain began yesterday; Since yesterday, joint pain",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": "joints (specific joints not stated)",
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "No significant past medical history reported",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": "cocaine, occasional use",
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Sexually active; no information provided on new or recent partners or condom use",
+        "Family.family_history": null,
+        "ROS.ros_positives": "rash; Rash, noticed today; Rash noticed today",
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 101\u00b0F (38.3\u00b0C)",
+        "ExamLabs.exam_findings": "Pustular skin lesions",
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Ceftriaxone",
+          "confidence": 0.72
+        },
+        {
+          "option": "C",
+          "label": "Ceftriaxone and vancomycin",
+          "confidence": 0.14
+        },
+        {
+          "option": "A",
+          "label": "Cefixime and azithromycin",
+          "confidence": 0.08
+        },
+        {
+          "option": "D",
+          "label": "Piperacillin and tazobactam",
+          "confidence": 0.06
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"HPI.onset\": \"Since yesterday, joint pain\", \"ROS.ros_positives\": \"Rash noticed today\"}}",
+      "ranker_raw": "{\"A\": 0.08, \"B\": 0.72, \"C\": 0.14, \"D\": 0.06}",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.drugs\", \"question\": \"When you use cocaine, do you inject it or use it another way, and when did you last use it?\"}",
+      "question_writer_fallback": true
+    },
+    {
+      "turn": 8,
+      "chart_section": "Allergies",
+      "target_field": "allergies",
+      "question": "Do you have any allergies to medications, such as penicillin or cephalosporin antibiotics like ceftriaxone, and if so, what kind of reaction did you have?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Rash noticed today; Joint pain began yesterday; Since yesterday, joint pain",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": "joints (specific joints not stated)",
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "No significant past medical history reported",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": "cocaine, occasional use",
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Sexually active; no information provided on new or recent partners or condom use",
+        "Family.family_history": null,
+        "ROS.ros_positives": "rash; Rash, noticed today; Rash noticed today",
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 101\u00b0F (38.3\u00b0C)",
+        "ExamLabs.exam_findings": "Pustular skin lesions",
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Ceftriaxone",
+          "confidence": 0.72
+        },
+        {
+          "option": "C",
+          "label": "Ceftriaxone and vancomycin",
+          "confidence": 0.15
+        },
+        {
+          "option": "A",
+          "label": "Cefixime and azithromycin",
+          "confidence": 0.1
+        },
+        {
+          "option": "D",
+          "label": "Piperacillin and tazobactam",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.72, \"C\": 0.15, \"D\": 0.03}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Allergies\", \"target_field\": \"Allergies.allergies\", \"question\": \"Do you have any allergies to medications, such as penicillin or cephalosporin antibiotics like ceftriaxone, and if so, what kind of reaction did you have?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 9,
+      "chart_section": "ExamLabs",
+      "target_field": "lab_results",
+      "question": "Have any tests been done today, such as blood cultures, or a gonorrhea or chlamydia swab or urine test, and do you know the results?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Rash noticed today; Joint pain began yesterday; Since yesterday, joint pain",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": "joints (specific joints not stated)",
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "No significant past medical history reported",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": "cocaine, occasional use",
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Sexually active; no information provided on new or recent partners or condom use",
+        "Family.family_history": null,
+        "ROS.ros_positives": "rash; Rash, noticed today; Rash noticed today",
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 101\u00b0F (38.3\u00b0C)",
+        "ExamLabs.exam_findings": "Pustular skin lesions",
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Ceftriaxone",
+          "confidence": 0.6
+        },
+        {
+          "option": "C",
+          "label": "Ceftriaxone and vancomycin",
+          "confidence": 0.2
+        },
+        {
+          "option": "A",
+          "label": "Cefixime and azithromycin",
+          "confidence": 0.1
+        },
+        {
+          "option": "D",
+          "label": "Piperacillin and tazobactam",
+          "confidence": 0.1
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.6, \"C\": 0.2, \"D\": 0.1}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Have any tests been done today, such as blood cultures, or a gonorrhea or chlamydia swab or urine test, and do you know the results?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 10,
+      "chart_section": "ROS",
+      "target_field": "ros_negatives",
+      "question": "Apart from the joint pain and rash, have you had any eye redness or pain, painful urination, or discharge from the penis or rectum?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Rash noticed today; Joint pain began yesterday; Since yesterday, joint pain",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": "joints (specific joints not stated)",
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "No significant past medical history reported",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": "cocaine, occasional use",
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Sexually active; no information provided on new or recent partners or condom use",
+        "Family.family_history": null,
+        "ROS.ros_positives": "rash; Rash, noticed today; Rash noticed today",
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 101\u00b0F (38.3\u00b0C)",
+        "ExamLabs.exam_findings": "Pustular skin lesions",
         "ExamLabs.lab_results": null
       },
       "differential": [
@@ -376,325 +708,10 @@
           "confidence": 0.05
         }
       ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "{\"A\": 0.1, \"B\": 0.72, \"C\": 0.13, \"D\": 0.05}",
-      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.vitals\", \"question\": \"Have you checked your temperature recently, and has it been high, or have you felt feverish or unwell with chills?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 6,
-      "chart_section": "PMH",
-      "target_field": "chronic_conditions",
-      "question": "Do you have any known heart valve problems or heart murmur, or have you ever been told you have HIV or another condition that weakens your immune system?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": "cocaine, occasional use",
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "Ceftriaxone",
-          "confidence": 0.6
-        },
-        {
-          "option": "C",
-          "label": "Ceftriaxone and vancomycin",
-          "confidence": 0.2
-        },
-        {
-          "option": "A",
-          "label": "Cefixime and azithromycin",
-          "confidence": 0.1
-        },
-        {
-          "option": "D",
-          "label": "Piperacillin and tazobactam",
-          "confidence": 0.1
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.6, \"C\": 0.2, \"D\": 0.1}\n```",
-      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Do you have any known heart valve problems or heart murmur, or have you ever been told you have HIV or another condition that weakens your immune system?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 7,
-      "chart_section": "ROS",
-      "target_field": "ros_negatives",
-      "question": "Have you had any shortness of breath, chest pain, or swelling in your legs or abdomen, and have you noticed any new heart murmur or spots on your fingers or palms?",
-      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": "cocaine, occasional use",
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "Ceftriaxone",
-          "confidence": 0.42
-        },
-        {
-          "option": "C",
-          "label": "Ceftriaxone and vancomycin",
-          "confidence": 0.38
-        },
-        {
-          "option": "A",
-          "label": "Cefixime and azithromycin",
-          "confidence": 0.1
-        },
-        {
-          "option": "D",
-          "label": "Piperacillin and tazobactam",
-          "confidence": 0.1
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "{\"A\": 0.1, \"B\": 0.42, \"C\": 0.38, \"D\": 0.1}",
-      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_negatives\", \"question\": \"Have you had any shortness of breath, chest pain, or swelling in your legs or abdomen, and have you noticed any new heart murmur or spots on your fingers or palms?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 8,
-      "chart_section": "HPI",
-      "target_field": "location",
-      "question": "Is the joint pain in one joint at a time, or does it move from joint to joint, and which joints are involved?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": "cocaine, occasional use",
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "Ceftriaxone",
-          "confidence": 0.6
-        },
-        {
-          "option": "C",
-          "label": "Ceftriaxone and vancomycin",
-          "confidence": 0.24
-        },
-        {
-          "option": "A",
-          "label": "Cefixime and azithromycin",
-          "confidence": 0.08
-        },
-        {
-          "option": "D",
-          "label": "Piperacillin and tazobactam",
-          "confidence": 0.08
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.08, \"B\": 0.6, \"C\": 0.24, \"D\": 0.08}\n```",
-      "question_writer_raw": "```json\n{\"chart_section\": \"HPI\", \"target_field\": \"HPI.location\", \"question\": \"Is the joint pain in one joint at a time, or does it move from joint to joint, and which joints are involved?\"}\n```",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 9,
-      "chart_section": "HPI",
-      "target_field": "timing",
-      "question": "Has the pain stayed in one joint, or has it moved from one joint to another over time?",
-      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": "cocaine, occasional use",
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "Ceftriaxone",
-          "confidence": 0.6
-        },
-        {
-          "option": "C",
-          "label": "Ceftriaxone and vancomycin",
-          "confidence": 0.25
-        },
-        {
-          "option": "A",
-          "label": "Cefixime and azithromycin",
-          "confidence": 0.1
-        },
-        {
-          "option": "D",
-          "label": "Piperacillin and tazobactam",
-          "confidence": 0.05
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.6, \"C\": 0.25, \"D\": 0.05}\n```",
-      "question_writer_raw": "```json\n{\"chart_section\": \"HPI\", \"target_field\": \"HPI.timing\", \"question\": \"Has the pain stayed in one joint, or has it moved from one joint to another over time?\"}\n```",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 10,
-      "chart_section": "ExamLabs",
-      "target_field": "exam_findings",
-      "question": "Has anyone examined you today, and did they note any swollen or tender joints, or any pustules or skin lesions on your hands, feet, or elsewhere?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": "cocaine, occasional use",
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "Ceftriaxone",
-          "confidence": 0.55
-        },
-        {
-          "option": "C",
-          "label": "Ceftriaxone and vancomycin",
-          "confidence": 0.2
-        },
-        {
-          "option": "A",
-          "label": "Cefixime and azithromycin",
-          "confidence": 0.15
-        },
-        {
-          "option": "D",
-          "label": "Piperacillin and tazobactam",
-          "confidence": 0.1
-        }
-      ],
       "decision": "answer",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.15, \"B\": 0.55, \"C\": 0.2, \"D\": 0.1}\n```",
-      "question_writer_raw": "```json\n{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.exam_findings\", \"question\": \"Has anyone examined you today, and did they note any swollen or tender joints, or any pustules or skin lesions on your hands, feet, or elsewhere?\"}\n```",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "{\"A\": 0.1, \"B\": 0.72, \"C\": 0.13, \"D\": 0.05}",
+      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_negatives\", \"question\": \"Apart from the joint pain and rash, have you had any eye redness or pain, painful urination, or discharge from the penis or rectum?\"}",
       "question_writer_fallback": false
     }
   ],
@@ -710,25 +727,25 @@
     {
       "option": "B",
       "label": "Ceftriaxone",
-      "confidence": 0.72
+      "confidence": 0.78
     },
     {
       "option": "A",
       "label": "Cefixime and azithromycin",
-      "confidence": 0.12
+      "confidence": 0.1
     },
     {
       "option": "C",
       "label": "Ceftriaxone and vancomycin",
-      "confidence": 0.1
+      "confidence": 0.09
     },
     {
       "option": "D",
       "label": "Piperacillin and tazobactam",
-      "confidence": 0.06
+      "confidence": 0.03
     }
   ],
-  "ceiling_ranker_raw": "```json\n{\"A\": 0.12, \"B\": 0.72, \"C\": 0.1, \"D\": 0.06}\n```",
+  "ceiling_ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.78, \"C\": 0.09, \"D\": 0.03}\n```",
   "full_context": "A 33-year-old man presents to the emergency department with joint pain. He states that since yesterday he has had joint pain, and today he noticed a rash. The patient does not have a significant past medical history. The patient smokes cigars, drinks 1 to 4 drinks per day, is sexually active, and uses cocaine occasionally. His temperature is 101\u00b0F (38.3\u00b0C), blood pressure is 125/65 mmHg, pulse is 80/min, respirations are 14/min, and oxygen saturation is 98% on room air. Physical exam reveals pustular skin lesions and an inflamed and painful right knee that is warm to the touch.",
   "patient_facts": [
     "1. A 33-year-old man presents to the emergency department with joint pain.",
@@ -752,20 +769,20 @@
     "stop_rule": "fixed",
     "answer_confidence_threshold": 0.8,
     "temperature": null,
-    "seconds": 128.4,
-    "timestamp": "2026-11-13T05:08:24+00:00",
+    "seconds": 126.4,
+    "timestamp": "2026-11-13T05:29:54+00:00",
     "usage": {
-      "num_calls": 41,
+      "num_calls": 39,
       "calls_by_tag": {
-        "tagger": 9,
+        "tagger": 7,
         "ranker": 11,
         "question_writer": 10,
         "patient": 10,
         "ceiling_ranker": 1
       },
-      "prompt_tokens": 37596,
-      "completion_tokens": 15463,
-      "cost_usd": 0.011491
+      "prompt_tokens": 36943,
+      "completion_tokens": 16600,
+      "cost_usd": 0.011994
     }
   }
 }

@@ -16,16 +16,15 @@
     "HPI.onset",
     "HPI.duration",
     "HPI.character",
-    "HPI.location",
-    "HPI.severity"
+    "HPI.location"
   ],
-  "initial_tagger_raw": "{\"fields\": {\"HPI.onset\": \"Began about 1 hour ago\", \"HPI.duration\": \"Past hour\", \"HPI.character\": \"Severe\", \"HPI.location\": \"Lower chest\", \"HPI.severity\": \"Severe\"}}",
+  "initial_tagger_raw": "{\"fields\": {\"HPI.onset\": \"Began 1 hour ago\", \"HPI.duration\": \"Past hour\", \"HPI.character\": \"Severe pain\", \"HPI.location\": \"Lower chest\"}}",
   "initial_worksheet_snapshot": {
-    "HPI.onset": "Began about 1 hour ago",
+    "HPI.onset": "Began 1 hour ago",
     "HPI.duration": "Past hour",
-    "HPI.character": "Severe",
+    "HPI.character": "Severe pain",
     "HPI.location": "Lower chest",
-    "HPI.severity": "Severe",
+    "HPI.severity": null,
     "HPI.timing": null,
     "HPI.aggravating_relieving": null,
     "HPI.associated_symptoms": null,
@@ -52,22 +51,22 @@
     {
       "option": "C",
       "label": "Myocardial infarction",
-      "confidence": 0.7
+      "confidence": 0.75
     },
     {
       "option": "D",
       "label": "Acute pancreatitis",
-      "confidence": 0.12
+      "confidence": 0.13
     },
     {
       "option": "A",
       "label": "Acute mesenteric ischemia",
-      "confidence": 0.1
+      "confidence": 0.07
     },
     {
       "option": "B",
       "label": "Peptic ulcer disease",
-      "confidence": 0.08
+      "confidence": 0.05
     }
   ],
   "turns": [
@@ -75,18 +74,23 @@
       "turn": 1,
       "chart_section": "HPI",
       "target_field": "associated_symptoms",
-      "question": "Along with the chest pain, have you had any shortness of breath, sweating, nausea, or pain spreading to your arm, jaw, or back?",
-      "patient_answer": "",
-      "fields_filled": [],
+      "question": "Along with the chest pain, have you had any sweating, shortness of breath, nausea, or pain spreading to your arm, jaw, or back?",
+      "patient_answer": "Statements that answer the question:\n\n2. Patient has severe lower chest pain for the past hour that radiates to the back and is associated with nausea.\n\nNo facts address sweating, shortness of breath, or pain spreading to the arm or jaw.",
+      "fields_filled": [
+        "HPI.duration",
+        "HPI.severity",
+        "HPI.location",
+        "HPI.associated_symptoms"
+      ],
       "worksheet_snapshot": {
-        "HPI.onset": "Began about 1 hour ago",
-        "HPI.duration": "Past hour",
-        "HPI.character": "Severe",
-        "HPI.location": "Lower chest",
-        "HPI.severity": "Severe",
+        "HPI.onset": "Began 1 hour ago",
+        "HPI.duration": "Past hour; past hour",
+        "HPI.character": "Severe pain",
+        "HPI.location": "Lower chest; lower chest, radiating to the back",
+        "HPI.severity": "severe",
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
+        "HPI.associated_symptoms": "nausea",
         "PMH.chronic_conditions": null,
         "PMH.prior_episodes": null,
         "PMH.surgeries": null,
@@ -110,112 +114,47 @@
         {
           "option": "C",
           "label": "Myocardial infarction",
-          "confidence": 0.75
+          "confidence": 0.4
         },
         {
           "option": "D",
           "label": "Acute pancreatitis",
-          "confidence": 0.1
-        },
-        {
-          "option": "B",
-          "label": "Peptic ulcer disease",
-          "confidence": 0.08
+          "confidence": 0.33
         },
         {
           "option": "A",
           "label": "Acute mesenteric ischemia",
-          "confidence": 0.07
+          "confidence": 0.14
+        },
+        {
+          "option": "B",
+          "label": "Peptic ulcer disease",
+          "confidence": 0.13
         }
       ],
       "decision": "ask",
-      "tagger_raw": "```json\n{\"fields\": {}}\n```",
-      "ranker_raw": "{\"A\": 0.07, \"B\": 0.08, \"C\": 0.75, \"D\": 0.10}",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.associated_symptoms\", \"question\": \"Along with the chest pain, have you had any shortness of breath, sweating, nausea, or pain spreading to your arm, jaw, or back?\"}",
+      "tagger_raw": "{\"fields\": {\"HPI.duration\": \"past hour\", \"HPI.severity\": \"severe\", \"HPI.location\": \"lower chest, radiating to the back\", \"HPI.associated_symptoms\": \"nausea\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.14, \"B\": 0.13, \"C\": 0.40, \"D\": 0.33}\n```",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.associated_symptoms\", \"question\": \"Along with the chest pain, have you had any sweating, shortness of breath, nausea, or pain spreading to your arm, jaw, or back?\"}",
       "question_writer_fallback": false
     },
     {
       "turn": 2,
-      "chart_section": "PMH",
-      "target_field": "chronic_conditions",
-      "question": "Do you have any ongoing medical conditions, such as high blood pressure, diabetes, high cholesterol, or heart disease?",
-      "patient_answer": "Patient has a history of hypertension and type 2 diabetes mellitus.",
-      "fields_filled": [
-        "PMH.chronic_conditions"
-      ],
-      "worksheet_snapshot": {
-        "HPI.onset": "Began about 1 hour ago",
-        "HPI.duration": "Past hour",
-        "HPI.character": "Severe",
-        "HPI.location": "Lower chest",
-        "HPI.severity": "Severe",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "C",
-          "label": "Myocardial infarction",
-          "confidence": 0.85
-        },
-        {
-          "option": "D",
-          "label": "Acute pancreatitis",
-          "confidence": 0.07
-        },
-        {
-          "option": "A",
-          "label": "Acute mesenteric ischemia",
-          "confidence": 0.06
-        },
-        {
-          "option": "B",
-          "label": "Peptic ulcer disease",
-          "confidence": 0.02
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {\"PMH.chronic_conditions\": \"hypertension, type 2 diabetes mellitus\"}}",
-      "ranker_raw": "```json\n{\"A\": 0.06, \"B\": 0.02, \"C\": 0.85, \"D\": 0.07}\n```",
-      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Do you have any ongoing medical conditions, such as high blood pressure, diabetes, high cholesterol, or heart disease?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 3,
       "chart_section": "HPI",
       "target_field": "aggravating_relieving",
-      "question": "Does the pain get worse with exertion, eating, or lying flat, and does anything like rest, leaning forward, or antacids make it better?",
+      "question": "Does the pain get worse when you lie flat or after eating, and does it ease when you sit up or lean forward? Has anything you've taken helped it?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
-        "HPI.onset": "Began about 1 hour ago",
-        "HPI.duration": "Past hour",
-        "HPI.character": "Severe",
-        "HPI.location": "Lower chest",
-        "HPI.severity": "Severe",
+        "HPI.onset": "Began 1 hour ago",
+        "HPI.duration": "Past hour; past hour",
+        "HPI.character": "Severe pain",
+        "HPI.location": "Lower chest; lower chest, radiating to the back",
+        "HPI.severity": "severe",
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
+        "HPI.associated_symptoms": "nausea",
+        "PMH.chronic_conditions": null,
         "PMH.prior_episodes": null,
         "PMH.surgeries": null,
         "Medications.current_meds": null,
@@ -223,390 +162,6 @@
         "Allergies.allergies": null,
         "Social.smoking": null,
         "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "C",
-          "label": "Myocardial infarction",
-          "confidence": 0.8
-        },
-        {
-          "option": "D",
-          "label": "Acute pancreatitis",
-          "confidence": 0.09
-        },
-        {
-          "option": "A",
-          "label": "Acute mesenteric ischemia",
-          "confidence": 0.07
-        },
-        {
-          "option": "B",
-          "label": "Peptic ulcer disease",
-          "confidence": 0.04
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.07, \"B\": 0.04, \"C\": 0.8, \"D\": 0.09}\n```",
-      "question_writer_raw": "```json\n{\"chart_section\": \"HPI\", \"target_field\": \"HPI.aggravating_relieving\", \"question\": \"Does the pain get worse with exertion, eating, or lying flat, and does anything like rest, leaning forward, or antacids make it better?\"}\n```",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 4,
-      "chart_section": "Medications",
-      "target_field": "current_meds",
-      "question": "What medications do you take regularly, including any over-the-counter pain relievers like ibuprofen or naproxen, aspirin, or blood thinners?",
-      "patient_answer": "Patient's medications include enalapril and metformin.",
-      "fields_filled": [
-        "Medications.current_meds"
-      ],
-      "worksheet_snapshot": {
-        "HPI.onset": "Began about 1 hour ago",
-        "HPI.duration": "Past hour",
-        "HPI.character": "Severe",
-        "HPI.location": "Lower chest",
-        "HPI.severity": "Severe",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": "enalapril and metformin",
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "C",
-          "label": "Myocardial infarction",
-          "confidence": 0.8
-        },
-        {
-          "option": "D",
-          "label": "Acute pancreatitis",
-          "confidence": 0.08
-        },
-        {
-          "option": "A",
-          "label": "Acute mesenteric ischemia",
-          "confidence": 0.07
-        },
-        {
-          "option": "B",
-          "label": "Peptic ulcer disease",
-          "confidence": 0.05
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {\"Medications.current_meds\": \"enalapril and metformin\"}}",
-      "ranker_raw": "```json\n{\"A\": 0.07, \"B\": 0.05, \"C\": 0.8, \"D\": 0.08}\n```",
-      "question_writer_raw": "```json\n{\"chart_section\": \"Medications\", \"target_field\": \"Medications.current_meds\", \"question\": \"What medications do you take regularly, including any over-the-counter pain relievers like ibuprofen or naproxen, aspirin, or blood thinners?\"}\n```",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 5,
-      "chart_section": "Social",
-      "target_field": "smoking",
-      "question": "Do you smoke or use any tobacco products, and if so, how much and for how long?",
-      "patient_answer": "Patient smokes one pack of cigarettes daily for 30 years.",
-      "fields_filled": [
-        "Social.smoking"
-      ],
-      "worksheet_snapshot": {
-        "HPI.onset": "Began about 1 hour ago",
-        "HPI.duration": "Past hour",
-        "HPI.character": "Severe",
-        "HPI.location": "Lower chest",
-        "HPI.severity": "Severe",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": "enalapril and metformin",
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": "One pack of cigarettes daily for 30 years",
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "C",
-          "label": "Myocardial infarction",
-          "confidence": 0.85
-        },
-        {
-          "option": "A",
-          "label": "Acute mesenteric ischemia",
-          "confidence": 0.05
-        },
-        {
-          "option": "B",
-          "label": "Peptic ulcer disease",
-          "confidence": 0.05
-        },
-        {
-          "option": "D",
-          "label": "Acute pancreatitis",
-          "confidence": 0.05
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {\"Social.smoking\": \"One pack of cigarettes daily for 30 years\"}}",
-      "ranker_raw": "{\"A\": 0.05, \"B\": 0.05, \"C\": 0.85, \"D\": 0.05}",
-      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.smoking\", \"question\": \"Do you smoke or use any tobacco products, and if so, how much and for how long?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 6,
-      "chart_section": "PMH",
-      "target_field": "prior_episodes",
-      "question": "Have you ever had chest pain like this before, or been told you had a heart attack, angina, or any other heart problem, or been hospitalized for a similar episode?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": "Began about 1 hour ago",
-        "HPI.duration": "Past hour",
-        "HPI.character": "Severe",
-        "HPI.location": "Lower chest",
-        "HPI.severity": "Severe",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": "enalapril and metformin",
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": "One pack of cigarettes daily for 30 years",
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "C",
-          "label": "Myocardial infarction",
-          "confidence": 0.84
-        },
-        {
-          "option": "D",
-          "label": "Acute pancreatitis",
-          "confidence": 0.08
-        },
-        {
-          "option": "B",
-          "label": "Peptic ulcer disease",
-          "confidence": 0.05
-        },
-        {
-          "option": "A",
-          "label": "Acute mesenteric ischemia",
-          "confidence": 0.03
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "{\"A\": 0.03, \"B\": 0.05, \"C\": 0.84, \"D\": 0.08}",
-      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Have you ever had chest pain like this before, or been told you had a heart attack, angina, or any other heart problem, or been hospitalized for a similar episode?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 7,
-      "chart_section": "Social",
-      "target_field": "alcohol",
-      "question": "How much alcohol do you drink, and how often? Have you had any recent heavy drinking?",
-      "patient_answer": "6. Patient drinks five to six beers per day.",
-      "fields_filled": [
-        "Social.alcohol"
-      ],
-      "worksheet_snapshot": {
-        "HPI.onset": "Began about 1 hour ago",
-        "HPI.duration": "Past hour",
-        "HPI.character": "Severe",
-        "HPI.location": "Lower chest",
-        "HPI.severity": "Severe",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": "enalapril and metformin",
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": "One pack of cigarettes daily for 30 years",
-        "Social.alcohol": "Drinks five to six beers per day",
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "C",
-          "label": "Myocardial infarction",
-          "confidence": 0.8
-        },
-        {
-          "option": "D",
-          "label": "Acute pancreatitis",
-          "confidence": 0.08
-        },
-        {
-          "option": "B",
-          "label": "Peptic ulcer disease",
-          "confidence": 0.07
-        },
-        {
-          "option": "A",
-          "label": "Acute mesenteric ischemia",
-          "confidence": 0.05
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {\"Social.alcohol\": \"Drinks five to six beers per day\"}}",
-      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.07, \"C\": 0.8, \"D\": 0.08}\n```",
-      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.alcohol\", \"question\": \"How much alcohol do you drink, and how often? Have you had any recent heavy drinking?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 8,
-      "chart_section": "ROS",
-      "target_field": "ros_positives",
-      "question": "Along with the chest pain, have you had any belly pain, vomiting, diarrhea or bloody stools, or fever?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": "Began about 1 hour ago",
-        "HPI.duration": "Past hour",
-        "HPI.character": "Severe",
-        "HPI.location": "Lower chest",
-        "HPI.severity": "Severe",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": "enalapril and metformin",
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": "One pack of cigarettes daily for 30 years",
-        "Social.alcohol": "Drinks five to six beers per day",
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "D",
-          "label": "Acute pancreatitis",
-          "confidence": 0.45
-        },
-        {
-          "option": "C",
-          "label": "Myocardial infarction",
-          "confidence": 0.4
-        },
-        {
-          "option": "A",
-          "label": "Acute mesenteric ischemia",
-          "confidence": 0.08
-        },
-        {
-          "option": "B",
-          "label": "Peptic ulcer disease",
-          "confidence": 0.07
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "{\"A\": 0.08, \"B\": 0.07, \"C\": 0.40, \"D\": 0.45}",
-      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"Along with the chest pain, have you had any belly pain, vomiting, diarrhea or bloody stools, or fever?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 9,
-      "chart_section": "ExamLabs",
-      "target_field": "lab_results",
-      "question": "Have you had an ECG or any blood tests done since you arrived, and do you know if anything showed a heart strain or pancreas problem?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": "Began about 1 hour ago",
-        "HPI.duration": "Past hour",
-        "HPI.character": "Severe",
-        "HPI.location": "Lower chest",
-        "HPI.severity": "Severe",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": "enalapril and metformin",
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": "One pack of cigarettes daily for 30 years",
-        "Social.alcohol": "Drinks five to six beers per day",
         "Social.drugs": null,
         "Social.occupation": null,
         "Social.travel": null,
@@ -641,35 +196,37 @@
         }
       ],
       "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "{\"A\": 0.15, \"B\": 0.08, \"C\": 0.5, \"D\": 0.27}",
-      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Have you had an ECG or any blood tests done since you arrived, and do you know if anything showed a heart strain or pancreas problem?\"}",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.15, \"B\": 0.08, \"C\": 0.5, \"D\": 0.27}\n```",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.aggravating_relieving\", \"question\": \"Does the pain get worse when you lie flat or after eating, and does it ease when you sit up or lean forward? Has anything you've taken helped it?\"}",
       "question_writer_fallback": false
     },
     {
-      "turn": 10,
-      "chart_section": "Social",
-      "target_field": "drugs",
-      "question": "Do you use any recreational or illicit drugs, such as cocaine, methamphetamine, or other stimulants, including in the last day or two?",
-      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
-      "fields_filled": [],
+      "turn": 3,
+      "chart_section": "PMH",
+      "target_field": "chronic_conditions",
+      "question": "Do you have any ongoing medical conditions, such as heart disease, high blood pressure, diabetes, or high cholesterol?",
+      "patient_answer": "4. Patient has a history of hypertension and type 2 diabetes mellitus.",
+      "fields_filled": [
+        "PMH.chronic_conditions"
+      ],
       "worksheet_snapshot": {
-        "HPI.onset": "Began about 1 hour ago",
-        "HPI.duration": "Past hour",
-        "HPI.character": "Severe",
-        "HPI.location": "Lower chest",
-        "HPI.severity": "Severe",
+        "HPI.onset": "Began 1 hour ago",
+        "HPI.duration": "Past hour; past hour",
+        "HPI.character": "Severe pain",
+        "HPI.location": "Lower chest; lower chest, radiating to the back",
+        "HPI.severity": "severe",
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
+        "HPI.associated_symptoms": "nausea",
         "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
         "PMH.prior_episodes": null,
         "PMH.surgeries": null,
-        "Medications.current_meds": "enalapril and metformin",
+        "Medications.current_meds": null,
         "Medications.recent_changes": null,
         "Allergies.allergies": null,
-        "Social.smoking": "One pack of cigarettes daily for 30 years",
-        "Social.alcohol": "Drinks five to six beers per day",
+        "Social.smoking": null,
+        "Social.alcohol": null,
         "Social.drugs": null,
         "Social.occupation": null,
         "Social.travel": null,
@@ -685,12 +242,77 @@
         {
           "option": "C",
           "label": "Myocardial infarction",
-          "confidence": 0.55
+          "confidence": 0.7
         },
         {
           "option": "D",
           "label": "Acute pancreatitis",
-          "confidence": 0.28
+          "confidence": 0.15
+        },
+        {
+          "option": "A",
+          "label": "Acute mesenteric ischemia",
+          "confidence": 0.1
+        },
+        {
+          "option": "B",
+          "label": "Peptic ulcer disease",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"PMH.chronic_conditions\": \"hypertension, type 2 diabetes mellitus\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.05, \"C\": 0.7, \"D\": 0.15}\n```",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Do you have any ongoing medical conditions, such as heart disease, high blood pressure, diabetes, or high cholesterol?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 4,
+      "chart_section": "Social",
+      "target_field": "alcohol",
+      "question": "How much alcohol do you drink, and how often?",
+      "patient_answer": "Patient drinks five to six beers per day.",
+      "fields_filled": [
+        "Social.alcohol"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Began 1 hour ago",
+        "HPI.duration": "Past hour; past hour",
+        "HPI.character": "Severe pain",
+        "HPI.location": "Lower chest; lower chest, radiating to the back",
+        "HPI.severity": "severe",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "nausea",
+        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": "Five to six beers per day",
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Acute pancreatitis",
+          "confidence": 0.55
+        },
+        {
+          "option": "C",
+          "label": "Myocardial infarction",
+          "confidence": 0.25
         },
         {
           "option": "A",
@@ -700,18 +322,406 @@
         {
           "option": "B",
           "label": "Peptic ulcer disease",
+          "confidence": 0.08
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"Social.alcohol\": \"Five to six beers per day\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.12, \"B\": 0.08, \"C\": 0.25, \"D\": 0.55}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.alcohol\", \"question\": \"How much alcohol do you drink, and how often?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 5,
+      "chart_section": "PMH",
+      "target_field": "prior_episodes",
+      "question": "Have you ever had similar pain before, or been hospitalized for stomach, pancreas, or heart problems?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Began 1 hour ago",
+        "HPI.duration": "Past hour; past hour",
+        "HPI.character": "Severe pain",
+        "HPI.location": "Lower chest; lower chest, radiating to the back",
+        "HPI.severity": "severe",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "nausea",
+        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": "Five to six beers per day",
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Acute pancreatitis",
+          "confidence": 0.68
+        },
+        {
+          "option": "C",
+          "label": "Myocardial infarction",
+          "confidence": 0.2
+        },
+        {
+          "option": "A",
+          "label": "Acute mesenteric ischemia",
+          "confidence": 0.07
+        },
+        {
+          "option": "B",
+          "label": "Peptic ulcer disease",
           "confidence": 0.05
         }
       ],
-      "decision": "answer",
+      "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.12, \"B\": 0.05, \"C\": 0.55, \"D\": 0.28}\n```",
-      "question_writer_raw": "```json\n{\"chart_section\": \"Social\", \"target_field\": \"Social.drugs\", \"question\": \"Do you use any recreational or illicit drugs, such as cocaine, methamphetamine, or other stimulants, including in the last day or two?\"}\n```",
+      "ranker_raw": "```json\n{\"A\": 0.07, \"B\": 0.05, \"C\": 0.2, \"D\": 0.68}\n```",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Have you ever had similar pain before, or been hospitalized for stomach, pancreas, or heart problems?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 6,
+      "chart_section": "ExamLabs",
+      "target_field": "lab_results",
+      "question": "Have you had any blood tests, an ECG, or scans since you arrived, and do you know what they showed?",
+      "patient_answer": "13. Patient's hemoglobin is 14.5 g/dL.\n14. Patient's leukocyte count is 5,100/mm3.\n15. Patient's platelet count is 280,000/mm3.\n16. Patient's serum Na+ is 133 mEq/L.\n17. Patient's serum K+ is 3.5 mEq/L.\n18. Patient's serum Cl- is 98 mEq/L.\n19. Patient's total bilirubin is 1.0 mg/dL.\n20. Patient's amylase is 160 U/L.\n21. Patient's lipase is 880 U/L (N = 14\u2013280).\n22. An ECG shows sinus tachycardia.",
+      "fields_filled": [
+        "ExamLabs.lab_results"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Began 1 hour ago",
+        "HPI.duration": "Past hour; past hour",
+        "HPI.character": "Severe pain",
+        "HPI.location": "Lower chest; lower chest, radiating to the back",
+        "HPI.severity": "severe",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "nausea",
+        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": "Five to six beers per day",
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Hemoglobin 14.5 g/dL; leukocyte count 5,100/mm3; platelet count 280,000/mm3; serum Na+ 133 mEq/L; serum K+ 3.5 mEq/L; serum Cl- 98 mEq/L; total bilirubin 1.0 mg/dL; amylase 160 U/L; lipase 880 U/L (N = 14\u2013280); ECG shows sinus tachycardia"
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Acute pancreatitis",
+          "confidence": 0.9
+        },
+        {
+          "option": "C",
+          "label": "Myocardial infarction",
+          "confidence": 0.05
+        },
+        {
+          "option": "A",
+          "label": "Acute mesenteric ischemia",
+          "confidence": 0.03
+        },
+        {
+          "option": "B",
+          "label": "Peptic ulcer disease",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"ExamLabs.lab_results\": \"Hemoglobin 14.5 g/dL; leukocyte count 5,100/mm3; platelet count 280,000/mm3; serum Na+ 133 mEq/L; serum K+ 3.5 mEq/L; serum Cl- 98 mEq/L; total bilirubin 1.0 mg/dL; amylase 160 U/L; lipase 880 U/L (N = 14\u2013280); ECG shows sinus tachycardia\"}}",
+      "ranker_raw": "{\"A\": 0.03, \"B\": 0.02, \"C\": 0.05, \"D\": 0.90}",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Have you had any blood tests, an ECG, or scans since you arrived, and do you know what they showed?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 7,
+      "chart_section": "ExamLabs",
+      "target_field": "exam_findings",
+      "question": "Does your belly feel tender, swollen, or bruised anywhere, especially around the upper abdomen, belly button, or sides, when someone presses on it?",
+      "patient_answer": "Patient's abdomen is distended with epigastric tenderness and guarding but no rebound; bowel sounds are decreased.",
+      "fields_filled": [
+        "ExamLabs.exam_findings"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Began 1 hour ago",
+        "HPI.duration": "Past hour; past hour",
+        "HPI.character": "Severe pain",
+        "HPI.location": "Lower chest; lower chest, radiating to the back",
+        "HPI.severity": "severe",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "nausea",
+        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": "Five to six beers per day",
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": "Abdomen distended; epigastric tenderness; guarding present; no rebound; bowel sounds decreased",
+        "ExamLabs.lab_results": "Hemoglobin 14.5 g/dL; leukocyte count 5,100/mm3; platelet count 280,000/mm3; serum Na+ 133 mEq/L; serum K+ 3.5 mEq/L; serum Cl- 98 mEq/L; total bilirubin 1.0 mg/dL; amylase 160 U/L; lipase 880 U/L (N = 14\u2013280); ECG shows sinus tachycardia"
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Acute pancreatitis",
+          "confidence": 0.88
+        },
+        {
+          "option": "C",
+          "label": "Myocardial infarction",
+          "confidence": 0.05
+        },
+        {
+          "option": "A",
+          "label": "Acute mesenteric ischemia",
+          "confidence": 0.04
+        },
+        {
+          "option": "B",
+          "label": "Peptic ulcer disease",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"ExamLabs.exam_findings\": \"Abdomen distended; epigastric tenderness; guarding present; no rebound; bowel sounds decreased\"}}",
+      "ranker_raw": "{\"A\": 0.04, \"B\": 0.03, \"C\": 0.05, \"D\": 0.88}",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.exam_findings\", \"question\": \"Does your belly feel tender, swollen, or bruised anywhere, especially around the upper abdomen, belly button, or sides, when someone presses on it?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 8,
+      "chart_section": "ExamLabs",
+      "target_field": "vitals",
+      "question": "What were your blood pressure, pulse, oxygen saturation, respiratory rate, and temperature when you arrived?",
+      "patient_answer": "Patient's temperature is 38.5\u00b0C (101.3\u00b0F).\nPatient's pulse is 110/min.\nPatient's blood pressure is 90/60 mm Hg.\n\nThe facts do not include the patient's oxygen saturation or respiratory rate.",
+      "fields_filled": [
+        "ExamLabs.vitals"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Began 1 hour ago",
+        "HPI.duration": "Past hour; past hour",
+        "HPI.character": "Severe pain",
+        "HPI.location": "Lower chest; lower chest, radiating to the back",
+        "HPI.severity": "severe",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "nausea",
+        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": "Five to six beers per day",
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 38.5\u00b0C (101.3\u00b0F); pulse 110/min; blood pressure 90/60 mm Hg",
+        "ExamLabs.exam_findings": "Abdomen distended; epigastric tenderness; guarding present; no rebound; bowel sounds decreased",
+        "ExamLabs.lab_results": "Hemoglobin 14.5 g/dL; leukocyte count 5,100/mm3; platelet count 280,000/mm3; serum Na+ 133 mEq/L; serum K+ 3.5 mEq/L; serum Cl- 98 mEq/L; total bilirubin 1.0 mg/dL; amylase 160 U/L; lipase 880 U/L (N = 14\u2013280); ECG shows sinus tachycardia"
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Acute pancreatitis",
+          "confidence": 0.88
+        },
+        {
+          "option": "C",
+          "label": "Myocardial infarction",
+          "confidence": 0.05
+        },
+        {
+          "option": "A",
+          "label": "Acute mesenteric ischemia",
+          "confidence": 0.04
+        },
+        {
+          "option": "B",
+          "label": "Peptic ulcer disease",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"ExamLabs.vitals\": \"Temperature 38.5\u00b0C (101.3\u00b0F); pulse 110/min; blood pressure 90/60 mm Hg\"}}",
+      "ranker_raw": "{\"A\": 0.04, \"B\": 0.03, \"C\": 0.05, \"D\": 0.88}",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.vitals\", \"question\": \"What were your blood pressure, pulse, oxygen saturation, respiratory rate, and temperature when you arrived?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 9,
+      "chart_section": "Medications",
+      "target_field": "current_meds",
+      "question": "What medications are you currently taking, including any blood thinners, water pills, or over-the-counter drugs or supplements?",
+      "patient_answer": "Patient's medications include enalapril and metformin.",
+      "fields_filled": [
+        "Medications.current_meds"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Began 1 hour ago",
+        "HPI.duration": "Past hour; past hour",
+        "HPI.character": "Severe pain",
+        "HPI.location": "Lower chest; lower chest, radiating to the back",
+        "HPI.severity": "severe",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "nausea",
+        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": "enalapril, metformin",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": "Five to six beers per day",
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 38.5\u00b0C (101.3\u00b0F); pulse 110/min; blood pressure 90/60 mm Hg",
+        "ExamLabs.exam_findings": "Abdomen distended; epigastric tenderness; guarding present; no rebound; bowel sounds decreased",
+        "ExamLabs.lab_results": "Hemoglobin 14.5 g/dL; leukocyte count 5,100/mm3; platelet count 280,000/mm3; serum Na+ 133 mEq/L; serum K+ 3.5 mEq/L; serum Cl- 98 mEq/L; total bilirubin 1.0 mg/dL; amylase 160 U/L; lipase 880 U/L (N = 14\u2013280); ECG shows sinus tachycardia"
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Acute pancreatitis",
+          "confidence": 0.85
+        },
+        {
+          "option": "C",
+          "label": "Myocardial infarction",
+          "confidence": 0.07
+        },
+        {
+          "option": "A",
+          "label": "Acute mesenteric ischemia",
+          "confidence": 0.05
+        },
+        {
+          "option": "B",
+          "label": "Peptic ulcer disease",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"Medications.current_meds\": \"enalapril, metformin\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.03, \"C\": 0.07, \"D\": 0.85}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Medications\", \"target_field\": \"Medications.current_meds\", \"question\": \"What medications are you currently taking, including any blood thinners, water pills, or over-the-counter drugs or supplements?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 10,
+      "chart_section": "Social",
+      "target_field": "smoking",
+      "question": "Do you smoke or use any tobacco products, and if so, how much and for how long?",
+      "patient_answer": "Patient smokes one pack of cigarettes daily for 30 years.",
+      "fields_filled": [
+        "Social.smoking"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Began 1 hour ago",
+        "HPI.duration": "Past hour; past hour",
+        "HPI.character": "Severe pain",
+        "HPI.location": "Lower chest; lower chest, radiating to the back",
+        "HPI.severity": "severe",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": "nausea",
+        "PMH.chronic_conditions": "hypertension, type 2 diabetes mellitus",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": "enalapril, metformin",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "One pack of cigarettes daily for 30 years",
+        "Social.alcohol": "Five to six beers per day",
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "Temperature 38.5\u00b0C (101.3\u00b0F); pulse 110/min; blood pressure 90/60 mm Hg",
+        "ExamLabs.exam_findings": "Abdomen distended; epigastric tenderness; guarding present; no rebound; bowel sounds decreased",
+        "ExamLabs.lab_results": "Hemoglobin 14.5 g/dL; leukocyte count 5,100/mm3; platelet count 280,000/mm3; serum Na+ 133 mEq/L; serum K+ 3.5 mEq/L; serum Cl- 98 mEq/L; total bilirubin 1.0 mg/dL; amylase 160 U/L; lipase 880 U/L (N = 14\u2013280); ECG shows sinus tachycardia"
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Acute pancreatitis",
+          "confidence": 0.85
+        },
+        {
+          "option": "C",
+          "label": "Myocardial infarction",
+          "confidence": 0.08
+        },
+        {
+          "option": "A",
+          "label": "Acute mesenteric ischemia",
+          "confidence": 0.04
+        },
+        {
+          "option": "B",
+          "label": "Peptic ulcer disease",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "answer",
+      "tagger_raw": "{\"fields\": {\"Social.smoking\": \"One pack of cigarettes daily for 30 years\"}}",
+      "ranker_raw": "{\"A\": 0.04, \"B\": 0.03, \"C\": 0.08, \"D\": 0.85}",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.smoking\", \"question\": \"Do you smoke or use any tobacco products, and if so, how much and for how long?\"}",
       "question_writer_fallback": false
     }
   ],
-  "final_answer": "C",
-  "correct": false,
+  "final_answer": "D",
+  "correct": true,
   "num_questions": 10,
   "stop_reason": "max_questions",
   "floor_answer": "C",
@@ -771,8 +781,8 @@
     "stop_rule": "fixed",
     "answer_confidence_threshold": 0.8,
     "temperature": null,
-    "seconds": 112.0,
-    "timestamp": "2026-11-13T05:10:16+00:00",
+    "seconds": 110.3,
+    "timestamp": "2026-11-13T05:31:44+00:00",
     "usage": {
       "num_calls": 41,
       "calls_by_tag": {
@@ -782,9 +792,9 @@
         "patient": 10,
         "ceiling_ranker": 1
       },
-      "prompt_tokens": 41265,
-      "completion_tokens": 11010,
-      "cost_usd": 0.009631
+      "prompt_tokens": 46289,
+      "completion_tokens": 11633,
+      "cost_usd": 0.010445
     }
   }
 }

@@ -31,7 +31,7 @@ _shim_state = {"meter": None, "max_tokens": 256, "temperature": 0.0}
 
 def _shim_get_response(messages, model_name, use_vllm=False, use_api=None, **kwargs):
     # Stock MediQ ignores the patient's `max_length` (it reads `max_tokens`, default 256).
-    # We reproduce that effective behaviour via config.patient_max_tokens. See NOTES.md.
+    # We use config.patient_max_tokens instead (2048: thinking tokens count against it). See NOTES.md.
     text = chat(messages, model=model_name, temperature=_shim_state["temperature"],
                 max_tokens=_shim_state["max_tokens"], meter=_shim_state["meter"],
                 tag="patient")

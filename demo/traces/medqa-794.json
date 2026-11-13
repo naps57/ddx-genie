@@ -16,7 +16,7 @@
     "HPI.location",
     "HPI.character"
   ],
-  "initial_tagger_raw": "```json\n{\"fields\": {\"HPI.location\": \"penis\", \"HPI.character\": \"painless bump\"}}\n```",
+  "initial_tagger_raw": "{\"fields\": {\"HPI.location\": \"penis\", \"HPI.character\": \"painless bump\"}}",
   "initial_worksheet_snapshot": {
     "HPI.onset": null,
     "HPI.duration": null,
@@ -52,155 +52,31 @@
       "confidence": 0.82
     },
     {
+      "option": "B",
+      "label": "Spirochetes on dark-field microscopy",
+      "confidence": 0.07
+    },
+    {
       "option": "D",
       "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
-      "confidence": 0.09
+      "confidence": 0.06
     },
     {
       "option": "C",
       "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
       "confidence": 0.05
-    },
-    {
-      "option": "B",
-      "label": "Spirochetes on dark-field microscopy",
-      "confidence": 0.04
     }
   ],
   "turns": [
     {
       "turn": 1,
-      "chart_section": "HPI",
-      "target_field": "duration",
-      "question": "How long have you had this bump, and has it been growing, changing, or has it ever healed or gone away on its own?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": "painless bump",
-        "HPI.location": "penis",
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "A",
-          "label": "Atypical squamous cells with varying degrees of mitotic activity",
-          "confidence": 0.8
-        },
-        {
-          "option": "D",
-          "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
-          "confidence": 0.1
-        },
-        {
-          "option": "B",
-          "label": "Spirochetes on dark-field microscopy",
-          "confidence": 0.07
-        },
-        {
-          "option": "C",
-          "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
-          "confidence": 0.03
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.8, \"B\": 0.07, \"C\": 0.03, \"D\": 0.1}\n```",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.duration\", \"question\": \"How long have you had this bump, and has it been growing, changing, or has it ever healed or gone away on its own?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 2,
       "chart_section": "Social",
       "target_field": "sexual_history",
-      "question": "Have you had any recent sexual contact, with how many partners, and do you use condoms or have you ever been diagnosed with an STI such as syphilis or HPV?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": "painless bump",
-        "HPI.location": "penis",
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "A",
-          "label": "Atypical squamous cells with varying degrees of mitotic activity",
-          "confidence": 0.8
-        },
-        {
-          "option": "B",
-          "label": "Spirochetes on dark-field microscopy",
-          "confidence": 0.1
-        },
-        {
-          "option": "C",
-          "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
-          "confidence": 0.05
-        },
-        {
-          "option": "D",
-          "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
-          "confidence": 0.05
-        }
+      "question": "Have you had any recent sexual contact, and do you know if you've ever been diagnosed with an STI or had genital warts?",
+      "patient_answer": "Statements that answer the question:\n\n- Patient first engaged in sexual intercourse at age 14.\n- Patient has had \"too many sexual partners to count\" in his lifetime.\n\nNo facts address whether the patient has been diagnosed with an STI or genital warts.",
+      "fields_filled": [
+        "Social.sexual_history"
       ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "{\"A\": 0.8, \"B\": 0.1, \"C\": 0.05, \"D\": 0.05}",
-      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.sexual_history\", \"question\": \"Have you had any recent sexual contact, with how many partners, and do you use condoms or have you ever been diagnosed with an STI such as syphilis or HPV?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 3,
-      "chart_section": "HPI",
-      "target_field": "onset",
-      "question": "How long ago did you first notice the bump, and has it been getting bigger or changing over time, or has it ever healed or gone away on its own?",
-      "patient_answer": "",
-      "fields_filled": [],
       "worksheet_snapshot": {
         "HPI.onset": null,
         "HPI.duration": null,
@@ -221,7 +97,7 @@
         "Social.drugs": null,
         "Social.occupation": null,
         "Social.travel": null,
-        "Social.sexual_history": null,
+        "Social.sexual_history": "First sexual intercourse at age 14; reports 'too many sexual partners to count' in lifetime. No STI or genital wart diagnosis addressed.",
         "Family.family_history": null,
         "ROS.ros_positives": null,
         "ROS.ros_negatives": null,
@@ -236,42 +112,43 @@
           "confidence": 0.72
         },
         {
+          "option": "D",
+          "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
+          "confidence": 0.12
+        },
+        {
           "option": "B",
           "label": "Spirochetes on dark-field microscopy",
-          "confidence": 0.12
+          "confidence": 0.1
         },
         {
           "option": "C",
           "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
-          "confidence": 0.08
-        },
-        {
-          "option": "D",
-          "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
-          "confidence": 0.08
+          "confidence": 0.06
         }
       ],
       "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.72, \"B\": 0.12, \"C\": 0.08, \"D\": 0.08}\n```",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.onset\", \"question\": \"How long ago did you first notice the bump, and has it been getting bigger or changing over time, or has it ever healed or gone away on its own?\"}",
+      "tagger_raw": "{\"fields\": {\"Social.sexual_history\": \"First sexual intercourse at age 14; reports 'too many sexual partners to count' in lifetime. No STI or genital wart diagnosis addressed.\"}}",
+      "ranker_raw": "{\"A\": 0.72, \"B\": 0.1, \"C\": 0.06, \"D\": 0.12}",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Social\", \"target_field\": \"Social.sexual_history\", \"question\": \"Have you had any recent sexual contact, and do you know if you've ever been diagnosed with an STI or had genital warts?\"}\n```",
       "question_writer_fallback": false
     },
     {
-      "turn": 4,
-      "chart_section": "Social",
-      "target_field": "smoking",
-      "question": "Do you smoke or use other tobacco products, and if so, how much and for how long?",
-      "patient_answer": "10. Patient smoked one pack of cigarettes daily for 30 years.\n11. Patient quit smoking 10 years ago.",
+      "turn": 2,
+      "chart_section": "HPI",
+      "target_field": "onset",
+      "question": "When did you first notice the bump, and has it stayed the same, grown, or come and gone since then?",
+      "patient_answer": "3. Patient first noticed the lesion 1 year ago.\n5. Lesion has grown in size and become more erythematous.",
       "fields_filled": [
-        "Social.smoking"
+        "HPI.onset",
+        "HPI.severity"
       ],
       "worksheet_snapshot": {
-        "HPI.onset": null,
+        "HPI.onset": "First noticed about 1 year ago",
         "HPI.duration": null,
         "HPI.character": "painless bump",
         "HPI.location": "penis",
-        "HPI.severity": null,
+        "HPI.severity": "Progressing: has grown in size and become more erythematous",
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
@@ -281,12 +158,12 @@
         "Medications.current_meds": null,
         "Medications.recent_changes": null,
         "Allergies.allergies": null,
-        "Social.smoking": "Former smoker: one pack of cigarettes daily for 30 years; quit 10 years ago",
+        "Social.smoking": null,
         "Social.alcohol": null,
         "Social.drugs": null,
         "Social.occupation": null,
         "Social.travel": null,
-        "Social.sexual_history": null,
+        "Social.sexual_history": "First sexual intercourse at age 14; reports 'too many sexual partners to count' in lifetime. No STI or genital wart diagnosis addressed.",
         "Family.family_history": null,
         "ROS.ros_positives": null,
         "ROS.ros_negatives": null,
@@ -306,35 +183,35 @@
           "confidence": 0.1
         },
         {
-          "option": "B",
-          "label": "Spirochetes on dark-field microscopy",
-          "confidence": 0.07
-        },
-        {
           "option": "C",
           "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
-          "confidence": 0.03
+          "confidence": 0.06
+        },
+        {
+          "option": "B",
+          "label": "Spirochetes on dark-field microscopy",
+          "confidence": 0.04
         }
       ],
       "decision": "ask",
-      "tagger_raw": "{\"fields\": {\"Social.smoking\": \"Former smoker: one pack of cigarettes daily for 30 years; quit 10 years ago\"}}",
-      "ranker_raw": "```json\n{\"A\": 0.8, \"B\": 0.07, \"C\": 0.03, \"D\": 0.1}\n```",
-      "question_writer_raw": "```json\n{\"chart_section\": \"Social\", \"target_field\": \"Social.smoking\", \"question\": \"Do you smoke or use other tobacco products, and if so, how much and for how long?\"}\n```",
+      "tagger_raw": "```json\n{\"fields\": {\"HPI.onset\": \"First noticed about 1 year ago\", \"HPI.severity\": \"Progressing: has grown in size and become more erythematous\"}}\n```",
+      "ranker_raw": "```json\n{\"A\": 0.8, \"B\": 0.04, \"C\": 0.06, \"D\": 0.1}\n```",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.onset\", \"question\": \"When did you first notice the bump, and has it stayed the same, grown, or come and gone since then?\"}",
       "question_writer_fallback": false
     },
     {
-      "turn": 5,
-      "chart_section": "PMH",
-      "target_field": "chronic_conditions",
-      "question": "Do you have any ongoing medical conditions, such as HIV, a weakened immune system, or any condition or medicine that suppresses your immune system?",
-      "patient_answer": "",
+      "turn": 3,
+      "chart_section": "Social",
+      "target_field": "travel",
+      "question": "Have you traveled recently or lived outside the country, especially to tropical or developing regions such as parts of Africa, South America, India, or Papua New Guinea?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
-        "HPI.onset": null,
+        "HPI.onset": "First noticed about 1 year ago",
         "HPI.duration": null,
         "HPI.character": "painless bump",
         "HPI.location": "penis",
-        "HPI.severity": null,
+        "HPI.severity": "Progressing: has grown in size and become more erythematous",
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
@@ -344,17 +221,213 @@
         "Medications.current_meds": null,
         "Medications.recent_changes": null,
         "Allergies.allergies": null,
-        "Social.smoking": "Former smoker: one pack of cigarettes daily for 30 years; quit 10 years ago",
+        "Social.smoking": null,
         "Social.alcohol": null,
         "Social.drugs": null,
         "Social.occupation": null,
         "Social.travel": null,
-        "Social.sexual_history": null,
+        "Social.sexual_history": "First sexual intercourse at age 14; reports 'too many sexual partners to count' in lifetime. No STI or genital wart diagnosis addressed.",
         "Family.family_history": null,
         "ROS.ros_positives": null,
         "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
         "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
+          "confidence": 0.52
+        },
+        {
+          "option": "A",
+          "label": "Atypical squamous cells with varying degrees of mitotic activity",
+          "confidence": 0.4
+        },
+        {
+          "option": "B",
+          "label": "Spirochetes on dark-field microscopy",
+          "confidence": 0.04
+        },
+        {
+          "option": "C",
+          "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
+          "confidence": 0.04
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.4, \"B\": 0.04, \"C\": 0.04, \"D\": 0.52}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.travel\", \"question\": \"Have you traveled recently or lived outside the country, especially to tropical or developing regions such as parts of Africa, South America, India, or Papua New Guinea?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 4,
+      "chart_section": "PMH",
+      "target_field": "chronic_conditions",
+      "question": "Do you have any ongoing medical conditions, such as HIV or another condition that weakens the immune system?",
+      "patient_answer": "6. Patient has hypertension treated with lisinopril.",
+      "fields_filled": [
+        "PMH.chronic_conditions",
+        "Medications.current_meds"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "First noticed about 1 year ago",
+        "HPI.duration": null,
+        "HPI.character": "painless bump",
+        "HPI.location": "penis",
+        "HPI.severity": "Progressing: has grown in size and become more erythematous",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "hypertension",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": "lisinopril",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "First sexual intercourse at age 14; reports 'too many sexual partners to count' in lifetime. No STI or genital wart diagnosis addressed.",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "A",
+          "label": "Atypical squamous cells with varying degrees of mitotic activity",
+          "confidence": 0.65
+        },
+        {
+          "option": "D",
+          "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
+          "confidence": 0.2
+        },
+        {
+          "option": "B",
+          "label": "Spirochetes on dark-field microscopy",
+          "confidence": 0.1
+        },
+        {
+          "option": "C",
+          "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"PMH.chronic_conditions\": \"hypertension\", \"Medications.current_meds\": \"lisinopril\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.65, \"B\": 0.1, \"C\": 0.05, \"D\": 0.2}\n```",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Do you have any ongoing medical conditions, such as HIV or another condition that weakens the immune system?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 5,
+      "chart_section": "ExamLabs",
+      "target_field": "exam_findings",
+      "question": "Does the bump ever bleed, break open into an ulcer, or have a wart-like or cauliflower-like surface, and have you noticed any swollen lumps in your groin?",
+      "patient_answer": "13. Physical examination shows a nontender 5 mm x 5 mm ulcerated lesion with an erythematous base on the dorsum of the glans.\n14. No inguinal lymphadenopathy.",
+      "fields_filled": [
+        "ExamLabs.exam_findings"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "First noticed about 1 year ago",
+        "HPI.duration": null,
+        "HPI.character": "painless bump",
+        "HPI.location": "penis",
+        "HPI.severity": "Progressing: has grown in size and become more erythematous",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "hypertension",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": "lisinopril",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "First sexual intercourse at age 14; reports 'too many sexual partners to count' in lifetime. No STI or genital wart diagnosis addressed.",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": "Nontender 5 mm x 5 mm ulcerated lesion with erythematous base on the dorsum of the glans; no inguinal lymphadenopathy",
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "A",
+          "label": "Atypical squamous cells with varying degrees of mitotic activity",
+          "confidence": 0.72
+        },
+        {
+          "option": "D",
+          "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
+          "confidence": 0.18
+        },
+        {
+          "option": "B",
+          "label": "Spirochetes on dark-field microscopy",
+          "confidence": 0.05
+        },
+        {
+          "option": "C",
+          "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"ExamLabs.exam_findings\": \"Nontender 5 mm x 5 mm ulcerated lesion with erythematous base on the dorsum of the glans; no inguinal lymphadenopathy\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.72, \"B\": 0.05, \"C\": 0.05, \"D\": 0.18}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.exam_findings\", \"question\": \"Does the bump ever bleed, break open into an ulcer, or have a wart-like or cauliflower-like surface, and have you noticed any swollen lumps in your groin?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 6,
+      "chart_section": "Social",
+      "target_field": "smoking",
+      "question": "Do you smoke or use other tobacco products? If so, how much and for how long?",
+      "patient_answer": "10. Patient smoked one pack of cigarettes daily for 30 years.\n11. Patient quit smoking 10 years ago.",
+      "fields_filled": [
+        "Social.smoking"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "First noticed about 1 year ago",
+        "HPI.duration": null,
+        "HPI.character": "painless bump",
+        "HPI.location": "penis",
+        "HPI.severity": "Progressing: has grown in size and become more erythematous",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "hypertension",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": "lisinopril",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Smoked one pack of cigarettes daily for 30 years; quit 10 years ago",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "First sexual intercourse at age 14; reports 'too many sexual partners to count' in lifetime. No STI or genital wart diagnosis addressed.",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": "Nontender 5 mm x 5 mm ulcerated lesion with erythematous base on the dorsum of the glans; no inguinal lymphadenopathy",
         "ExamLabs.lab_results": null
       },
       "differential": [
@@ -364,62 +437,60 @@
           "confidence": 0.82
         },
         {
+          "option": "D",
+          "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
+          "confidence": 0.1
+        },
+        {
           "option": "B",
           "label": "Spirochetes on dark-field microscopy",
-          "confidence": 0.1
+          "confidence": 0.04
         },
         {
           "option": "C",
           "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
           "confidence": 0.04
-        },
-        {
-          "option": "D",
-          "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
-          "confidence": 0.04
         }
       ],
       "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.82, \"B\": 0.10, \"C\": 0.04, \"D\": 0.04}\n```",
-      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Do you have any ongoing medical conditions, such as HIV, a weakened immune system, or any condition or medicine that suppresses your immune system?\"}",
+      "tagger_raw": "{\"fields\": {\"Social.smoking\": \"Smoked one pack of cigarettes daily for 30 years; quit 10 years ago\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.82, \"B\": 0.04, \"C\": 0.04, \"D\": 0.10}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Social\", \"target_field\": \"Social.smoking\", \"question\": \"Do you smoke or use other tobacco products? If so, how much and for how long?\"}\n```",
       "question_writer_fallback": false
     },
     {
-      "turn": 6,
+      "turn": 7,
       "chart_section": "ROS",
       "target_field": "ros_positives",
-      "question": "Along with the bump, have you noticed any fever, night sweats, unexplained weight loss, rashes elsewhere on your body, or swollen lumps in your groin?",
-      "patient_answer": "14. No inguinal l",
-      "fields_filled": [
-        "ROS.ros_negatives"
-      ],
+      "question": "Have you had any fever, unexplained weight loss, night sweats, or a rash anywhere on your body, including your palms or soles?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
       "worksheet_snapshot": {
-        "HPI.onset": null,
+        "HPI.onset": "First noticed about 1 year ago",
         "HPI.duration": null,
         "HPI.character": "painless bump",
         "HPI.location": "penis",
-        "HPI.severity": null,
+        "HPI.severity": "Progressing: has grown in size and become more erythematous",
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
+        "PMH.chronic_conditions": "hypertension",
         "PMH.prior_episodes": null,
         "PMH.surgeries": null,
-        "Medications.current_meds": null,
+        "Medications.current_meds": "lisinopril",
         "Medications.recent_changes": null,
         "Allergies.allergies": null,
-        "Social.smoking": "Former smoker: one pack of cigarettes daily for 30 years; quit 10 years ago",
+        "Social.smoking": "Smoked one pack of cigarettes daily for 30 years; quit 10 years ago",
         "Social.alcohol": null,
         "Social.drugs": null,
         "Social.occupation": null,
         "Social.travel": null,
-        "Social.sexual_history": null,
+        "Social.sexual_history": "First sexual intercourse at age 14; reports 'too many sexual partners to count' in lifetime. No STI or genital wart diagnosis addressed.",
         "Family.family_history": null,
         "ROS.ros_positives": null,
-        "ROS.ros_negatives": "No inguinal lumps or swollen groin nodes (answer is truncated after 'No inguinal l')",
+        "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
+        "ExamLabs.exam_findings": "Nontender 5 mm x 5 mm ulcerated lesion with erythematous base on the dorsum of the glans; no inguinal lymphadenopathy",
         "ExamLabs.lab_results": null
       },
       "differential": [
@@ -429,69 +500,6 @@
           "confidence": 0.8
         },
         {
-          "option": "B",
-          "label": "Spirochetes on dark-field microscopy",
-          "confidence": 0.09
-        },
-        {
-          "option": "D",
-          "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
-          "confidence": 0.07
-        },
-        {
-          "option": "C",
-          "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
-          "confidence": 0.04
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {\"ROS.ros_negatives\": \"No inguinal lumps or swollen groin nodes (answer is truncated after 'No inguinal l')\"}}",
-      "ranker_raw": "{\"A\": 0.8, \"B\": 0.09, \"C\": 0.04, \"D\": 0.07}",
-      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"Along with the bump, have you noticed any fever, night sweats, unexplained weight loss, rashes elsewhere on your body, or swollen lumps in your groin?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 7,
-      "chart_section": "HPI",
-      "target_field": "severity",
-      "question": "Has the bump gotten larger, thicker, or more ulcerated since you first noticed it, and would you say it is still the same size today?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": "painless bump",
-        "HPI.location": "penis",
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": "Former smoker: one pack of cigarettes daily for 30 years; quit 10 years ago",
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": "No inguinal lumps or swollen groin nodes (answer is truncated after 'No inguinal l')",
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "A",
-          "label": "Atypical squamous cells with varying degrees of mitotic activity",
-          "confidence": 0.86
-        },
-        {
           "option": "D",
           "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
           "confidence": 0.08
@@ -499,123 +507,65 @@
         {
           "option": "B",
           "label": "Spirochetes on dark-field microscopy",
-          "confidence": 0.03
+          "confidence": 0.07
         },
         {
           "option": "C",
           "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
-          "confidence": 0.03
+          "confidence": 0.05
         }
       ],
       "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.86, \"B\": 0.03, \"C\": 0.03, \"D\": 0.08}\n```",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.severity\", \"question\": \"Has the bump gotten larger, thicker, or more ulcerated since you first noticed it, and would you say it is still the same size today?\"}",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.8, \"B\": 0.07, \"C\": 0.05, \"D\": 0.08}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"Have you had any fever, unexplained weight loss, night sweats, or a rash anywhere on your body, including your palms or soles?\"}",
       "question_writer_fallback": false
     },
     {
       "turn": 8,
       "chart_section": "PMH",
       "target_field": "prior_episodes",
-      "question": "Have you ever had a similar bump or sore on your penis before, or been treated for genital warts, a sexually transmitted infection, or a previous penile lesion?",
-      "patient_answer": "",
+      "question": "Have you ever had a similar sore or bump before, or been diagnosed with and treated for a sexually transmitted infection such as syphilis, genital warts, or HIV?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
-        "HPI.onset": null,
+        "HPI.onset": "First noticed about 1 year ago",
         "HPI.duration": null,
         "HPI.character": "painless bump",
         "HPI.location": "penis",
-        "HPI.severity": null,
+        "HPI.severity": "Progressing: has grown in size and become more erythematous",
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
+        "PMH.chronic_conditions": "hypertension",
         "PMH.prior_episodes": null,
         "PMH.surgeries": null,
-        "Medications.current_meds": null,
+        "Medications.current_meds": "lisinopril",
         "Medications.recent_changes": null,
         "Allergies.allergies": null,
-        "Social.smoking": "Former smoker: one pack of cigarettes daily for 30 years; quit 10 years ago",
+        "Social.smoking": "Smoked one pack of cigarettes daily for 30 years; quit 10 years ago",
         "Social.alcohol": null,
         "Social.drugs": null,
         "Social.occupation": null,
         "Social.travel": null,
-        "Social.sexual_history": null,
+        "Social.sexual_history": "First sexual intercourse at age 14; reports 'too many sexual partners to count' in lifetime. No STI or genital wart diagnosis addressed.",
         "Family.family_history": null,
         "ROS.ros_positives": null,
-        "ROS.ros_negatives": "No inguinal lumps or swollen groin nodes (answer is truncated after 'No inguinal l')",
+        "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
+        "ExamLabs.exam_findings": "Nontender 5 mm x 5 mm ulcerated lesion with erythematous base on the dorsum of the glans; no inguinal lymphadenopathy",
         "ExamLabs.lab_results": null
       },
       "differential": [
         {
           "option": "A",
           "label": "Atypical squamous cells with varying degrees of mitotic activity",
-          "confidence": 0.78
-        },
-        {
-          "option": "B",
-          "label": "Spirochetes on dark-field microscopy",
-          "confidence": 0.1
+          "confidence": 0.76
         },
         {
           "option": "D",
           "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
-          "confidence": 0.09
-        },
-        {
-          "option": "C",
-          "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
-          "confidence": 0.03
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.78, \"B\": 0.1, \"C\": 0.03, \"D\": 0.09}\n```",
-      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Have you ever had a similar bump or sore on your penis before, or been treated for genital warts, a sexually transmitted infection, or a previous penile lesion?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 9,
-      "chart_section": "ExamLabs",
-      "target_field": "exam_findings",
-      "question": "Has a doctor examined the bump, and can you describe whether it is firm or hard at the base, wart-like or crusted, or prone to bleeding or ulcerating?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": "painless bump",
-        "HPI.location": "penis",
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": "Former smoker: one pack of cigarettes daily for 30 years; quit 10 years ago",
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": "No inguinal lumps or swollen groin nodes (answer is truncated after 'No inguinal l')",
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "A",
-          "label": "Atypical squamous cells with varying degrees of mitotic activity",
-          "confidence": 0.82
+          "confidence": 0.12
         },
         {
           "option": "B",
@@ -625,60 +575,124 @@
         {
           "option": "C",
           "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
-          "confidence": 0.05
-        },
-        {
-          "option": "D",
-          "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
-          "confidence": 0.05
+          "confidence": 0.04
         }
       ],
       "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "{\"A\": 0.82, \"B\": 0.08, \"C\": 0.05, \"D\": 0.05}",
-      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.exam_findings\", \"question\": \"Has a doctor examined the bump, and can you describe whether it is firm or hard at the base, wart-like or crusted, or prone to bleeding or ulcerating?\"}",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.76, \"B\": 0.08, \"C\": 0.04, \"D\": 0.12}\n```",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Have you ever had a similar sore or bump before, or been diagnosed with and treated for a sexually transmitted infection such as syphilis, genital warts, or HIV?\"}",
       "question_writer_fallback": false
     },
     {
-      "turn": 10,
-      "chart_section": "Social",
-      "target_field": "travel",
-      "question": "Have you traveled recently, or lived or worked, in any tropical or developing regions, such as parts of India, Papua New Guinea, Africa, Australia, or Brazil?",
-      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
-      "fields_filled": [],
+      "turn": 9,
+      "chart_section": "ExamLabs",
+      "target_field": "lab_results",
+      "question": "Have you had any recent blood tests, such as a syphilis test (RPR or VDRL), or any biopsy or other tests done on this sore?",
+      "patient_answer": "15. Excisional biopsy of the lesion is performed.",
+      "fields_filled": [
+        "ExamLabs.lab_results"
+      ],
       "worksheet_snapshot": {
-        "HPI.onset": null,
+        "HPI.onset": "First noticed about 1 year ago",
         "HPI.duration": null,
         "HPI.character": "painless bump",
         "HPI.location": "penis",
-        "HPI.severity": null,
+        "HPI.severity": "Progressing: has grown in size and become more erythematous",
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
+        "PMH.chronic_conditions": "hypertension",
         "PMH.prior_episodes": null,
         "PMH.surgeries": null,
-        "Medications.current_meds": null,
+        "Medications.current_meds": "lisinopril",
         "Medications.recent_changes": null,
         "Allergies.allergies": null,
-        "Social.smoking": "Former smoker: one pack of cigarettes daily for 30 years; quit 10 years ago",
+        "Social.smoking": "Smoked one pack of cigarettes daily for 30 years; quit 10 years ago",
         "Social.alcohol": null,
         "Social.drugs": null,
         "Social.occupation": null,
         "Social.travel": null,
-        "Social.sexual_history": null,
+        "Social.sexual_history": "First sexual intercourse at age 14; reports 'too many sexual partners to count' in lifetime. No STI or genital wart diagnosis addressed.",
         "Family.family_history": null,
         "ROS.ros_positives": null,
-        "ROS.ros_negatives": "No inguinal lumps or swollen groin nodes (answer is truncated after 'No inguinal l')",
+        "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
+        "ExamLabs.exam_findings": "Nontender 5 mm x 5 mm ulcerated lesion with erythematous base on the dorsum of the glans; no inguinal lymphadenopathy",
+        "ExamLabs.lab_results": "Excisional biopsy of the lesion performed; result not stated"
       },
       "differential": [
         {
           "option": "A",
           "label": "Atypical squamous cells with varying degrees of mitotic activity",
-          "confidence": 0.82
+          "confidence": 0.62
+        },
+        {
+          "option": "D",
+          "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
+          "confidence": 0.2
+        },
+        {
+          "option": "B",
+          "label": "Spirochetes on dark-field microscopy",
+          "confidence": 0.1
+        },
+        {
+          "option": "C",
+          "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
+          "confidence": 0.08
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"ExamLabs.lab_results\": \"Excisional biopsy of the lesion performed; result not stated\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.62, \"B\": 0.1, \"C\": 0.08, \"D\": 0.2}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Have you had any recent blood tests, such as a syphilis test (RPR or VDRL), or any biopsy or other tests done on this sore?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 10,
+      "chart_section": "Medications",
+      "target_field": "recent_changes",
+      "question": "Have you started, stopped, or changed any medications recently, such as antibiotics, steroid creams or pills, or immune-suppressing drugs, or had any recent vaccinations?",
+      "patient_answer": "6. Patient has hypertension treated with lisinopril.\n7. Patient was successfully treated for phimosis with a steroid cream at age 45.",
+      "fields_filled": [
+        "PMH.chronic_conditions",
+        "Medications.current_meds",
+        "PMH.prior_episodes"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "First noticed about 1 year ago",
+        "HPI.duration": null,
+        "HPI.character": "painless bump",
+        "HPI.location": "penis",
+        "HPI.severity": "Progressing: has grown in size and become more erythematous",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "hypertension; Hypertension",
+        "PMH.prior_episodes": "Phimosis, successfully treated with steroid cream at age 45",
+        "PMH.surgeries": null,
+        "Medications.current_meds": "lisinopril; Lisinopril",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Smoked one pack of cigarettes daily for 30 years; quit 10 years ago",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "First sexual intercourse at age 14; reports 'too many sexual partners to count' in lifetime. No STI or genital wart diagnosis addressed.",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": "Nontender 5 mm x 5 mm ulcerated lesion with erythematous base on the dorsum of the glans; no inguinal lymphadenopathy",
+        "ExamLabs.lab_results": "Excisional biopsy of the lesion performed; result not stated"
+      },
+      "differential": [
+        {
+          "option": "A",
+          "label": "Atypical squamous cells with varying degrees of mitotic activity",
+          "confidence": 0.8
         },
         {
           "option": "D",
@@ -688,7 +702,7 @@
         {
           "option": "B",
           "label": "Spirochetes on dark-field microscopy",
-          "confidence": 0.05
+          "confidence": 0.07
         },
         {
           "option": "C",
@@ -697,9 +711,9 @@
         }
       ],
       "decision": "answer",
-      "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.82, \"B\": 0.05, \"C\": 0.03, \"D\": 0.10}\n```",
-      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.travel\", \"question\": \"Have you traveled recently, or lived or worked, in any tropical or developing regions, such as parts of India, Papua New Guinea, Africa, Australia, or Brazil?\"}",
+      "tagger_raw": "{\"fields\": {\"PMH.chronic_conditions\": \"Hypertension\", \"Medications.current_meds\": \"Lisinopril\", \"PMH.prior_episodes\": \"Phimosis, successfully treated with steroid cream at age 45\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.8, \"B\": 0.07, \"C\": 0.03, \"D\": 0.1}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Medications\", \"target_field\": \"Medications.recent_changes\", \"question\": \"Have you started, stopped, or changed any medications recently, such as antibiotics, steroid creams or pills, or immune-suppressing drugs, or had any recent vaccinations?\"}\n```",
       "question_writer_fallback": false
     }
   ],
@@ -715,25 +729,25 @@
     {
       "option": "A",
       "label": "Atypical squamous cells with varying degrees of mitotic activity",
-      "confidence": 0.9
+      "confidence": 0.85
     },
     {
       "option": "D",
       "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
-      "confidence": 0.04
+      "confidence": 0.07
     },
     {
       "option": "B",
       "label": "Spirochetes on dark-field microscopy",
-      "confidence": 0.03
+      "confidence": 0.04
     },
     {
       "option": "C",
       "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
-      "confidence": 0.03
+      "confidence": 0.04
     }
   ],
-  "ceiling_ranker_raw": "{\"A\": 0.9, \"B\": 0.03, \"C\": 0.03, \"D\": 0.04}",
+  "ceiling_ranker_raw": "```json\n{\"A\": 0.85, \"B\": 0.04, \"C\": 0.04, \"D\": 0.07}\n```",
   "full_context": "A 58-year-old male presents to his primary care physician complaining of a painless bump on his penis. He first noticed the lesion 1 year ago but was too embarrassed to mention the issue at his last annual physical exam. The lesion has since grown in size and has recently become more erythematous. He has hypertension treated with lisinopril. At age 45, he was successfully treated for phimosis with a steroid cream. He first engaged in sexual intercourse at age 14 and has had \u201ctoo many sexual partners to count\u201d in his lifetime. He smoked one pack of cigarettes daily for 30 years but quit 10 years ago. He drinks one alcoholic beverage daily. Physical examination shows a nontender 5 mm x 5 mm ulcerated lesion with an erythematous base on the dorsum of the glans. There is no inguinal lymphadenopathy. Excisional biopsy of the lesion is performed.",
   "patient_facts": [
     "1. Patient is 58 years old.",
@@ -757,20 +771,20 @@
     "stop_rule": "fixed",
     "answer_confidence_threshold": 0.8,
     "temperature": null,
-    "seconds": 131.4,
-    "timestamp": "2026-11-13T04:54:45+00:00",
+    "seconds": 149.3,
+    "timestamp": "2026-11-13T05:16:24+00:00",
     "usage": {
-      "num_calls": 42,
+      "num_calls": 40,
       "calls_by_tag": {
-        "tagger": 10,
+        "tagger": 8,
         "ranker": 11,
         "question_writer": 10,
         "patient": 10,
         "ceiling_ranker": 1
       },
-      "prompt_tokens": 41496,
-      "completion_tokens": 14717,
-      "cost_usd": 0.011508
+      "prompt_tokens": 44111,
+      "completion_tokens": 18492,
+      "cost_usd": 0.013657
     }
   }
 }

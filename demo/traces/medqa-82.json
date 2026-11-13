@@ -15,13 +15,13 @@
   "initial_fields_filled": [
     "HPI.severity"
   ],
-  "initial_tagger_raw": "{\"fields\": {\"HPI.severity\": \"worsening fatigue (progressing)\"}}",
+  "initial_tagger_raw": "{\"fields\": {\"HPI.severity\": \"worsening (progressive) fatigue\"}}",
   "initial_worksheet_snapshot": {
     "HPI.onset": null,
     "HPI.duration": null,
     "HPI.character": null,
     "HPI.location": null,
-    "HPI.severity": "worsening fatigue (progressing)",
+    "HPI.severity": "worsening (progressive) fatigue",
     "HPI.timing": null,
     "HPI.aggravating_relieving": null,
     "HPI.associated_symptoms": null,
@@ -48,22 +48,22 @@
     {
       "option": "B",
       "label": "HbS only",
-      "confidence": 0.42
+      "confidence": 0.47
     },
     {
       "option": "D",
       "label": "HbS and HbC",
-      "confidence": 0.25
+      "confidence": 0.35
     },
     {
       "option": "C",
       "label": "HbA only",
-      "confidence": 0.2
+      "confidence": 0.1
     },
     {
       "option": "A",
       "label": "HbA and HbC",
-      "confidence": 0.13
+      "confidence": 0.08
     }
   ],
   "turns": [
@@ -71,7 +71,7 @@
       "turn": 1,
       "chart_section": "Family",
       "target_field": "family_history",
-      "question": "Does anyone in your family have sickle cell disease, sickle cell trait, or another blood disorder, and if so, at what age were they diagnosed?",
+      "question": "Does anyone in your family, such as a parent or sibling, have a blood disorder like sickle cell disease, sickle cell trait, or anemia? If so, at what age was it found?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
@@ -79,7 +79,133 @@
         "HPI.duration": null,
         "HPI.character": null,
         "HPI.location": null,
-        "HPI.severity": "worsening fatigue (progressing)",
+        "HPI.severity": "worsening (progressive) fatigue",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "HbS and HbC",
+          "confidence": 0.4
+        },
+        {
+          "option": "B",
+          "label": "HbS only",
+          "confidence": 0.35
+        },
+        {
+          "option": "A",
+          "label": "HbA and HbC",
+          "confidence": 0.15
+        },
+        {
+          "option": "C",
+          "label": "HbA only",
+          "confidence": 0.1
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "{\"A\": 0.15, \"B\": 0.35, \"C\": 0.1, \"D\": 0.4}",
+      "question_writer_raw": "{\"chart_section\": \"Family\", \"target_field\": \"Family.family_history\", \"question\": \"Does anyone in your family, such as a parent or sibling, have a blood disorder like sickle cell disease, sickle cell trait, or anemia? If so, at what age was it found?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 2,
+      "chart_section": "PMH",
+      "target_field": "chronic_conditions",
+      "question": "Have you ever been told you have a blood disorder, or needed a blood transfusion or a hospital stay for pain or anemia?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": "worsening (progressive) fatigue",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "HbS only",
+          "confidence": 0.4
+        },
+        {
+          "option": "D",
+          "label": "HbS and HbC",
+          "confidence": 0.35
+        },
+        {
+          "option": "C",
+          "label": "HbA only",
+          "confidence": 0.13
+        },
+        {
+          "option": "A",
+          "label": "HbA and HbC",
+          "confidence": 0.12
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.12, \"B\": 0.4, \"C\": 0.13, \"D\": 0.35}\n```",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Have you ever been told you have a blood disorder, or needed a blood transfusion or a hospital stay for pain or anemia?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 3,
+      "chart_section": "HPI",
+      "target_field": "associated_symptoms",
+      "question": "Have you noticed yellowing of your eyes or skin, or pain or swelling in your belly, bones, or joints, especially with the tiredness?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": "worsening (progressive) fatigue",
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
@@ -127,14 +253,14 @@
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
       "ranker_raw": "{\"A\": 0.1, \"B\": 0.5, \"C\": 0.15, \"D\": 0.25}",
-      "question_writer_raw": "{\"chart_section\": \"Family\", \"target_field\": \"Family.family_history\", \"question\": \"Does anyone in your family have sickle cell disease, sickle cell trait, or another blood disorder, and if so, at what age were they diagnosed?\"}",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.associated_symptoms\", \"question\": \"Have you noticed yellowing of your eyes or skin, or pain or swelling in your belly, bones, or joints, especially with the tiredness?\"}",
       "question_writer_fallback": false
     },
     {
-      "turn": 2,
-      "chart_section": "PMH",
-      "target_field": "chronic_conditions",
-      "question": "Have you ever been told you have a blood problem, such as anemia or sickle cell disease?",
+      "turn": 4,
+      "chart_section": "ExamLabs",
+      "target_field": "lab_results",
+      "question": "Has he had any earlier blood tests, such as a complete blood count or a hemoglobin electrophoresis, and do you know what those results showed?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
@@ -142,7 +268,133 @@
         "HPI.duration": null,
         "HPI.character": null,
         "HPI.location": null,
-        "HPI.severity": "worsening fatigue (progressing)",
+        "HPI.severity": "worsening (progressive) fatigue",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "HbS only",
+          "confidence": 0.5
+        },
+        {
+          "option": "D",
+          "label": "HbS and HbC",
+          "confidence": 0.35
+        },
+        {
+          "option": "A",
+          "label": "HbA and HbC",
+          "confidence": 0.1
+        },
+        {
+          "option": "C",
+          "label": "HbA only",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.5, \"C\": 0.05, \"D\": 0.35}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Has he had any earlier blood tests, such as a complete blood count or a hemoglobin electrophoresis, and do you know what those results showed?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 5,
+      "chart_section": "Social",
+      "target_field": "travel",
+      "question": "Where was your son born, and where did his parents and grandparents come from? Has he traveled or lived outside the country?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": "worsening (progressive) fatigue",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "HbS and HbC",
+          "confidence": 0.55
+        },
+        {
+          "option": "B",
+          "label": "HbS only",
+          "confidence": 0.3
+        },
+        {
+          "option": "A",
+          "label": "HbA and HbC",
+          "confidence": 0.08
+        },
+        {
+          "option": "C",
+          "label": "HbA only",
+          "confidence": 0.07
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "{\"A\": 0.08, \"B\": 0.30, \"C\": 0.07, \"D\": 0.55}",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.travel\", \"question\": \"Where was your son born, and where did his parents and grandparents come from? Has he traveled or lived outside the country?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 6,
+      "chart_section": "Medications",
+      "target_field": "current_meds",
+      "question": "What medications does he take regularly, such as folic acid, penicillin, or hydroxyurea?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": "worsening (progressive) fatigue",
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
@@ -174,31 +426,31 @@
         {
           "option": "D",
           "label": "HbS and HbC",
-          "confidence": 0.33
+          "confidence": 0.25
         },
         {
           "option": "A",
           "label": "HbA and HbC",
-          "confidence": 0.07
+          "confidence": 0.1
         },
         {
           "option": "C",
           "label": "HbA only",
-          "confidence": 0.05
+          "confidence": 0.1
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.07, \"B\": 0.55, \"C\": 0.05, \"D\": 0.33}\n```",
-      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Have you ever been told you have a blood problem, such as anemia or sickle cell disease?\"}",
+      "ranker_raw": "{\"A\": 0.1, \"B\": 0.55, \"C\": 0.1, \"D\": 0.25}",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Medications\", \"target_field\": \"Medications.current_meds\", \"question\": \"What medications does he take regularly, such as folic acid, penicillin, or hydroxyurea?\"}\n```",
       "question_writer_fallback": false
     },
     {
-      "turn": 3,
+      "turn": 7,
       "chart_section": "ExamLabs",
       "target_field": "exam_findings",
-      "question": "Has anyone examined you recently and noticed paleness, yellowing of the eyes or skin, or an enlarged spleen?",
-      "patient_answer": "Physical examination shows conjunctival pallor.",
+      "question": "On your examination today, is his spleen palpable below the left costal margin, and are there scleral icterus, jaundice, or pallor?",
+      "patient_answer": "Physical examination shows conjunctival pallor.\n\nNo facts address whether the spleen is palpable, or whether scleral icterus or jaundice is present.",
       "fields_filled": [
         "ExamLabs.exam_findings"
       ],
@@ -207,7 +459,7 @@
         "HPI.duration": null,
         "HPI.character": null,
         "HPI.location": null,
-        "HPI.severity": "worsening fatigue (progressing)",
+        "HPI.severity": "worsening (progressive) fatigue",
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
@@ -227,448 +479,7 @@
         "ROS.ros_positives": null,
         "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": "Conjunctival pallor",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "HbS only",
-          "confidence": 0.45
-        },
-        {
-          "option": "D",
-          "label": "HbS and HbC",
-          "confidence": 0.3
-        },
-        {
-          "option": "C",
-          "label": "HbA only",
-          "confidence": 0.13
-        },
-        {
-          "option": "A",
-          "label": "HbA and HbC",
-          "confidence": 0.12
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {\"ExamLabs.exam_findings\": \"Conjunctival pallor\"}}",
-      "ranker_raw": "{\"A\": 0.12, \"B\": 0.45, \"C\": 0.13, \"D\": 0.30}",
-      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.exam_findings\", \"question\": \"Has anyone examined you recently and noticed paleness, yellowing of the eyes or skin, or an enlarged spleen?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 4,
-      "chart_section": "HPI",
-      "target_field": "onset",
-      "question": "When did the tiredness first start, and did it come on gradually or suddenly?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": "worsening fatigue (progressing)",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": "Conjunctival pallor",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "HbS only",
-          "confidence": 0.45
-        },
-        {
-          "option": "D",
-          "label": "HbS and HbC",
-          "confidence": 0.3
-        },
-        {
-          "option": "C",
-          "label": "HbA only",
-          "confidence": 0.15
-        },
-        {
-          "option": "A",
-          "label": "HbA and HbC",
-          "confidence": 0.1
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.45, \"C\": 0.15, \"D\": 0.3}\n```",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.onset\", \"question\": \"When did the tiredness first start, and did it come on gradually or suddenly?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 5,
-      "chart_section": "PMH",
-      "target_field": "prior_episodes",
-      "question": "Have you ever had similar episodes of tiredness, paleness, or pain in your bones, belly, or chest before, or been admitted to the hospital for any of these?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": "worsening fatigue (progressing)",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": "Conjunctival pallor",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "D",
-          "label": "HbS and HbC",
-          "confidence": 0.52
-        },
-        {
-          "option": "B",
-          "label": "HbS only",
-          "confidence": 0.25
-        },
-        {
-          "option": "A",
-          "label": "HbA and HbC",
-          "confidence": 0.15
-        },
-        {
-          "option": "C",
-          "label": "HbA only",
-          "confidence": 0.08
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "```json\n{\"fields\": {}}\n```",
-      "ranker_raw": "```json\n{\"A\": 0.15, \"B\": 0.25, \"C\": 0.08, \"D\": 0.52}\n```",
-      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Have you ever had similar episodes of tiredness, paleness, or pain in your bones, belly, or chest before, or been admitted to the hospital for any of these?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 6,
-      "chart_section": "HPI",
-      "target_field": "associated_symptoms",
-      "question": "Along with the tiredness, have you had any pain in your bones, belly, or chest, or noticed yellowing of your eyes or dark urine?",
-      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": "worsening fatigue (progressing)",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": "Conjunctival pallor",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "HbS only",
-          "confidence": 0.72
-        },
-        {
-          "option": "D",
-          "label": "HbS and HbC",
-          "confidence": 0.2
-        },
-        {
-          "option": "A",
-          "label": "HbA and HbC",
-          "confidence": 0.05
-        },
-        {
-          "option": "C",
-          "label": "HbA only",
-          "confidence": 0.03
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.72, \"C\": 0.03, \"D\": 0.20}\n```",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.associated_symptoms\", \"question\": \"Along with the tiredness, have you had any pain in your bones, belly, or chest, or noticed yellowing of your eyes or dark urine?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 7,
-      "chart_section": "HPI",
-      "target_field": "duration",
-      "question": "How long have you been feeling this tired, and has it been going on for as long as you can remember, or did it start recently?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": "worsening fatigue (progressing)",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": "Conjunctival pallor",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "HbS only",
-          "confidence": 0.4
-        },
-        {
-          "option": "D",
-          "label": "HbS and HbC",
-          "confidence": 0.3
-        },
-        {
-          "option": "A",
-          "label": "HbA and HbC",
-          "confidence": 0.15
-        },
-        {
-          "option": "C",
-          "label": "HbA only",
-          "confidence": 0.15
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "{\"A\": 0.15, \"B\": 0.4, \"C\": 0.15, \"D\": 0.3}",
-      "question_writer_raw": "```json\n{\"chart_section\": \"HPI\", \"target_field\": \"HPI.duration\", \"question\": \"How long have you been feeling this tired, and has it been going on for as long as you can remember, or did it start recently?\"}\n```",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 8,
-      "chart_section": "ExamLabs",
-      "target_field": "lab_results",
-      "question": "Have you had any blood tests done before, and do you know what your hemoglobin or blood count results showed?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": "worsening fatigue (progressing)",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": "Conjunctival pallor",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "HbS only",
-          "confidence": 0.4
-        },
-        {
-          "option": "D",
-          "label": "HbS and HbC",
-          "confidence": 0.35
-        },
-        {
-          "option": "C",
-          "label": "HbA only",
-          "confidence": 0.13
-        },
-        {
-          "option": "A",
-          "label": "HbA and HbC",
-          "confidence": 0.12
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "{\"A\": 0.12, \"B\": 0.4, \"C\": 0.13, \"D\": 0.35}",
-      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Have you had any blood tests done before, and do you know what your hemoglobin or blood count results showed?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 9,
-      "chart_section": "HPI",
-      "target_field": "timing",
-      "question": "Has the tiredness been constant since you were little, or does it come and go, with bouts of bone, belly, or chest pain?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": "worsening fatigue (progressing)",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": "Conjunctival pallor",
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "HbS only",
-          "confidence": 0.55
-        },
-        {
-          "option": "D",
-          "label": "HbS and HbC",
-          "confidence": 0.25
-        },
-        {
-          "option": "C",
-          "label": "HbA only",
-          "confidence": 0.12
-        },
-        {
-          "option": "A",
-          "label": "HbA and HbC",
-          "confidence": 0.08
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "{\"A\": 0.08, \"B\": 0.55, \"C\": 0.12, \"D\": 0.25}",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.timing\", \"question\": \"Has the tiredness been constant since you were little, or does it come and go, with bouts of bone, belly, or chest pain?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 10,
-      "chart_section": "HPI",
-      "target_field": "location",
-      "question": "When you feel this tired, do you also have pain? If so, where does it hurt: your bones, your belly, or your chest?",
-      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": "worsening fatigue (progressing)",
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": "Conjunctival pallor",
+        "ExamLabs.exam_findings": "conjunctival pallor",
         "ExamLabs.lab_results": null
       },
       "differential": [
@@ -685,18 +496,209 @@
         {
           "option": "A",
           "label": "HbA and HbC",
-          "confidence": 0.13
+          "confidence": 0.15
         },
         {
           "option": "C",
           "label": "HbA only",
-          "confidence": 0.12
+          "confidence": 0.1
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"ExamLabs.exam_findings\": \"conjunctival pallor\"}}",
+      "ranker_raw": "{\"A\": 0.15, \"B\": 0.5, \"C\": 0.1, \"D\": 0.25}",
+      "question_writer_raw": "```json\n{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.exam_findings\", \"question\": \"On your examination today, is his spleen palpable below the left costal margin, and are there scleral icterus, jaundice, or pallor?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 8,
+      "chart_section": "HPI",
+      "target_field": "onset",
+      "question": "When did the tiredness first start, and did it come on gradually over weeks or months, or suddenly?",
+      "patient_answer": "\"The mother reports that the boy has worsening fatigue.\"",
+      "fields_filled": [
+        "HPI.severity"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": "worsening (progressive) fatigue; worsening fatigue (progressing), per mother",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": "conjunctival pallor",
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "HbS only",
+          "confidence": 0.4
+        },
+        {
+          "option": "D",
+          "label": "HbS and HbC",
+          "confidence": 0.3
+        },
+        {
+          "option": "C",
+          "label": "HbA only",
+          "confidence": 0.2
+        },
+        {
+          "option": "A",
+          "label": "HbA and HbC",
+          "confidence": 0.1
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"HPI.severity\": \"worsening fatigue (progressing), per mother\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.4, \"C\": 0.2, \"D\": 0.3}\n```",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.onset\", \"question\": \"When did the tiredness first start, and did it come on gradually over weeks or months, or suddenly?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 9,
+      "chart_section": "Social",
+      "target_field": "occupation",
+      "question": "Where does your son currently live, and has he recently traveled or lived anywhere outside the area where he usually stays?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": "worsening (progressive) fatigue; worsening fatigue (progressing), per mother",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": "conjunctival pallor",
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "HbS only",
+          "confidence": 0.5
+        },
+        {
+          "option": "D",
+          "label": "HbS and HbC",
+          "confidence": 0.22
+        },
+        {
+          "option": "C",
+          "label": "HbA only",
+          "confidence": 0.15
+        },
+        {
+          "option": "A",
+          "label": "HbA and HbC",
+          "confidence": 0.13
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "The question refers to \"this electrophoresis,\" but no result was provided, so these estimates rest on priors: an 11-year-old with worsening fatigue and conjunctival pallor most likely has a hemoglobinopathy, and HbS-predominant disease is the most common scenario in this setting.\n\n{\"A\": 0.13, \"B\": 0.5, \"C\": 0.15, \"D\": 0.22}",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.occupation\", \"question\": \"Where does your son currently live, and has he recently traveled or lived anywhere outside the area where he usually stays?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 10,
+      "chart_section": "PMH",
+      "target_field": "prior_episodes",
+      "question": "Mom, has your son ever had sudden episodes of severe bone, joint, or belly pain that needed a hospital visit or admission, and how often have they happened?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": "worsening (progressive) fatigue; worsening fatigue (progressing), per mother",
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": "conjunctival pallor",
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "HbS only",
+          "confidence": 0.4
+        },
+        {
+          "option": "D",
+          "label": "HbS and HbC",
+          "confidence": 0.37
+        },
+        {
+          "option": "C",
+          "label": "HbA only",
+          "confidence": 0.13
+        },
+        {
+          "option": "A",
+          "label": "HbA and HbC",
+          "confidence": 0.1
         }
       ],
       "decision": "answer",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "{\"A\": 0.13, \"B\": 0.5, \"C\": 0.12, \"D\": 0.25}",
-      "question_writer_raw": "```json\n{\"chart_section\": \"HPI\", \"target_field\": \"HPI.location\", \"question\": \"When you feel this tired, do you also have pain? If so, where does it hurt: your bones, your belly, or your chest?\"}\n```",
+      "ranker_raw": "{\"A\": 0.1, \"B\": 0.4, \"C\": 0.13, \"D\": 0.37}",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Mom, has your son ever had sudden episodes of severe bone, joint, or belly pain that needed a hospital visit or admission, and how often have they happened?\"}",
       "question_writer_fallback": false
     }
   ],
@@ -712,25 +714,25 @@
     {
       "option": "D",
       "label": "HbS and HbC",
-      "confidence": 0.65
-    },
-    {
-      "option": "B",
-      "label": "HbS only",
-      "confidence": 0.18
+      "confidence": 0.63
     },
     {
       "option": "A",
       "label": "HbA and HbC",
-      "confidence": 0.12
+      "confidence": 0.14
     },
     {
       "option": "C",
       "label": "HbA only",
-      "confidence": 0.05
+      "confidence": 0.13
+    },
+    {
+      "option": "B",
+      "label": "HbS only",
+      "confidence": 0.1
     }
   ],
-  "ceiling_ranker_raw": "{\"A\": 0.12, \"B\": 0.18, \"C\": 0.05, \"D\": 0.65}",
+  "ceiling_ranker_raw": "```json\n{\"A\": 0.14, \"B\": 0.1, \"C\": 0.13, \"D\": 0.63}\n```",
   "full_context": "An 11-year-old boy is brought to the physician by his mother because of worsening fatigue. His mother reports that he seems to have trouble keeping up with his older brothers when playing outside. Physical examination shows conjunctival pallor. A hemoglobin electrophoresis is performed. This patient's results are shown in comparison to those of a patient with known sickle cell anemia and a child with normal hemoglobin.",
   "patient_facts": [
     "1. An 11-year-old boy is brought to the physician by his mother.",
@@ -746,20 +748,20 @@
     "stop_rule": "fixed",
     "answer_confidence_threshold": 0.8,
     "temperature": null,
-    "seconds": 114.1,
-    "timestamp": "2026-11-13T04:58:31+00:00",
+    "seconds": 121.6,
+    "timestamp": "2026-11-13T05:20:03+00:00",
     "usage": {
-      "num_calls": 39,
+      "num_calls": 35,
       "calls_by_tag": {
-        "tagger": 7,
+        "tagger": 3,
         "ranker": 11,
         "question_writer": 10,
         "patient": 10,
         "ceiling_ranker": 1
       },
-      "prompt_tokens": 34549,
-      "completion_tokens": 13129,
-      "cost_usd": 0.010019
+      "prompt_tokens": 31727,
+      "completion_tokens": 14209,
+      "cost_usd": 0.010277
     }
   }
 }

@@ -38,7 +38,10 @@ Line numbers are from that commit.
 
 1. **LLM backend.** Before importing `patient.py` we register a stand-in `helper` module in `sys.modules` whose `get_response` calls LiteLLM (`demo/mediq_adapter.py`). This avoids bugs 1, 2, 3, 6, 7 and 8 without editing MediQ. Patient and Expert keep separate settings.
 2. **Shipped facts are used.** We copy `facts` to `atomic_facts` on the sample before constructing the patient (fixes bug 4). The patient therefore never regenerates facts, and every run sees the same fact list.
-3. **Patient max tokens = 256.** This reproduces the *effective* stock behaviour (bug 5), not the intended 50. It can be changed via `patient_max_tokens` in `demo/config.yaml`.
+3. **Patient max tokens = 2048, not stock's effective 256** (or its intended 50, bug 5).
+   - On thinking models, thinking tokens count against `max_tokens`. With 256, Claude Haiku 5.5 used about 220-260 tokens thinking, and 34 of 100 patient answers came back empty or cut off mid-sentence (`finish_reason=length`).
+   - The empty answers also moved the agent's ranking: in one case the gold option fell from 0.70 to 0.04 after an empty answer.
+   - Visible answers are still short: they are the selected facts. The setting is `patient_max_tokens` in `demo/config.yaml`; use 256 to match stock MediQ on a non-thinking model.
 4. **Model and sampling.** The default is `claude-haiku-5-5` (via LiteLLM) for both Expert and Patient. Current Claude models reject any non-default `temperature`, so we send none (`temperature: null` in config) and runs are **not deterministic**: the same case can produce different questions and confidences on a re-run. Stock MediQ defaults to temperature 0.6, top_p 0.9. For OpenAI models set `temperature: 0.0`.
 5. **Case selection.** Cases come from `all_dev_good.jsonl` (MedQA) by default. We skip records with fewer than 3 shipped facts (bug 14) and sample with `random.Random(seed)`. Stock MediQ iterates every record in file order.
 6. **Expert.** We do not use any MediQ Expert class. `demo/agent.py` is our own minimal chart-section agent, a placeholder until Arda's baseline is integrated:

@@ -16,10 +16,10 @@
     "PMH.chronic_conditions",
     "HPI.duration"
   ],
-  "initial_tagger_raw": "{\"fields\": {\"PMH.chronic_conditions\": \"diabetes; stage 3 chronic kidney disease\", \"HPI.duration\": \"admitted for elective coronary angiography\"}}",
+  "initial_tagger_raw": "{\"fields\": {\"PMH.chronic_conditions\": \"diabetes; stage 3 chronic kidney disease\", \"HPI.duration\": \"admitted to hospital for elective coronary angiography\"}}",
   "initial_worksheet_snapshot": {
     "HPI.onset": null,
-    "HPI.duration": "admitted for elective coronary angiography",
+    "HPI.duration": "admitted to hospital for elective coronary angiography",
     "HPI.character": null,
     "HPI.location": null,
     "HPI.severity": null,
@@ -49,21 +49,21 @@
     {
       "option": "B",
       "label": "Intravenous N-acetyl cysteine before and during the procedure",
-      "confidence": 0.62
+      "confidence": 0.72
     },
     {
       "option": "C",
       "label": "Use non-iodinated contrast medium",
-      "confidence": 0.3
-    },
-    {
-      "option": "D",
-      "label": "Forced diuresis with furosemide",
-      "confidence": 0.05
+      "confidence": 0.2
     },
     {
       "option": "A",
       "label": "Intravenous mannitol before and during the procedure",
+      "confidence": 0.05
+    },
+    {
+      "option": "D",
+      "label": "Forced diuresis with furosemide",
       "confidence": 0.03
     }
   ],
@@ -72,12 +72,12 @@
       "turn": 1,
       "chart_section": "Allergies",
       "target_field": "allergies",
-      "question": "Have you ever had a reaction to contrast dye, iodine, or any other medicine, and if so, what happened?",
+      "question": "Do you have any allergies to medications, iodine, or X-ray contrast dye, and if so, what kind of reaction did you have?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
         "HPI.onset": null,
-        "HPI.duration": "admitted for elective coronary angiography",
+        "HPI.duration": "admitted to hospital for elective coronary angiography",
         "HPI.character": null,
         "HPI.location": null,
         "HPI.severity": null,
@@ -112,35 +112,35 @@
         {
           "option": "C",
           "label": "Use non-iodinated contrast medium",
-          "confidence": 0.15
-        },
-        {
-          "option": "D",
-          "label": "Forced diuresis with furosemide",
-          "confidence": 0.08
+          "confidence": 0.18
         },
         {
           "option": "A",
           "label": "Intravenous mannitol before and during the procedure",
           "confidence": 0.05
+        },
+        {
+          "option": "D",
+          "label": "Forced diuresis with furosemide",
+          "confidence": 0.05
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.72, \"C\": 0.15, \"D\": 0.08}\n```",
-      "question_writer_raw": "{\"chart_section\": \"Allergies\", \"target_field\": \"Allergies.allergies\", \"question\": \"Have you ever had a reaction to contrast dye, iodine, or any other medicine, and if so, what happened?\"}",
+      "ranker_raw": "{\"A\": 0.05, \"B\": 0.72, \"C\": 0.18, \"D\": 0.05}",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Allergies\", \"target_field\": \"Allergies.allergies\", \"question\": \"Do you have any allergies to medications, iodine, or X-ray contrast dye, and if so, what kind of reaction did you have?\"}\n```",
       "question_writer_fallback": false
     },
     {
       "turn": 2,
       "chart_section": "Medications",
       "target_field": "current_meds",
-      "question": "What medications do you take regularly, including any diuretics, blood pressure medicines, metformin, or over-the-counter pain relievers like ibuprofen or naproxen?",
+      "question": "What medications do you take regularly, including any over-the-counter pain relievers, water pills, or diabetes medications?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
         "HPI.onset": null,
-        "HPI.duration": "admitted for elective coronary angiography",
+        "HPI.duration": "admitted to hospital for elective coronary angiography",
         "HPI.character": null,
         "HPI.location": null,
         "HPI.severity": null,
@@ -170,40 +170,40 @@
         {
           "option": "B",
           "label": "Intravenous N-acetyl cysteine before and during the procedure",
-          "confidence": 0.82
-        },
-        {
-          "option": "D",
-          "label": "Forced diuresis with furosemide",
-          "confidence": 0.08
+          "confidence": 0.6
         },
         {
           "option": "C",
           "label": "Use non-iodinated contrast medium",
-          "confidence": 0.06
+          "confidence": 0.27
         },
         {
           "option": "A",
           "label": "Intravenous mannitol before and during the procedure",
-          "confidence": 0.04
+          "confidence": 0.07
+        },
+        {
+          "option": "D",
+          "label": "Forced diuresis with furosemide",
+          "confidence": 0.06
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.82, \"C\": 0.06, \"D\": 0.08}\n```",
-      "question_writer_raw": "{\"chart_section\": \"Medications\", \"target_field\": \"Medications.current_meds\", \"question\": \"What medications do you take regularly, including any diuretics, blood pressure medicines, metformin, or over-the-counter pain relievers like ibuprofen or naproxen?\"}",
+      "ranker_raw": "```json\n{\"A\": 0.07, \"B\": 0.6, \"C\": 0.27, \"D\": 0.06}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Medications\", \"target_field\": \"Medications.current_meds\", \"question\": \"What medications do you take regularly, including any over-the-counter pain relievers, water pills, or diabetes medications?\"}",
       "question_writer_fallback": false
     },
     {
       "turn": 3,
       "chart_section": "ExamLabs",
       "target_field": "lab_results",
-      "question": "Do you know your most recent kidney blood test results, such as your creatinine or eGFR, and when they were last checked?",
+      "question": "Do you know the results of your most recent kidney blood tests, such as your creatinine or eGFR?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
         "HPI.onset": null,
-        "HPI.duration": "admitted for elective coronary angiography",
+        "HPI.duration": "admitted to hospital for elective coronary angiography",
         "HPI.character": null,
         "HPI.location": null,
         "HPI.severity": null,
@@ -233,17 +233,82 @@
         {
           "option": "B",
           "label": "Intravenous N-acetyl cysteine before and during the procedure",
-          "confidence": 0.55
+          "confidence": 0.62
         },
         {
           "option": "C",
           "label": "Use non-iodinated contrast medium",
-          "confidence": 0.3
+          "confidence": 0.28
         },
         {
           "option": "D",
           "label": "Forced diuresis with furosemide",
-          "confidence": 0.1
+          "confidence": 0.07
+        },
+        {
+          "option": "A",
+          "label": "Intravenous mannitol before and during the procedure",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "{\"A\": 0.03, \"B\": 0.62, \"C\": 0.28, \"D\": 0.07}",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Do you know the results of your most recent kidney blood tests, such as your creatinine or eGFR?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 4,
+      "chart_section": "PMH",
+      "target_field": "prior_episodes",
+      "question": "Have you ever had kidney problems or a hospital stay for kidney trouble before, including any kidney injury after an earlier X-ray dye scan or procedure?",
+      "patient_answer": "The man has stage 3 chronic kidney disease.",
+      "fields_filled": [
+        "PMH.chronic_conditions"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": "admitted to hospital for elective coronary angiography",
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease; Stage 3 chronic kidney disease",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Intravenous N-acetyl cysteine before and during the procedure",
+          "confidence": 0.72
+        },
+        {
+          "option": "C",
+          "label": "Use non-iodinated contrast medium",
+          "confidence": 0.16
+        },
+        {
+          "option": "D",
+          "label": "Forced diuresis with furosemide",
+          "confidence": 0.07
         },
         {
           "option": "A",
@@ -252,28 +317,154 @@
         }
       ],
       "decision": "ask",
-      "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "{\"A\": 0.05, \"B\": 0.55, \"C\": 0.3, \"D\": 0.1}",
-      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Do you know your most recent kidney blood test results, such as your creatinine or eGFR, and when they were last checked?\"}",
+      "tagger_raw": "{\"fields\": {\"PMH.chronic_conditions\": \"Stage 3 chronic kidney disease\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.72, \"C\": 0.16, \"D\": 0.07}\n```",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Have you ever had kidney problems or a hospital stay for kidney trouble before, including any kidney injury after an earlier X-ray dye scan or procedure?\"}",
       "question_writer_fallback": false
     },
     {
-      "turn": 4,
-      "chart_section": "PMH",
-      "target_field": "prior_episodes",
-      "question": "Have you had any earlier heart procedures or scans that used contrast dye, and did your kidney function get worse afterward?",
+      "turn": 5,
+      "chart_section": "Medications",
+      "target_field": "recent_changes",
+      "question": "Have you recently started, stopped, or changed any medicines, such as new pain relievers, water pills, or diabetes medicines, or had any recent vaccinations?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
         "HPI.onset": null,
-        "HPI.duration": "admitted for elective coronary angiography",
+        "HPI.duration": "admitted to hospital for elective coronary angiography",
         "HPI.character": null,
         "HPI.location": null,
         "HPI.severity": null,
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease",
+        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease; Stage 3 chronic kidney disease",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Intravenous N-acetyl cysteine before and during the procedure",
+          "confidence": 0.7
+        },
+        {
+          "option": "C",
+          "label": "Use non-iodinated contrast medium",
+          "confidence": 0.2
+        },
+        {
+          "option": "A",
+          "label": "Intravenous mannitol before and during the procedure",
+          "confidence": 0.05
+        },
+        {
+          "option": "D",
+          "label": "Forced diuresis with furosemide",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.7, \"C\": 0.2, \"D\": 0.05}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Medications\", \"target_field\": \"Medications.recent_changes\", \"question\": \"Have you recently started, stopped, or changed any medicines, such as new pain relievers, water pills, or diabetes medicines, or had any recent vaccinations?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 6,
+      "chart_section": "ExamLabs",
+      "target_field": "exam_findings",
+      "question": "Do you have any leg swelling, or do you get short of breath when lying flat?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": "admitted to hospital for elective coronary angiography",
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease; Stage 3 chronic kidney disease",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Intravenous N-acetyl cysteine before and during the procedure",
+          "confidence": 0.72
+        },
+        {
+          "option": "C",
+          "label": "Use non-iodinated contrast medium",
+          "confidence": 0.2
+        },
+        {
+          "option": "A",
+          "label": "Intravenous mannitol before and during the procedure",
+          "confidence": 0.05
+        },
+        {
+          "option": "D",
+          "label": "Forced diuresis with furosemide",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.72, \"C\": 0.2, \"D\": 0.03}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.exam_findings\", \"question\": \"Do you have any leg swelling, or do you get short of breath when lying flat?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 7,
+      "chart_section": "ExamLabs",
+      "target_field": "vitals",
+      "question": "What were your most recent blood pressure, pulse, and weight readings today?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": "admitted to hospital for elective coronary angiography",
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease; Stage 3 chronic kidney disease",
         "PMH.prior_episodes": null,
         "PMH.surgeries": null,
         "Medications.current_meds": null,
@@ -301,42 +492,42 @@
         {
           "option": "C",
           "label": "Use non-iodinated contrast medium",
-          "confidence": 0.09
-        },
-        {
-          "option": "D",
-          "label": "Forced diuresis with furosemide",
-          "confidence": 0.06
+          "confidence": 0.12
         },
         {
           "option": "A",
           "label": "Intravenous mannitol before and during the procedure",
           "confidence": 0.05
+        },
+        {
+          "option": "D",
+          "label": "Forced diuresis with furosemide",
+          "confidence": 0.03
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "{\"A\": 0.05, \"B\": 0.8, \"C\": 0.09, \"D\": 0.06}",
-      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Have you had any earlier heart procedures or scans that used contrast dye, and did your kidney function get worse afterward?\"}",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.8, \"C\": 0.12, \"D\": 0.03}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.vitals\", \"question\": \"What were your most recent blood pressure, pulse, and weight readings today?\"}",
       "question_writer_fallback": false
     },
     {
-      "turn": 5,
-      "chart_section": "ROS",
-      "target_field": "ros_negatives",
-      "question": "Have you noticed any recent decrease in how much you urinate, leg swelling, nausea, or vomiting?",
+      "turn": 8,
+      "chart_section": "HPI",
+      "target_field": "associated_symptoms",
+      "question": "Are you having any chest pain, pressure, or shortness of breath along with this admission?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
         "HPI.onset": null,
-        "HPI.duration": "admitted for elective coronary angiography",
+        "HPI.duration": "admitted to hospital for elective coronary angiography",
         "HPI.character": null,
         "HPI.location": null,
         "HPI.severity": null,
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease",
+        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease; Stage 3 chronic kidney disease",
         "PMH.prior_episodes": null,
         "PMH.surgeries": null,
         "Medications.current_meds": null,
@@ -380,89 +571,26 @@
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
       "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.8, \"C\": 0.1, \"D\": 0.05}\n```",
-      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_negatives\", \"question\": \"Have you noticed any recent decrease in how much you urinate, leg swelling, nausea, or vomiting?\"}",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.associated_symptoms\", \"question\": \"Are you having any chest pain, pressure, or shortness of breath along with this admission?\"}",
       "question_writer_fallback": false
     },
     {
-      "turn": 6,
-      "chart_section": "ExamLabs",
-      "target_field": "vitals",
-      "question": "Do you know your current blood pressure, or has anyone recently mentioned whether your heart rate or blood pressure is low or high?",
+      "turn": 9,
+      "chart_section": "ROS",
+      "target_field": "ros_positives",
+      "question": "Have you noticed any change in how much you are urinating, or any fever, weight loss, or night sweats recently?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
         "HPI.onset": null,
-        "HPI.duration": "admitted for elective coronary angiography",
+        "HPI.duration": "admitted to hospital for elective coronary angiography",
         "HPI.character": null,
         "HPI.location": null,
         "HPI.severity": null,
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease",
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "Intravenous N-acetyl cysteine before and during the procedure",
-          "confidence": 0.62
-        },
-        {
-          "option": "C",
-          "label": "Use non-iodinated contrast medium",
-          "confidence": 0.2
-        },
-        {
-          "option": "D",
-          "label": "Forced diuresis with furosemide",
-          "confidence": 0.12
-        },
-        {
-          "option": "A",
-          "label": "Intravenous mannitol before and during the procedure",
-          "confidence": 0.06
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "{\"A\": 0.06, \"B\": 0.62, \"C\": 0.2, \"D\": 0.12}",
-      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.vitals\", \"question\": \"Do you know your current blood pressure, or has anyone recently mentioned whether your heart rate or blood pressure is low or high?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 7,
-      "chart_section": "Medications",
-      "target_field": "recent_changes",
-      "question": "Have you had any new medicines, or any other scans with contrast dye, in the last few weeks?",
-      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": "admitted for elective coronary angiography",
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease",
+        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease; Stage 3 chronic kidney disease",
         "PMH.prior_episodes": null,
         "PMH.surgeries": null,
         "Medications.current_meds": null,
@@ -490,168 +618,42 @@
         {
           "option": "C",
           "label": "Use non-iodinated contrast medium",
-          "confidence": 0.12
+          "confidence": 0.14
         },
         {
           "option": "A",
           "label": "Intravenous mannitol before and during the procedure",
-          "confidence": 0.08
+          "confidence": 0.07
         },
         {
           "option": "D",
           "label": "Forced diuresis with furosemide",
-          "confidence": 0.08
+          "confidence": 0.07
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.08, \"B\": 0.72, \"C\": 0.12, \"D\": 0.08}\n```",
-      "question_writer_raw": "```json\n{\"chart_section\": \"Medications\", \"target_field\": \"Medications.recent_changes\", \"question\": \"Have you had any new medicines, or any other scans with contrast dye, in the last few weeks?\"}\n```",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 8,
-      "chart_section": "HPI",
-      "target_field": "onset",
-      "question": "When did the problem that led to this angiogram first start, and has it been getting better or worse since then?",
-      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": "admitted for elective coronary angiography",
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease",
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "Intravenous N-acetyl cysteine before and during the procedure",
-          "confidence": 0.85
-        },
-        {
-          "option": "D",
-          "label": "Forced diuresis with furosemide",
-          "confidence": 0.06
-        },
-        {
-          "option": "A",
-          "label": "Intravenous mannitol before and during the procedure",
-          "confidence": 0.05
-        },
-        {
-          "option": "C",
-          "label": "Use non-iodinated contrast medium",
-          "confidence": 0.04
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "{\"A\": 0.05, \"B\": 0.85, \"C\": 0.04, \"D\": 0.06}",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.onset\", \"question\": \"When did the problem that led to this angiogram first start, and has it been getting better or worse since then?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 9,
-      "chart_section": "ExamLabs",
-      "target_field": "exam_findings",
-      "question": "Has anyone examined you recently and noted whether you are dry or have fluid build-up, such as swelling in your legs, ankles, or abdomen?",
-      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": "admitted for elective coronary angiography",
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease",
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "B",
-          "label": "Intravenous N-acetyl cysteine before and during the procedure",
-          "confidence": 0.62
-        },
-        {
-          "option": "C",
-          "label": "Use non-iodinated contrast medium",
-          "confidence": 0.22
-        },
-        {
-          "option": "A",
-          "label": "Intravenous mannitol before and during the procedure",
-          "confidence": 0.08
-        },
-        {
-          "option": "D",
-          "label": "Forced diuresis with furosemide",
-          "confidence": 0.08
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "{\"A\": 0.08, \"B\": 0.62, \"C\": 0.22, \"D\": 0.08}",
-      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.exam_findings\", \"question\": \"Has anyone examined you recently and noted whether you are dry or have fluid build-up, such as swelling in your legs, ankles, or abdomen?\"}",
+      "ranker_raw": "{\"A\": 0.07, \"B\": 0.72, \"C\": 0.14, \"D\": 0.07}",
+      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"Have you noticed any change in how much you are urinating, or any fever, weight loss, or night sweats recently?\"}",
       "question_writer_fallback": false
     },
     {
       "turn": 10,
-      "chart_section": "Social",
-      "target_field": "drugs",
-      "question": "Do you use any recreational or illicit drugs, or have you ever injected any substances?",
+      "chart_section": "PMH",
+      "target_field": "surgeries",
+      "question": "Have you had any previous heart catheterizations, angiograms, or other scans using X-ray dye, and if so, did your kidney function worsen afterward?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
         "HPI.onset": null,
-        "HPI.duration": "admitted for elective coronary angiography",
+        "HPI.duration": "admitted to hospital for elective coronary angiography",
         "HPI.character": null,
         "HPI.location": null,
         "HPI.severity": null,
         "HPI.timing": null,
         "HPI.aggravating_relieving": null,
         "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease",
+        "PMH.chronic_conditions": "diabetes; stage 3 chronic kidney disease; Stage 3 chronic kidney disease",
         "PMH.prior_episodes": null,
         "PMH.surgeries": null,
         "Medications.current_meds": null,
@@ -674,12 +676,12 @@
         {
           "option": "B",
           "label": "Intravenous N-acetyl cysteine before and during the procedure",
-          "confidence": 0.6
+          "confidence": 0.72
         },
         {
           "option": "C",
           "label": "Use non-iodinated contrast medium",
-          "confidence": 0.27
+          "confidence": 0.13
         },
         {
           "option": "D",
@@ -689,13 +691,13 @@
         {
           "option": "A",
           "label": "Intravenous mannitol before and during the procedure",
-          "confidence": 0.05
+          "confidence": 0.07
         }
       ],
       "decision": "answer",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "{\"A\": 0.05, \"B\": 0.6, \"C\": 0.27, \"D\": 0.08}",
-      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.drugs\", \"question\": \"Do you use any recreational or illicit drugs, or have you ever injected any substances?\"}",
+      "ranker_raw": "{\"A\": 0.07, \"B\": 0.72, \"C\": 0.13, \"D\": 0.08}",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.surgeries\", \"question\": \"Have you had any previous heart catheterizations, angiograms, or other scans using X-ray dye, and if so, did your kidney function worsen afterward?\"}",
       "question_writer_fallback": false
     }
   ],
@@ -711,25 +713,25 @@
     {
       "option": "B",
       "label": "Intravenous N-acetyl cysteine before and during the procedure",
-      "confidence": 0.85
-    },
-    {
-      "option": "D",
-      "label": "Forced diuresis with furosemide",
-      "confidence": 0.07
-    },
-    {
-      "option": "A",
-      "label": "Intravenous mannitol before and during the procedure",
-      "confidence": 0.04
+      "confidence": 0.75
     },
     {
       "option": "C",
       "label": "Use non-iodinated contrast medium",
-      "confidence": 0.04
+      "confidence": 0.15
+    },
+    {
+      "option": "A",
+      "label": "Intravenous mannitol before and during the procedure",
+      "confidence": 0.05
+    },
+    {
+      "option": "D",
+      "label": "Forced diuresis with furosemide",
+      "confidence": 0.05
     }
   ],
-  "ceiling_ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.85, \"C\": 0.04, \"D\": 0.07}\n```",
+  "ceiling_ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.75, \"C\": 0.15, \"D\": 0.05}\n```",
   "full_context": "A 57-year-old man with a history of diabetes and stage 3 chronic kidney disease is admitted to the hospital for elective coronary angiography. The senior resident admitting the patient to the ward is concerned about his chronic renal impairment and the scheduled angiography, which will require the use of intravenous contrast.",
   "patient_facts": [
     "1. A 57-year-old man has a history of diabetes.",
@@ -743,20 +745,20 @@
     "stop_rule": "fixed",
     "answer_confidence_threshold": 0.8,
     "temperature": null,
-    "seconds": 102.8,
-    "timestamp": "2026-11-13T05:01:56+00:00",
+    "seconds": 108.0,
+    "timestamp": "2026-11-13T05:23:43+00:00",
     "usage": {
-      "num_calls": 33,
+      "num_calls": 34,
       "calls_by_tag": {
-        "tagger": 1,
+        "tagger": 2,
         "ranker": 11,
         "question_writer": 10,
         "patient": 10,
         "ceiling_ranker": 1
       },
-      "prompt_tokens": 29303,
-      "completion_tokens": 11747,
-      "cost_usd": 0.008804
+      "prompt_tokens": 30234,
+      "completion_tokens": 12349,
+      "cost_usd": 0.009198
     }
   }
 }

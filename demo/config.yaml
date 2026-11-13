@@ -13,8 +13,11 @@ patient_model: anthropic/claude-haiku-5-5    # MediQ FactSelectPatient
 temperature: null
 
 # Stock MediQ *asks* for 50 tokens per patient answer but its helper ignores that and
-# uses its default of 256. We reproduce the effective stock behaviour (256). See NOTES.md.
-patient_max_tokens: 256
+# uses its default of 256. On thinking models (all current Claude models) the thinking
+# tokens count against this cap: at 256, Haiku 5.5 spent ~220-260 tokens thinking and
+# 34% of patient answers came back empty or truncated. 2048 leaves room for both.
+# Use 256 to reproduce stock MediQ on non-thinking models. See NOTES.md.
+patient_max_tokens: 2048
 
 # Agent policy (our minimal baseline, demo/agent.py)
 #   fixed:      always ask --max-questions questions (or until no askable fields remain),

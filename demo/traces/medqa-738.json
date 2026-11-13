@@ -46,17 +46,17 @@
     {
       "option": "A",
       "label": "Staphylococcus aureus",
-      "confidence": 0.82
-    },
-    {
-      "option": "B",
-      "label": "Clostridioides difficile",
-      "confidence": 0.07
+      "confidence": 0.85
     },
     {
       "option": "D",
       "label": "Ureaplasma urealyticum",
-      "confidence": 0.07
+      "confidence": 0.06
+    },
+    {
+      "option": "B",
+      "label": "Clostridioides difficile",
+      "confidence": 0.05
     },
     {
       "option": "C",
@@ -67,9 +67,74 @@
   "turns": [
     {
       "turn": 1,
-      "chart_section": "Medications",
-      "target_field": "recent_changes",
-      "question": "Have you taken any antibiotics recently, or had any new medications or vaccinations started or changed in the past few months?",
+      "chart_section": "ExamLabs",
+      "target_field": "lab_results",
+      "question": "Have you had any cultures or lab tests on this infection, and do you know what organism they grew and which antibiotics it was resistant or sensitive to?",
+      "patient_answer": "5. The results of the testing for the pathogen show Penicillin G resistance.\n6. The results of the testing for the pathogen show Cefazolin resistance.\n7. The results of the testing for the pathogen show Doxycycline susceptibility.\n8. The results of the testing for the pathogen show Imipenem resistance.\n9. The results of the testing for the pathogen show Azithromycin susceptibility.\n10. The results of the testing for the pathogen show Vancomycin resistance.",
+      "fields_filled": [
+        "ExamLabs.lab_results"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Pathogen culture susceptibility testing: resistant to penicillin G, cefazolin, imipenem, and vancomycin; susceptible to doxycycline and azithromycin"
+      },
+      "differential": [
+        {
+          "option": "D",
+          "label": "Ureaplasma urealyticum",
+          "confidence": 0.93
+        },
+        {
+          "option": "A",
+          "label": "Staphylococcus aureus",
+          "confidence": 0.03
+        },
+        {
+          "option": "B",
+          "label": "Clostridioides difficile",
+          "confidence": 0.02
+        },
+        {
+          "option": "C",
+          "label": "Borrelia burgdorferi",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"ExamLabs.lab_results\": \"Pathogen culture susceptibility testing: resistant to penicillin G, cefazolin, imipenem, and vancomycin; susceptible to doxycycline and azithromycin\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.03, \"B\": 0.02, \"C\": 0.02, \"D\": 0.93}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Have you had any cultures or lab tests on this infection, and do you know what organism they grew and which antibiotics it was resistant or sensitive to?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 2,
+      "chart_section": "Social",
+      "target_field": "sexual_history",
+      "question": "Are you sexually active, and if so, do you have any partners, use protection, or have a history of sexually transmitted infections?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
@@ -98,41 +163,41 @@
         "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
         "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
+        "ExamLabs.lab_results": "Pathogen culture susceptibility testing: resistant to penicillin G, cefazolin, imipenem, and vancomycin; susceptible to doxycycline and azithromycin"
       },
       "differential": [
         {
-          "option": "A",
-          "label": "Staphylococcus aureus",
-          "confidence": 0.85
-        },
-        {
           "option": "D",
           "label": "Ureaplasma urealyticum",
-          "confidence": 0.07
+          "confidence": 0.92
         },
         {
           "option": "B",
           "label": "Clostridioides difficile",
-          "confidence": 0.05
+          "confidence": 0.03
         },
         {
           "option": "C",
           "label": "Borrelia burgdorferi",
           "confidence": 0.03
+        },
+        {
+          "option": "A",
+          "label": "Staphylococcus aureus",
+          "confidence": 0.02
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "{\"A\": 0.85, \"B\": 0.05, \"C\": 0.03, \"D\": 0.07}",
-      "question_writer_raw": "{\"chart_section\": \"Medications\", \"target_field\": \"Medications.recent_changes\", \"question\": \"Have you taken any antibiotics recently, or had any new medications or vaccinations started or changed in the past few months?\"}",
+      "ranker_raw": "```json\n{\"A\": 0.02, \"B\": 0.03, \"C\": 0.03, \"D\": 0.92}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.sexual_history\", \"question\": \"Are you sexually active, and if so, do you have any partners, use protection, or have a history of sexually transmitted infections?\"}",
       "question_writer_fallback": false
     },
     {
-      "turn": 2,
-      "chart_section": "PMH",
-      "target_field": "prior_episodes",
-      "question": "Have you been in the hospital recently, or have you had any similar infections in the past?",
+      "turn": 3,
+      "chart_section": "HPI",
+      "target_field": "location",
+      "question": "Where in your body are you feeling the symptoms, and does the pain or discomfort spread anywhere?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
@@ -161,104 +226,41 @@
         "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
         "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
+        "ExamLabs.lab_results": "Pathogen culture susceptibility testing: resistant to penicillin G, cefazolin, imipenem, and vancomycin; susceptible to doxycycline and azithromycin"
       },
       "differential": [
         {
+          "option": "D",
+          "label": "Ureaplasma urealyticum",
+          "confidence": 0.94
+        },
+        {
           "option": "A",
           "label": "Staphylococcus aureus",
-          "confidence": 0.85
+          "confidence": 0.02
         },
         {
           "option": "B",
           "label": "Clostridioides difficile",
-          "confidence": 0.06
-        },
-        {
-          "option": "D",
-          "label": "Ureaplasma urealyticum",
-          "confidence": 0.05
+          "confidence": 0.02
         },
         {
           "option": "C",
           "label": "Borrelia burgdorferi",
-          "confidence": 0.04
+          "confidence": 0.02
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.85, \"B\": 0.06, \"C\": 0.04, \"D\": 0.05}\n```",
-      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Have you been in the hospital recently, or have you had any similar infections in the past?\"}",
-      "question_writer_fallback": false
-    },
-    {
-      "turn": 3,
-      "chart_section": "ExamLabs",
-      "target_field": "lab_results",
-      "question": "Have you had any cultures or lab tests, such as a wound swab, blood culture, or stool test, and do you know what grew or was found?",
-      "patient_answer": "",
-      "fields_filled": [],
-      "worksheet_snapshot": {
-        "HPI.onset": null,
-        "HPI.duration": null,
-        "HPI.character": null,
-        "HPI.location": null,
-        "HPI.severity": null,
-        "HPI.timing": null,
-        "HPI.aggravating_relieving": null,
-        "HPI.associated_symptoms": null,
-        "PMH.chronic_conditions": null,
-        "PMH.prior_episodes": null,
-        "PMH.surgeries": null,
-        "Medications.current_meds": null,
-        "Medications.recent_changes": null,
-        "Allergies.allergies": null,
-        "Social.smoking": null,
-        "Social.alcohol": null,
-        "Social.drugs": null,
-        "Social.occupation": null,
-        "Social.travel": null,
-        "Social.sexual_history": null,
-        "Family.family_history": null,
-        "ROS.ros_positives": null,
-        "ROS.ros_negatives": null,
-        "ExamLabs.vitals": null,
-        "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
-      },
-      "differential": [
-        {
-          "option": "A",
-          "label": "Staphylococcus aureus",
-          "confidence": 0.8
-        },
-        {
-          "option": "B",
-          "label": "Clostridioides difficile",
-          "confidence": 0.1
-        },
-        {
-          "option": "D",
-          "label": "Ureaplasma urealyticum",
-          "confidence": 0.06
-        },
-        {
-          "option": "C",
-          "label": "Borrelia burgdorferi",
-          "confidence": 0.04
-        }
-      ],
-      "decision": "ask",
-      "tagger_raw": "{\"fields\": {}}",
-      "ranker_raw": "{\"A\": 0.8, \"B\": 0.1, \"C\": 0.04, \"D\": 0.06}",
-      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Have you had any cultures or lab tests, such as a wound swab, blood culture, or stool test, and do you know what grew or was found?\"}",
+      "ranker_raw": "{\"A\": 0.02, \"B\": 0.02, \"C\": 0.02, \"D\": 0.94}",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.location\", \"question\": \"Where in your body are you feeling the symptoms, and does the pain or discomfort spread anywhere?\"}",
       "question_writer_fallback": false
     },
     {
       "turn": 4,
       "chart_section": "HPI",
-      "target_field": "location",
-      "question": "Where on your body is the infection or problem you're concerned about, and what does it look like?",
+      "target_field": "associated_symptoms",
+      "question": "Besides the main complaint, are you having any discharge, fever, or other symptoms like those?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
@@ -287,41 +289,41 @@
         "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
         "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
+        "ExamLabs.lab_results": "Pathogen culture susceptibility testing: resistant to penicillin G, cefazolin, imipenem, and vancomycin; susceptible to doxycycline and azithromycin"
       },
       "differential": [
         {
-          "option": "A",
-          "label": "Staphylococcus aureus",
-          "confidence": 0.82
-        },
-        {
-          "option": "B",
-          "label": "Clostridioides difficile",
-          "confidence": 0.09
-        },
-        {
           "option": "D",
           "label": "Ureaplasma urealyticum",
-          "confidence": 0.05
+          "confidence": 0.9
         },
         {
           "option": "C",
           "label": "Borrelia burgdorferi",
-          "confidence": 0.04
+          "confidence": 0.05
+        },
+        {
+          "option": "A",
+          "label": "Staphylococcus aureus",
+          "confidence": 0.03
+        },
+        {
+          "option": "B",
+          "label": "Clostridioides difficile",
+          "confidence": 0.02
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "{\"A\": 0.82, \"B\": 0.09, \"C\": 0.04, \"D\": 0.05}",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.location\", \"question\": \"Where on your body is the infection or problem you're concerned about, and what does it look like?\"}",
+      "ranker_raw": "{\"A\": 0.03, \"B\": 0.02, \"C\": 0.05, \"D\": 0.90}",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.associated_symptoms\", \"question\": \"Besides the main complaint, are you having any discharge, fever, or other symptoms like those?\"}",
       "question_writer_fallback": false
     },
     {
       "turn": 5,
       "chart_section": "Social",
       "target_field": "travel",
-      "question": "Have you recently been camping, hiking, or spending time in wooded or grassy areas, or been bitten by a tick or other insect or animal?",
+      "question": "Have you recently been camping, hiking, or in wooded or grassy areas, or been bitten by a tick or other insect?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
@@ -350,41 +352,41 @@
         "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
         "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
+        "ExamLabs.lab_results": "Pathogen culture susceptibility testing: resistant to penicillin G, cefazolin, imipenem, and vancomycin; susceptible to doxycycline and azithromycin"
       },
       "differential": [
         {
-          "option": "A",
-          "label": "Staphylococcus aureus",
-          "confidence": 0.8
-        },
-        {
-          "option": "B",
-          "label": "Clostridioides difficile",
-          "confidence": 0.08
-        },
-        {
           "option": "D",
           "label": "Ureaplasma urealyticum",
-          "confidence": 0.08
+          "confidence": 0.93
         },
         {
           "option": "C",
           "label": "Borrelia burgdorferi",
-          "confidence": 0.04
+          "confidence": 0.03
+        },
+        {
+          "option": "A",
+          "label": "Staphylococcus aureus",
+          "confidence": 0.02
+        },
+        {
+          "option": "B",
+          "label": "Clostridioides difficile",
+          "confidence": 0.02
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.8, \"B\": 0.08, \"C\": 0.04, \"D\": 0.08}\n```",
-      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.travel\", \"question\": \"Have you recently been camping, hiking, or spending time in wooded or grassy areas, or been bitten by a tick or other insect or animal?\"}",
+      "ranker_raw": "```json\n{\"A\": 0.02, \"B\": 0.02, \"C\": 0.03, \"D\": 0.93}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.travel\", \"question\": \"Have you recently been camping, hiking, or in wooded or grassy areas, or been bitten by a tick or other insect?\"}",
       "question_writer_fallback": false
     },
     {
       "turn": 6,
-      "chart_section": "ROS",
-      "target_field": "ros_positives",
-      "question": "Have you had any fever, chills, or diarrhea recently?",
+      "chart_section": "PMH",
+      "target_field": "chronic_conditions",
+      "question": "Do you have any ongoing medical conditions, such as diabetes, HIV, or a condition or treatment that weakens the immune system?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
@@ -413,41 +415,41 @@
         "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
         "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
+        "ExamLabs.lab_results": "Pathogen culture susceptibility testing: resistant to penicillin G, cefazolin, imipenem, and vancomycin; susceptible to doxycycline and azithromycin"
       },
       "differential": [
         {
-          "option": "A",
-          "label": "Staphylococcus aureus",
-          "confidence": 0.8
-        },
-        {
           "option": "D",
           "label": "Ureaplasma urealyticum",
-          "confidence": 0.09
+          "confidence": 0.94
+        },
+        {
+          "option": "A",
+          "label": "Staphylococcus aureus",
+          "confidence": 0.02
         },
         {
           "option": "B",
           "label": "Clostridioides difficile",
-          "confidence": 0.08
+          "confidence": 0.02
         },
         {
           "option": "C",
           "label": "Borrelia burgdorferi",
-          "confidence": 0.03
+          "confidence": 0.02
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "{\"A\": 0.8, \"B\": 0.08, \"C\": 0.03, \"D\": 0.09}",
-      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"Have you had any fever, chills, or diarrhea recently?\"}",
+      "ranker_raw": "{\"A\": 0.02, \"B\": 0.02, \"C\": 0.02, \"D\": 0.94}",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Do you have any ongoing medical conditions, such as diabetes, HIV, or a condition or treatment that weakens the immune system?\"}",
       "question_writer_fallback": false
     },
     {
       "turn": 7,
-      "chart_section": "Social",
-      "target_field": "sexual_history",
-      "question": "Are you sexually active, and if so, do you have any new or multiple partners, or any history of sexually transmitted infections?",
+      "chart_section": "Medications",
+      "target_field": "recent_changes",
+      "question": "Have you recently started, stopped, or changed any medications, especially any antibiotics, or had any vaccinations?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
@@ -476,41 +478,41 @@
         "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
         "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
+        "ExamLabs.lab_results": "Pathogen culture susceptibility testing: resistant to penicillin G, cefazolin, imipenem, and vancomycin; susceptible to doxycycline and azithromycin"
       },
       "differential": [
         {
+          "option": "D",
+          "label": "Ureaplasma urealyticum",
+          "confidence": 0.94
+        },
+        {
           "option": "A",
           "label": "Staphylococcus aureus",
-          "confidence": 0.82
+          "confidence": 0.02
         },
         {
           "option": "B",
           "label": "Clostridioides difficile",
-          "confidence": 0.08
-        },
-        {
-          "option": "D",
-          "label": "Ureaplasma urealyticum",
-          "confidence": 0.06
+          "confidence": 0.02
         },
         {
           "option": "C",
           "label": "Borrelia burgdorferi",
-          "confidence": 0.04
+          "confidence": 0.02
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "{\"A\": 0.82, \"B\": 0.08, \"C\": 0.04, \"D\": 0.06}",
-      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.sexual_history\", \"question\": \"Are you sexually active, and if so, do you have any new or multiple partners, or any history of sexually transmitted infections?\"}",
+      "ranker_raw": "```json\n{\"A\": 0.02, \"B\": 0.02, \"C\": 0.02, \"D\": 0.94}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Medications\", \"target_field\": \"Medications.recent_changes\", \"question\": \"Have you recently started, stopped, or changed any medications, especially any antibiotics, or had any vaccinations?\"}",
       "question_writer_fallback": false
     },
     {
       "turn": 8,
-      "chart_section": "HPI",
-      "target_field": "character",
-      "question": "What is the main problem you're noticing, for example watery stools, pus or a boil-like sore, or a spreading red rash?",
+      "chart_section": "ROS",
+      "target_field": "ros_positives",
+      "question": "Have you had any fever, weight loss, night sweats, diarrhea, or skin rash?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
@@ -539,41 +541,41 @@
         "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
         "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
+        "ExamLabs.lab_results": "Pathogen culture susceptibility testing: resistant to penicillin G, cefazolin, imipenem, and vancomycin; susceptible to doxycycline and azithromycin"
       },
       "differential": [
         {
-          "option": "A",
-          "label": "Staphylococcus aureus",
-          "confidence": 0.88
-        },
-        {
           "option": "D",
           "label": "Ureaplasma urealyticum",
-          "confidence": 0.05
+          "confidence": 0.94
+        },
+        {
+          "option": "A",
+          "label": "Staphylococcus aureus",
+          "confidence": 0.02
         },
         {
           "option": "B",
           "label": "Clostridioides difficile",
-          "confidence": 0.04
+          "confidence": 0.02
         },
         {
           "option": "C",
           "label": "Borrelia burgdorferi",
-          "confidence": 0.03
+          "confidence": 0.02
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.88, \"B\": 0.04, \"C\": 0.03, \"D\": 0.05}\n```",
-      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.character\", \"question\": \"What is the main problem you're noticing, for example watery stools, pus or a boil-like sore, or a spreading red rash?\"}",
+      "ranker_raw": "{\"A\": 0.02, \"B\": 0.02, \"C\": 0.02, \"D\": 0.94}",
+      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"Have you had any fever, weight loss, night sweats, diarrhea, or skin rash?\"}",
       "question_writer_fallback": false
     },
     {
       "turn": 9,
-      "chart_section": "Social",
-      "target_field": "drugs",
-      "question": "Have you ever used injection drugs or shared needles, or used any other recreational drugs?",
+      "chart_section": "ExamLabs",
+      "target_field": "exam_findings",
+      "question": "Has anyone examined you, and did they find any skin rash, expanding red patch, urethral or genital discharge, or abdominal tenderness?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
@@ -602,41 +604,41 @@
         "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
         "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
+        "ExamLabs.lab_results": "Pathogen culture susceptibility testing: resistant to penicillin G, cefazolin, imipenem, and vancomycin; susceptible to doxycycline and azithromycin"
       },
       "differential": [
         {
-          "option": "A",
-          "label": "Staphylococcus aureus",
-          "confidence": 0.82
-        },
-        {
-          "option": "B",
-          "label": "Clostridioides difficile",
-          "confidence": 0.09
-        },
-        {
           "option": "D",
           "label": "Ureaplasma urealyticum",
-          "confidence": 0.05
+          "confidence": 0.9
         },
         {
           "option": "C",
           "label": "Borrelia burgdorferi",
-          "confidence": 0.04
+          "confidence": 0.05
+        },
+        {
+          "option": "A",
+          "label": "Staphylococcus aureus",
+          "confidence": 0.03
+        },
+        {
+          "option": "B",
+          "label": "Clostridioides difficile",
+          "confidence": 0.02
         }
       ],
       "decision": "ask",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.82, \"B\": 0.09, \"C\": 0.04, \"D\": 0.05}\n```",
-      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.drugs\", \"question\": \"Have you ever used injection drugs or shared needles, or used any other recreational drugs?\"}",
+      "ranker_raw": "```json\n{\"A\": 0.03, \"B\": 0.02, \"C\": 0.05, \"D\": 0.90}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.exam_findings\", \"question\": \"Has anyone examined you, and did they find any skin rash, expanding red patch, urethral or genital discharge, or abdominal tenderness?\"}",
       "question_writer_fallback": false
     },
     {
       "turn": 10,
-      "chart_section": "Allergies",
-      "target_field": "allergies",
-      "question": "Do you have any allergies to medications, and if so, what kind of reaction did you have?",
+      "chart_section": "HPI",
+      "target_field": "onset",
+      "question": "When did your symptoms first begin, and did they come on suddenly or gradually?",
       "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
       "fields_filled": [],
       "worksheet_snapshot": {
@@ -665,39 +667,39 @@
         "ROS.ros_negatives": null,
         "ExamLabs.vitals": null,
         "ExamLabs.exam_findings": null,
-        "ExamLabs.lab_results": null
+        "ExamLabs.lab_results": "Pathogen culture susceptibility testing: resistant to penicillin G, cefazolin, imipenem, and vancomycin; susceptible to doxycycline and azithromycin"
       },
       "differential": [
         {
-          "option": "A",
-          "label": "Staphylococcus aureus",
-          "confidence": 0.85
-        },
-        {
-          "option": "B",
-          "label": "Clostridioides difficile",
-          "confidence": 0.07
-        },
-        {
           "option": "D",
           "label": "Ureaplasma urealyticum",
-          "confidence": 0.05
+          "confidence": 0.93
         },
         {
           "option": "C",
           "label": "Borrelia burgdorferi",
           "confidence": 0.03
+        },
+        {
+          "option": "A",
+          "label": "Staphylococcus aureus",
+          "confidence": 0.02
+        },
+        {
+          "option": "B",
+          "label": "Clostridioides difficile",
+          "confidence": 0.02
         }
       ],
       "decision": "answer",
       "tagger_raw": "(skipped: patient could not answer)",
-      "ranker_raw": "```json\n{\"A\": 0.85, \"B\": 0.07, \"C\": 0.03, \"D\": 0.05}\n```",
-      "question_writer_raw": "{\"chart_section\": \"Allergies\", \"target_field\": \"Allergies.allergies\", \"question\": \"Do you have any allergies to medications, and if so, what kind of reaction did you have?\"}",
+      "ranker_raw": "```json\n{\"A\": 0.02, \"B\": 0.02, \"C\": 0.03, \"D\": 0.93}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"HPI\", \"target_field\": \"HPI.onset\", \"question\": \"When did your symptoms first begin, and did they come on suddenly or gradually?\"}\n```",
       "question_writer_fallback": false
     }
   ],
-  "final_answer": "A",
-  "correct": false,
+  "final_answer": "D",
+  "correct": true,
   "num_questions": 10,
   "stop_reason": "max_questions",
   "floor_answer": "A",
@@ -708,17 +710,17 @@
     {
       "option": "D",
       "label": "Ureaplasma urealyticum",
-      "confidence": 0.94
+      "confidence": 0.92
     },
     {
       "option": "A",
       "label": "Staphylococcus aureus",
-      "confidence": 0.02
+      "confidence": 0.03
     },
     {
       "option": "B",
       "label": "Clostridioides difficile",
-      "confidence": 0.02
+      "confidence": 0.03
     },
     {
       "option": "C",
@@ -726,7 +728,7 @@
       "confidence": 0.02
     }
   ],
-  "ceiling_ranker_raw": "{\"A\": 0.02, \"B\": 0.02, \"C\": 0.02, \"D\": 0.94}",
+  "ceiling_ranker_raw": "{\"A\": 0.03, \"B\": 0.03, \"C\": 0.02, \"D\": 0.92}",
   "full_context": "An investigator is studying the antimicrobial resistance profile of a bacterial pathogen using disk diffusion testing. The pathogen is isolated onto agar plates and antibiotic wafers are added to the plates. The inhibitory zone diameters are then recorded and used to define susceptibility thresholds. The results of the testing for the pathogen shown: | Drug Susceptibility | Penicillin G Resistant | Cefazolin Resistant | Doxycycline Susceptible | Imipenem Resistant | Azithromycin Susceptible | Vancomycin Resistant | .",
   "patient_facts": [
     "1. An investigator is studying the antimicrobial resistance profile of a bacterial pathogen.",
@@ -745,8 +747,8 @@
     "stop_rule": "fixed",
     "answer_confidence_threshold": 0.8,
     "temperature": null,
-    "seconds": 99.9,
-    "timestamp": "2026-11-13T05:11:56+00:00",
+    "seconds": 99.5,
+    "timestamp": "2026-11-13T05:33:24+00:00",
     "usage": {
       "num_calls": 34,
       "calls_by_tag": {
@@ -756,9 +758,9 @@
         "patient": 10,
         "ceiling_ranker": 1
       },
-      "prompt_tokens": 30306,
-      "completion_tokens": 9795,
-      "cost_usd": 0.007928
+      "prompt_tokens": 34707,
+      "completion_tokens": 10352,
+      "cost_usd": 0.008647
     }
   }
 }
