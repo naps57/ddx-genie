@@ -61,10 +61,12 @@ class Meter:
         }
 
 
-def chat(messages: list[dict], *, model: str, temperature: float = 0.0,
+def chat(messages: list[dict], *, model: str, temperature: float | None = None,
          max_tokens: int | None = None, json_mode: bool = False,
          meter: Meter | None = None, tag: str = "") -> str:
-    kwargs = {"model": model, "messages": messages, "temperature": temperature}
+    kwargs = {"model": model, "messages": messages}
+    if temperature is not None:  # some models (current Claude) reject non-default values
+        kwargs["temperature"] = temperature
     if max_tokens is not None:
         kwargs["max_tokens"] = max_tokens
     if json_mode:

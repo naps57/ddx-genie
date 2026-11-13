@@ -152,7 +152,9 @@ class ChartSectionAgent:
                    model=self.cfg["model"], temperature=self.cfg["temperature"],
                    json_mode=True, meter=self.meter, tag="question_writer")
         p = parse_json(raw) or {}
-        key = f"{p.get('chart_section')}.{p.get('target_field')}"
+        field = str(p.get("target_field") or "")
+        # Models sometimes return the qualified key ("Social.sexual_history") as the field.
+        key = field if "." in field else f"{p.get('chart_section')}.{field}"
         q = (p.get("question") or "").strip()
         fallback = False
         if key not in askable or not q:

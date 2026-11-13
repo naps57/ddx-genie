@@ -1,0 +1,138 @@
+{
+  "case_id": "medqa-794",
+  "source": "medqa",
+  "model": "anthropic/claude-haiku-5-5",
+  "patient_model": "anthropic/claude-haiku-5-5",
+  "initial_info": "A 58-year-old male presents to his primary care physician complaining of a painless bump on his penis.",
+  "question": "Which of the following pathological findings is most likely to be seen on the biopsy specimen?",
+  "options": {
+    "A": "Atypical squamous cells with varying degrees of mitotic activity",
+    "B": "Spirochetes on dark-field microscopy",
+    "C": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
+    "D": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain"
+  },
+  "gold_answer": "A",
+  "initial_fields_filled": [
+    "HPI.character",
+    "HPI.location"
+  ],
+  "initial_tagger_raw": "{\"fields\": {\"HPI.character\": \"painless bump\", \"HPI.location\": \"penis\"}}",
+  "initial_worksheet_snapshot": {
+    "HPI.onset": null,
+    "HPI.duration": null,
+    "HPI.character": "painless bump",
+    "HPI.location": "penis",
+    "HPI.severity": null,
+    "HPI.timing": null,
+    "HPI.aggravating_relieving": null,
+    "HPI.associated_symptoms": null,
+    "PMH.chronic_conditions": null,
+    "PMH.prior_episodes": null,
+    "PMH.surgeries": null,
+    "Medications.current_meds": null,
+    "Medications.recent_changes": null,
+    "Allergies.allergies": null,
+    "Social.smoking": null,
+    "Social.alcohol": null,
+    "Social.drugs": null,
+    "Social.occupation": null,
+    "Social.travel": null,
+    "Social.sexual_history": null,
+    "Family.family_history": null,
+    "ROS.ros_positives": null,
+    "ROS.ros_negatives": null,
+    "ExamLabs.vitals": null,
+    "ExamLabs.exam_findings": null,
+    "ExamLabs.lab_results": null
+  },
+  "initial_differential": [
+    {
+      "option": "A",
+      "label": "Atypical squamous cells with varying degrees of mitotic activity",
+      "confidence": 0.8
+    },
+    {
+      "option": "B",
+      "label": "Spirochetes on dark-field microscopy",
+      "confidence": 0.08
+    },
+    {
+      "option": "D",
+      "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
+      "confidence": 0.07
+    },
+    {
+      "option": "C",
+      "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
+      "confidence": 0.05
+    }
+  ],
+  "turns": [],
+  "final_answer": "A",
+  "correct": true,
+  "num_questions": 0,
+  "stop_reason": "confident",
+  "floor_answer": "A",
+  "floor_correct": true,
+  "ceiling_answer": "A",
+  "ceiling_correct": true,
+  "ceiling_differential": [
+    {
+      "option": "A",
+      "label": "Atypical squamous cells with varying degrees of mitotic activity",
+      "confidence": 0.82
+    },
+    {
+      "option": "D",
+      "label": "Safety pin-shaped intracellular inclusions that appear purple on Giemsa stain",
+      "confidence": 0.09
+    },
+    {
+      "option": "C",
+      "label": "Nonspecific inflammatory features with C. trachomatis amplification on PCR",
+      "confidence": 0.05
+    },
+    {
+      "option": "B",
+      "label": "Spirochetes on dark-field microscopy",
+      "confidence": 0.04
+    }
+  ],
+  "ceiling_ranker_raw": "```json\n{\"A\": 0.82, \"B\": 0.04, \"C\": 0.05, \"D\": 0.09}\n```",
+  "full_context": "A 58-year-old male presents to his primary care physician complaining of a painless bump on his penis. He first noticed the lesion 1 year ago but was too embarrassed to mention the issue at his last annual physical exam. The lesion has since grown in size and has recently become more erythematous. He has hypertension treated with lisinopril. At age 45, he was successfully treated for phimosis with a steroid cream. He first engaged in sexual intercourse at age 14 and has had \u201ctoo many sexual partners to count\u201d in his lifetime. He smoked one pack of cigarettes daily for 30 years but quit 10 years ago. He drinks one alcoholic beverage daily. Physical examination shows a nontender 5 mm x 5 mm ulcerated lesion with an erythematous base on the dorsum of the glans. There is no inguinal lymphadenopathy. Excisional biopsy of the lesion is performed.",
+  "patient_facts": [
+    "1. Patient is 58 years old.",
+    "2. Patient complains of a painless bump on his penis.",
+    "3. Patient first noticed the lesion 1 year ago.",
+    "4. Patient was too embarrassed to mention the issue at his last annual physical exam.",
+    "5. Lesion has grown in size and become more erythematous.",
+    "6. Patient has hypertension treated with lisinopril.",
+    "7. Patient was successfully treated for phimosis with a steroid cream at age 45.",
+    "8. Patient first engaged in sexual intercourse at age 14.",
+    "9. Patient has had \"too many sexual partners to count\" in his lifetime.",
+    "10. Patient smoked one pack of cigarettes daily for 30 years.",
+    "11. Patient quit smoking 10 years ago.",
+    "12. Patient drinks one alcoholic beverage daily.",
+    "13. Physical examination shows a nontender 5 mm x 5 mm ulcerated lesion with an erythematous base on the dorsum of the glans.",
+    "14. No inguinal lymphadenopathy.",
+    "15. Excisional biopsy of the lesion is performed."
+  ],
+  "run": {
+    "max_questions": 10,
+    "answer_confidence_threshold": 0.8,
+    "temperature": null,
+    "seconds": 11.1,
+    "timestamp": "2026-11-13T04:50:06+00:00",
+    "usage": {
+      "num_calls": 3,
+      "calls_by_tag": {
+        "tagger": 1,
+        "ranker": 1,
+        "ceiling_ranker": 1
+      },
+      "prompt_tokens": 2039,
+      "completion_tokens": 1047,
+      "cost_usd": 0.000727
+    }
+  }
+}

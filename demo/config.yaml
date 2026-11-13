@@ -2,11 +2,15 @@
 # (e.g. "gpt-4o-mini", "anthropic/claude-...", "together_ai/...").
 # Keys are read from .env (OPENAI_API_KEY, ANTHROPIC_API_KEY, ...).
 #
-# gpt-4o-mini is a placeholder until we can read Arda's baseline and match its model.
+# claude-haiku-5-5 (cheapest current Claude, $0.10 / $0.50 per M tokens) is a placeholder
+# until we can read Arda's baseline and match its model. Needs ANTHROPIC_API_KEY in .env.
+# For OpenAI instead: model: gpt-4o-mini, temperature: 0.0, OPENAI_API_KEY in .env.
 
-model: gpt-4o-mini            # expert side: question writer, field tagger, option ranker
-patient_model: gpt-4o-mini    # MediQ FactSelectPatient
-temperature: 0.0
+model: anthropic/claude-haiku-5-5            # expert: question writer, field tagger, option ranker
+patient_model: anthropic/claude-haiku-5-5    # MediQ FactSelectPatient
+# null = don't send temperature. Current Claude models reject any value other than the
+# default (1.0), so runs are not deterministic; set 0.0 for models that allow it.
+temperature: null
 
 # Stock MediQ *asks* for 50 tokens per patient answer but its helper ignores that and
 # uses its default of 256. We reproduce the effective stock behaviour (256). See NOTES.md.
