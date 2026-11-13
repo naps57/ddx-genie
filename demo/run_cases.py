@@ -64,6 +64,7 @@ def run_one(case: dict, cfg: dict, schema: dict, max_questions: int) -> dict:
         "patient_facts": case["facts"],
         "run": {
             "max_questions": max_questions,
+            "stop_rule": cfg.get("stop_rule", "fixed"),
             "answer_confidence_threshold": cfg["answer_confidence_threshold"],
             "temperature": cfg["temperature"],
             "seconds": round(time.time() - t0, 1),

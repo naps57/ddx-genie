@@ -11,7 +11,9 @@ Loop per case:
     2. MediQ FactSelectPatient answers.
     3. Field tagger (LiteLLM) says which worksheet fields the answer fills.
     4. Option ranker produces the differential.
-    5. Decide: answer if top confidence >= threshold, or out of questions/fields.
+    5. Decide: keep asking until the question budget or askable fields run out
+       (stop_rule: fixed, default), or also stop once top confidence >= threshold
+       (stop_rule: confidence).
 
 Calls per turn: question writer, patient, tagger (skipped when the patient
 cannot answer), ranker.
@@ -168,6 +170,12 @@ class ChartSectionAgent:
                 "question_writer_raw": raw, "question_writer_fallback": fallback}
 
     # --- main loop ----------------------------------------------------------
+    def _confident(self, differential: list[dict]) -> bool:
+        """Early stop only under stop_rule: confidence. Default is a fixed question budget."""
+        if self.cfg.get("stop_rule", "fixed") != "confidence":
+            return False
+        return differential[0]["confidence"] >= self.cfg["answer_confidence_threshold"]
+
     def run_case(self, case: dict, patient, info: str, max_questions: int) -> dict:
         question, options = case["question"], case["options"]
         ws = ChartWorksheet(self.schema)
@@ -188,7 +196,7 @@ class ChartSectionAgent:
         }
 
         stop_reason = None
-        if differential[0]["confidence"] >= self.cfg["answer_confidence_threshold"]:
+        if self._confident(differential):
             stop_reason = "confident"
         elif max_questions <= 0:
             stop_reason = "max_questions"
@@ -215,7 +223,7 @@ class ChartSectionAgent:
             differential, rank_raw = rank_options(info, history, question, options,
                                                   cfg=self.cfg, meter=self.meter)
             n = len(history)
-            if differential[0]["confidence"] >= self.cfg["answer_confidence_threshold"]:
+            if self._confident(differential):
                 stop_reason = "confident"
             elif n >= max_questions:
                 stop_reason = "max_questions"

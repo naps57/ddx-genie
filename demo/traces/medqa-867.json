@@ -1,0 +1,767 @@
+{
+  "case_id": "medqa-867",
+  "source": "medqa",
+  "model": "anthropic/claude-haiku-5-5",
+  "patient_model": "anthropic/claude-haiku-5-5",
+  "initial_info": "A 25-year-old female is admitted to the hospital for an intrauterine fetal demise (IUFD) during her 30th gestational week.",
+  "question": "Which of the following genes was most likely mutated in this fetus?",
+  "options": {
+    "A": "Hox",
+    "B": "Wnt-7",
+    "C": "Sonic hedgehog",
+    "D": "BMP"
+  },
+  "gold_answer": "C",
+  "initial_fields_filled": [
+    "HPI.onset"
+  ],
+  "initial_tagger_raw": "{\"fields\": {\"HPI.onset\": \"Intrauterine fetal demise (IUFD) identified during the 30th gestational week\"}}",
+  "initial_worksheet_snapshot": {
+    "HPI.onset": "Intrauterine fetal demise (IUFD) identified during the 30th gestational week",
+    "HPI.duration": null,
+    "HPI.character": null,
+    "HPI.location": null,
+    "HPI.severity": null,
+    "HPI.timing": null,
+    "HPI.aggravating_relieving": null,
+    "HPI.associated_symptoms": null,
+    "PMH.chronic_conditions": null,
+    "PMH.prior_episodes": null,
+    "PMH.surgeries": null,
+    "Medications.current_meds": null,
+    "Medications.recent_changes": null,
+    "Allergies.allergies": null,
+    "Social.smoking": null,
+    "Social.alcohol": null,
+    "Social.drugs": null,
+    "Social.occupation": null,
+    "Social.travel": null,
+    "Social.sexual_history": null,
+    "Family.family_history": null,
+    "ROS.ros_positives": null,
+    "ROS.ros_negatives": null,
+    "ExamLabs.vitals": null,
+    "ExamLabs.exam_findings": null,
+    "ExamLabs.lab_results": null
+  },
+  "initial_differential": [
+    {
+      "option": "B",
+      "label": "Wnt-7",
+      "confidence": 0.5
+    },
+    {
+      "option": "C",
+      "label": "Sonic hedgehog",
+      "confidence": 0.2
+    },
+    {
+      "option": "A",
+      "label": "Hox",
+      "confidence": 0.15
+    },
+    {
+      "option": "D",
+      "label": "BMP",
+      "confidence": 0.15
+    }
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "chart_section": "Family",
+      "target_field": "family_history",
+      "question": "Does anyone in your family, or in the baby's father's family, have birth defects, limb or finger abnormalities, or other inherited conditions, and are you and the baby's father related?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Intrauterine fetal demise (IUFD) identified during the 30th gestational week",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.4
+        },
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.28
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.17
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.15
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.17, \"B\": 0.4, \"C\": 0.28, \"D\": 0.15}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Family\", \"target_field\": \"Family.family_history\", \"question\": \"Does anyone in your family, or in the baby's father's family, have birth defects, limb or finger abnormalities, or other inherited conditions, and are you and the baby's father related?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 2,
+      "chart_section": "ExamLabs",
+      "target_field": "lab_results",
+      "question": "Was there an ultrasound, or any exam or autopsy of the baby, that showed limb, finger, or facial abnormalities?",
+      "patient_answer": "",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Intrauterine fetal demise (IUFD) identified during the 30th gestational week",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.6
+        },
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.2
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.1
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.1
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {}}",
+      "ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.6, \"C\": 0.2, \"D\": 0.1}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Was there an ultrasound, or any exam or autopsy of the baby, that showed limb, finger, or facial abnormalities?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 3,
+      "chart_section": "ExamLabs",
+      "target_field": "exam_findings",
+      "question": "Did any ultrasound, exam, or autopsy of the baby show extra or fused fingers or toes, shortened or absent limbs, or facial differences?",
+      "patient_answer": "",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Intrauterine fetal demise (IUFD) identified during the 30th gestational week",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.4
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.25
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.2
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.15
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {}}",
+      "ranker_raw": "```json\n{\"A\": 0.25, \"B\": 0.2, \"C\": 0.4, \"D\": 0.15}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.exam_findings\", \"question\": \"Did any ultrasound, exam, or autopsy of the baby show extra or fused fingers or toes, shortened or absent limbs, or facial differences?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 4,
+      "chart_section": "PMH",
+      "target_field": "prior_episodes",
+      "question": "Have you had any earlier pregnancies, miscarriages, or stillbirths, and did any of those babies have limb, finger, or toe differences?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Intrauterine fetal demise (IUFD) identified during the 30th gestational week",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.5
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.2
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.18
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.12
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.2, \"B\": 0.18, \"C\": 0.5, \"D\": 0.12}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Have you had any earlier pregnancies, miscarriages, or stillbirths, and did any of those babies have limb, finger, or toe differences?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 5,
+      "chart_section": "ExamLabs",
+      "target_field": "vitals",
+      "question": "What did the fetal ultrasound or post-mortem report describe about the baby's hands, feet, or face, such as the number of digits, any fusion, or limb length?",
+      "patient_answer": "8. On autopsy, the fetus is discovered to have severe facial abnormalities.",
+      "fields_filled": [
+        "ExamLabs.lab_results"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": "Intrauterine fetal demise (IUFD) identified during the 30th gestational week",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Autopsy of fetus: severe facial abnormalities"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.8
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.1
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.05
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"ExamLabs.lab_results\": \"Autopsy of fetus: severe facial abnormalities\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.05, \"C\": 0.8, \"D\": 0.05}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.vitals\", \"question\": \"What did the fetal ultrasound or post-mortem report describe about the baby's hands, feet, or face, such as the number of digits, any fusion, or limb length?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 6,
+      "chart_section": "PMH",
+      "target_field": "chronic_conditions",
+      "question": "Do you have any ongoing medical conditions, such as diabetes, that were present during this pregnancy?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Intrauterine fetal demise (IUFD) identified during the 30th gestational week",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Autopsy of fetus: severe facial abnormalities"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.8
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.07
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.07
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.06
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.07, \"B\": 0.06, \"C\": 0.8, \"D\": 0.07}\n```",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Do you have any ongoing medical conditions, such as diabetes, that were present during this pregnancy?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 7,
+      "chart_section": "Social",
+      "target_field": "alcohol",
+      "question": "During this pregnancy, did you drink any alcohol, and if so, how much and how often?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Intrauterine fetal demise (IUFD) identified during the 30th gestational week",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Autopsy of fetus: severe facial abnormalities"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.72
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.12
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.08
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.08
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.12, \"B\": 0.08, \"C\": 0.72, \"D\": 0.08}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Social\", \"target_field\": \"Social.alcohol\", \"question\": \"During this pregnancy, did you drink any alcohol, and if so, how much and how often?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 8,
+      "chart_section": "Medications",
+      "target_field": "current_meds",
+      "question": "What medications, supplements, or prenatal vitamins were you taking during this pregnancy, including any vitamin A or retinoid products or antifungal medications?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Intrauterine fetal demise (IUFD) identified during the 30th gestational week",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Autopsy of fetus: severe facial abnormalities"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.8
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.08
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.07
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.07, \"B\": 0.05, \"C\": 0.8, \"D\": 0.08}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Medications\", \"target_field\": \"Medications.current_meds\", \"question\": \"What medications, supplements, or prenatal vitamins were you taking during this pregnancy, including any vitamin A or retinoid products or antifungal medications?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 9,
+      "chart_section": "ROS",
+      "target_field": "ros_positives",
+      "question": "During this pregnancy, especially in the first trimester, did you have any fever, rash, or flu-like illness?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Intrauterine fetal demise (IUFD) identified during the 30th gestational week",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Autopsy of fetus: severe facial abnormalities"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.78
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.1
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.07
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.1, \"B\": 0.07, \"C\": 0.78, \"D\": 0.05}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"During this pregnancy, especially in the first trimester, did you have any fever, rash, or flu-like illness?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 10,
+      "chart_section": "Social",
+      "target_field": "travel",
+      "question": "Over the past few months, did you travel anywhere, go camping, or have contact with any animals, plants, or environmental exposures, such as farm settings or certain plants?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": "Intrauterine fetal demise (IUFD) identified during the 30th gestational week",
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Autopsy of fetus: severe facial abnormalities"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.8
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.08
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.07
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "answer",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "{\"A\": 0.07, \"B\": 0.05, \"C\": 0.8, \"D\": 0.08}",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.travel\", \"question\": \"Over the past few months, did you travel anywhere, go camping, or have contact with any animals, plants, or environmental exposures, such as farm settings or certain plants?\"}",
+      "question_writer_fallback": false
+    }
+  ],
+  "final_answer": "C",
+  "correct": true,
+  "num_questions": 10,
+  "stop_reason": "max_questions",
+  "floor_answer": "B",
+  "floor_correct": false,
+  "ceiling_answer": "C",
+  "ceiling_correct": true,
+  "ceiling_differential": [
+    {
+      "option": "C",
+      "label": "Sonic hedgehog",
+      "confidence": 0.88
+    },
+    {
+      "option": "B",
+      "label": "Wnt-7",
+      "confidence": 0.05
+    },
+    {
+      "option": "D",
+      "label": "BMP",
+      "confidence": 0.04
+    },
+    {
+      "option": "A",
+      "label": "Hox",
+      "confidence": 0.03
+    }
+  ],
+  "ceiling_ranker_raw": "```json\n{\"A\": 0.03, \"B\": 0.05, \"C\": 0.88, \"D\": 0.04}\n```",
+  "full_context": "A 25-year-old female is admitted to the hospital for an intrauterine fetal demise (IUFD) during her 30th gestational week. The patient did not receive any prenatal care or screenings. The baby is delivered via C-section and the family wishes to conduct an autopsy to understand the reason for the IUFD and to better prepare for future pregnancies. On autopsy, the fetus is discovered to have severe facial abnormalities as well as a brain lacking the normal sagittal fissure.",
+  "patient_facts": [
+    "1. A 25-year-old female is admitted to the hospital.",
+    "2. The patient is admitted for an intrauterine fetal demise (IUFD).",
+    "3. The patient is in her 30th gestational week.",
+    "4. The patient did not receive any prenatal care or screenings.",
+    "5. The baby is delivered via C-section.",
+    "6. The family wishes to conduct an autopsy.",
+    "7. The purpose of the autopsy is to understand the reason for the IUFD and to better prepare for future pregnancies.",
+    "8. On autopsy, the fetus is discovered to have severe facial abnormalities.",
+    "9. On autopsy, the fetus is discovered to have a brain lacking the normal sagittal fissure."
+  ],
+  "run": {
+    "max_questions": 10,
+    "stop_rule": "fixed",
+    "answer_confidence_threshold": 0.8,
+    "temperature": null,
+    "seconds": 111.7,
+    "timestamp": "2026-11-13T04:56:36+00:00",
+    "usage": {
+      "num_calls": 36,
+      "calls_by_tag": {
+        "tagger": 4,
+        "ranker": 11,
+        "question_writer": 10,
+        "patient": 10,
+        "ceiling_ranker": 1
+      },
+      "prompt_tokens": 32936,
+      "completion_tokens": 13867,
+      "cost_usd": 0.010227
+    }
+  }
+}

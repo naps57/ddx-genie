@@ -17,7 +17,11 @@ temperature: null
 patient_max_tokens: 256
 
 # Agent policy (our minimal baseline, demo/agent.py)
-answer_confidence_threshold: 0.8   # commit once top option confidence >= this
+#   fixed:      always ask --max-questions questions (or until no askable fields remain),
+#               then answer with the top option of the final ranking.
+#   confidence: stop early once the top option's confidence >= answer_confidence_threshold.
+stop_rule: fixed
+answer_confidence_threshold: 0.8   # used only when stop_rule: confidence
 
 # MediQ data location (pinned clone, see README)
 mediq_dir: external/mediQ

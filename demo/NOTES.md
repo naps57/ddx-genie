@@ -39,13 +39,14 @@ Line numbers are from that commit.
 1. **LLM backend.** Before importing `patient.py` we register a stand-in `helper` module in `sys.modules` whose `get_response` calls LiteLLM (`demo/mediq_adapter.py`). This avoids bugs 1, 2, 3, 6, 7 and 8 without editing MediQ. Patient and Expert keep separate settings.
 2. **Shipped facts are used.** We copy `facts` to `atomic_facts` on the sample before constructing the patient (fixes bug 4). The patient therefore never regenerates facts, and every run sees the same fact list.
 3. **Patient max tokens = 256.** This reproduces the *effective* stock behaviour (bug 5), not the intended 50. It can be changed via `patient_max_tokens` in `demo/config.yaml`.
-4. **Temperature 0** for all calls (stock default is 0.6, top_p 0.9). top_p is not set.
+4. **Model and sampling.** The default is `claude-haiku-5-5` (via LiteLLM) for both Expert and Patient. Current Claude models reject any non-default `temperature`, so we send none (`temperature: null` in config) and runs are **not deterministic**: the same case can produce different questions and confidences on a re-run. Stock MediQ defaults to temperature 0.6, top_p 0.9. For OpenAI models set `temperature: 0.0`.
 5. **Case selection.** Cases come from `all_dev_good.jsonl` (MedQA) by default. We skip records with fewer than 3 shipped facts (bug 14) and sample with `random.Random(seed)`. Stock MediQ iterates every record in file order.
 6. **Expert.** We do not use any MediQ Expert class. `demo/agent.py` is our own minimal chart-section agent, a placeholder until Arda's baseline is integrated:
    - It writes questions targeted at unfilled fields of a Genie `ClinicalHistory` worksheet.
    - It tags patient answers into worksheet fields with an extra LLM call; the raw output is logged in the trace.
    - It ranks all options with probabilities after every turn.
-   - It stops when the top option reaches `answer_confidence_threshold` (0.8), at `--max-questions`, or when no askable fields remain.
+   - Default `stop_rule: fixed`: it always asks `--max-questions` questions (or stops early only when no askable fields remain), like MediQ's `FixedExpert`. We chose this because, with a confidence threshold of 0.8, Haiku was often 72-80% confident from the chief complaint alone and asked 0-1 questions.
+   - `stop_rule: confidence` additionally stops once the top option reaches `answer_confidence_threshold`.
    Stock MediQ experts instead produce one letter per turn plus a model-specific abstention score.
 7. **Floor and ceiling** use the same option-ranking prompt as the agent:
    - The floor is the agent's own turn-0 ranking from the initial info only. It is equivalent in spirit to `FixedExpert` with `--max_questions 0`, but with our prompt.

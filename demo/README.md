@@ -21,7 +21,7 @@ pip install uv && uv pip install -r demo/requirements.txt   # plain pip can stal
 git clone https://github.com/stellalisy/mediQ.git external/mediQ
 git -C external/mediQ checkout faa2ce62fef0423e35af4c31d7537aad973173eb
 
-cp .env.example .env   # then set OPENAI_API_KEY (or the key for whichever model you configure)
+cp .env.example .env   # then set ANTHROPIC_API_KEY (or the key for whichever model you configure)
 ```
 
 `demo/config.yaml` holds the settings:
@@ -30,7 +30,7 @@ cp .env.example .env   # then set OPENAI_API_KEY (or the key for whichever model
 |---|---|
 | `model` | Expert model, as a LiteLLM model string |
 | `patient_model` | Model behind MediQ's patient |
-| `answer_confidence_threshold` | Confidence at which the agent stops asking and answers |
+| `stop_rule` | `fixed` (default): always ask `--max-questions`. `confidence`: also stop at `answer_confidence_threshold` |
 | `patient_max_tokens` | Token cap for each patient answer |
 
 Change `model` to swap the whole pipeline to another provider.
@@ -53,7 +53,7 @@ For each case the script runs three things:
 
 It writes `demo/traces/<case_id>.json` and prints floor, agent and ceiling accuracy, average questions asked, and the total cost.
 
-With `gpt-4o-mini` each case makes about 4 LLM calls per question:
+With the default model (Claude Haiku 5.5, about $0.01 per case at 10 questions) each case makes about 4 LLM calls per question:
 
 - question writer
 - patient
