@@ -18,12 +18,17 @@ ddx-genie/
   CLAUDE.md, README.md, baseline_scores.md, pyproject.toml
   .env                      # secrets, gitignored
   data/raw/                 # downloads (MediQ repo clone), gitignored, never committed
-  data/processed/mediq/     # subset.jsonl, views.jsonl
-  src/ddx_genie/            # llm.py, mediq.py, reveal.py, diagnosis.py, partial_eval.py, baselines.py
-  scripts/                  # baseline_report.py, smoke_llm.py
+  data/processed/mediq/     # subset.jsonl (frozen 50 test), dev.jsonl (other 59), views.jsonl,
+                            # reveal_prior_dev.json (chart_asker --estimate-prior; dev only)
+  src/ddx_genie/            # llm.py, mediq.py, reveal.py, diagnosis.py, partial_eval.py, baselines.py,
+                            # chart_asker.py (Genie worksheet arm: checklist / differential policies)
+  specs/                    # chart_sections.yaml (asker schema) -> clinical_history.csv (Genie spec)
+  scripts/                  # baseline_report.py (--chart-run for the asker arms), smoke_llm.py
   runs/<run_id>/            # one JSON per case + cost.jsonl + summary.json (gitignored except summary)
+  demo/                     # John's original prototype + replay app (own setup; archive traces)
   tests/
 ```
+Design and tune anything new on `dev.jsonl`; the frozen 50 are a held-out test set.
 
 ## Hard rules
 - Never commit `data/raw/`, `.env`, or full `runs/` directories.

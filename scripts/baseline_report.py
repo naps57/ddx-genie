@@ -154,11 +154,103 @@ def asking_tables(run: str, oneshot: str) -> None:
     print(f"\nPrompted asking (5 questions) obtained {mean(got)} of key facts (same cases).")
 
 
+def chart_tables(chart_run: str, baselines_run: str) -> None:
+    """Chart-section asker arms (``ddx_genie.chart_asker``) against the frozen baselines.
+
+    Comparisons that need per-case baseline results (equal-facts vs random, McNemar vs
+    prompted asking, key-fact recall, the best-k gap ceiling) print "n/a" when
+    ``runs/<baselines_run>/<arm>/*.json`` is absent; only summary.json is in git.
+    """
+    from ddx_genie.chart_asker import POLICIES, mcnemar_exact
+
+    base = {n: {r["case_id"]: r for r in load(baselines_run, n)}
+            for n in ("asking", "random", "bestk")}
+
+    def at(r: dict, k: int) -> dict | None:
+        return next((s["scored"] for s in r["steps"] if s["k"] == k), None)
+
+    def p_gold_mean(results: list[dict], k: int) -> float | None:
+        xs = [s["p_gold"] for r in results if (s := at(r, k))]
+        return sum(xs) / len(xs) if xs else None
+
+    for policy in POLICIES:
+        arm = load(chart_run, policy)
+        arm = [r for r in arm if "steps" in r]  # skip summary.json
+        if not arm:
+            continue
+        ids = [r["case_id"] for r in arm]
+        print(f"\n### Chart-section asker: {policy} ({chart_run}, n={len(arm)})\n")
+        print("| k | top-1 | top-5 | P(gold) | McNemar top-1 vs prompted asking |")
+        print("|---|---|---|---|---|")
+        for k in range(0, 6):
+            rows = [s for r in arm if (s := at(r, k))]
+            if not rows:
+                continue
+            paired = [(at(r, k), at(base["asking"][r["case_id"]], k)) for r in arm
+                      if r["case_id"] in base["asking"] and k > 0]
+            paired = [(a, b) for a, b in paired if a and b]
+            if paired:
+                m = mcnemar_exact([a["match_rank"] == 1 for a, _ in paired],
+                                  [b["match_rank"] == 1 for _, b in paired])
+                test = f"+{m['only_a']} / −{m['only_b']}, p={m['p']:.3f} (n={len(paired)})"
+            else:
+                test = "n/a" if k else "—"
+            print(f"| {k} | {prop([s['match_rank'] == 1 for s in rows])} | "
+                  f"{prop([s['match_rank'] is not None for s in rows])} | "
+                  f"{mean([s['p_gold'] for s in rows])} | {test} |")
+
+        asks = [s for r in arm for s in r["steps"] if s["k"] > 0]
+        hits = [not s["wasted"] for s in asks]
+        print(f"\nPer question: {len(asks)} questions, hit rate {prop(hits)} "
+              f"(prompted asking: 0.43); "
+              f"{sum(len(s['answered_with']) for s in asks) / len(asks):.2f} facts per question.")
+
+        # Gap closed at k=3 on P(gold): arm's own k=0 as the floor, best-k k=3 as the ceiling.
+        best = [base["bestk"][i] for i in ids if i in base["bestk"]]
+        floor, now, ceil = p_gold_mean(arm, 0), p_gold_mean(arm, 3), p_gold_mean(best, 3)
+        if None not in (floor, now, ceil) and len(best) == len(arm) and ceil != floor:
+            print(f"Gap closed at k=3 (P(gold)): {(now - floor) / (ceil - floor):.0%} "
+                  f"(prompted asking 27%, random facts 40%)")
+        else:
+            print("Gap closed at k=3: n/a (needs per-case best-k results on the same cases)")
+
+        # Per fact: pair each step with the random arm at the same number of facts obtained.
+        if base["random"]:
+            print("\n| facts obtained | n | chart top-1 | random top-1 | chart P(gold) | random P(gold) |")
+            print("|---|---|---|---|---|---|")
+            cells: dict[int, list[tuple[dict, dict]]] = defaultdict(list)
+            for r in arm:
+                rnd, got = base["random"].get(r["case_id"]), 0
+                for s in r["steps"][1:]:
+                    got += len(s["answered_with"])
+                    if s["answered_with"] and rnd and (rs := at(rnd, got)):
+                        cells[got].append((s["scored"], rs))
+            for n_facts, pairs in sorted(cells.items()):
+                c, rr = [a for a, _ in pairs], [b for _, b in pairs]
+                print(f"| {n_facts} | {len(pairs)} | "
+                      f"{sum(x['match_rank'] == 1 for x in c) / len(c):.2f} | "
+                      f"{sum(x['match_rank'] == 1 for x in rr) / len(rr):.2f} | "
+                      f"{sum(x['p_gold'] for x in c) / len(c):.2f} | "
+                      f"{sum(x['p_gold'] for x in rr) / len(rr):.2f} |")
+        else:
+            print("Per-fact comparison vs random facts: n/a (needs per-case random results)")
+
+        key = {i: set(base["bestk"][i]["key_facts"]) for i in ids if i in base["bestk"]}
+        got = [len(key[r["case_id"]] & {j for s in r["steps"] for j in s.get("answered_with", [])})
+               / len(key[r["case_id"]]) for r in arm if key.get(r["case_id"])]
+        print(f"Key-fact recall (5 questions): {mean(got)} (prompted asking 0.42)" if got
+              else "Key-fact recall: n/a (needs per-case best-k results)")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--oneshot-run", default="mediq_open_v1")
     ap.add_argument("--baselines-run", default="baselines_v1")
+    ap.add_argument("--chart-run", help="chart_asker run id; prints its arms only")
     a = ap.parse_args()
+    if a.chart_run:
+        chart_tables(a.chart_run, a.baselines_run)
+        return 0
     oneshot_tables(a.oneshot_run)
     asking_tables(a.baselines_run, a.oneshot_run)
     return 0

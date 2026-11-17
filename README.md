@@ -16,15 +16,55 @@ MediQ subset → partial views (reveal p of the facts) → diagnosis (one-shot o
 
 See `CLAUDE.md` for the design contract.
 
-### `demo/`: Genie worksheet-guided asker (prototype)
+### Chart-section asker (Genie worksheet arm)
 
-`demo/` is a separate, self-contained prototype of the chart-section asker: a Genie `ClinicalHistory`
-worksheet whose unfilled fields drive the questions, run against MediQ's own `FactSelectPatient`, with
-a turn-by-turn replay app (`streamlit run demo/app.py`) and a static replay page (`demo/site/index.html`).
-It has its own setup, dependencies and model config; see [demo/README.md](demo/README.md) and
-[demo/NOTES.md](demo/NOTES.md). Its numbers are **not** comparable to `baseline_scores.md` yet: it
-scores multiple-choice option ranking on 10 different cases with Claude Haiku. Porting it into this
-harness as an arm (same 50 cases, open-ended top-5 + judge, same model and patient) is the next step.
+`src/ddx_genie/chart_asker.py` is an asking arm built on the same loop as prompted asking
+(`baselines.run_asking`): complaint-only start, k = 1..5 questions, the same fact-select patient,
+the same open-ended diagnose + judge after every step. Each question targets one unfilled field of a
+`ClinicalHistory` Genie worksheet and is that field's fixed question. Two policies differ only in
+which field they pick:
+
+- `checklist`: the first unfilled field in schema order.
+- `differential`: one call scores every unfilled field 0–10 by how much it would change the current
+  top-5; optionally weighted by a reveal-rate prior estimated on dev (`--prior`).
+
+`specs/chart_sections.yaml` is the schema (sections, fields, descriptions, questions). It is written
+out as a 14-column Genie spec, `specs/clinical_history.csv`, and the live worksheet is built from that
+CSV by Genie's own `csv_to_classes`. Genie's dialogue loop is not used: its LLM calls would bypass
+`llm.py`, and its policy only asks in declaration order.
+
+`data/processed/mediq/dev.jsonl` holds the 59 eligible diagnosis cases not in the frozen 50
+(written by `ddx_genie.mediq`). Design and tune on dev only. The CLI refuses `--split test` or more
+than 5 cases without `--confirmed`.
+
+```bash
+uv run python -m ddx_genie.chart_asker --write-spec                    # after editing the YAML
+uv run python -m ddx_genie.chart_asker --run-id chart_dev_smoke --policy checklist --limit 1
+uv run python -m ddx_genie.chart_asker --run-id chart_prior_dev --estimate-prior --limit 59 --confirmed
+uv run python -m ddx_genie.chart_asker --run-id chart_dev --policy differential \
+    --prior data/processed/mediq/reveal_prior_dev.json --limit 5
+uv run python scripts/baseline_report.py --chart-run chart_dev            # chart arms only
+```
+
+The report's comparisons against prompted asking, random facts and best-k (McNemar, equal-facts,
+gap closed, key-fact recall) need the per-case baseline JSONs in `runs/baselines_v1/`. Only
+`summary.json` is in git, so these print `n/a` until those files are present.
+
+**Why a reveal-rate prior.** MediQ has no population statistics for P(finding | diagnosis), so the
+conditional (how much a finding would move the differential) has to come from the LLM. What the data
+*does* ground is how often each chart field is documented at all: we file every non-anchor fact of
+each dev case under chart fields and take the Laplace-smoothed share of cases in which each field is
+documented. The differential policy ranks fields by expected value = reveal rate × LLM-scored impact,
+so it stops spending questions on fields the record rarely contains. The rate is estimated on dev only
+and never on the 50 test cases.
+
+### `demo/`: the original prototype
+
+`demo/` is the first, self-contained prototype of the asker, with a turn-by-turn replay app
+(`streamlit run demo/app.py`) and a static replay page (`demo/site/index.html`). It has its own setup;
+see [demo/README.md](demo/README.md) and [demo/NOTES.md](demo/NOTES.md). Its numbers are **not**
+comparable to `baseline_scores.md`: it scores multiple-choice option ranking on 10 different cases
+with Claude Haiku. Its traces are kept as an archive.
 
 ## Setup
 
@@ -81,6 +121,9 @@ brew install redis && redis-server --daemonize yes
   version marker so only `psycopg2-binary` (which bundles its own libpq) is installed.
 - **Stale `VIRTUAL_ENV`.** If another venv is active, `uv pip install` silently targets *that* venv.
   Run `env -u VIRTUAL_ENV uv …` if installs appear to vanish.
+- **`ModuleNotFoundError: ddx_genie` on macOS.** Python ≥ 3.13 skips `.pth` files that carry the
+  macOS `hidden` flag, and the editable-install `.pth` can pick it up after a re-sync. Fix:
+  `chflags nohidden .venv/lib/python3.*/site-packages/*.pth`.
 
 ## Corrections to the upstream docs
 

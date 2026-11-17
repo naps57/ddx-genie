@@ -8,6 +8,7 @@ from ddx_genie.mediq import (
     DataError,
     answer_leaks,
     clean_fact,
+    dev_split,
     is_diagnosis_question,
     parse_record,
     sample,
@@ -79,3 +80,13 @@ def test_sample_is_deterministic_and_sorted() -> None:
     assert [c.source_id for c in a] == sorted(c.source_id for c in a)
     with pytest.raises(DataError):
         sample(cases, n=31)
+
+
+def test_dev_split_is_disjoint_and_complete() -> None:
+    cases = [parse_record(RAW | {"id": i}, "x.jsonl") for i in range(30)]
+    test = sample(cases, n=10, seed=0)
+    dev = dev_split(list(reversed(cases)), test)
+    dev_ids, test_ids = {c.source_id for c in dev}, {c.source_id for c in test}
+    assert not dev_ids & test_ids
+    assert dev_ids | test_ids == set(range(30))
+    assert [c.source_id for c in dev] == sorted(dev_ids)

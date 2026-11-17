@@ -26,6 +26,8 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 MEDIQ_DIR = REPO_ROOT / "data" / "raw" / "mediq" / "repo" / "data"
 SOURCE_FILE = "all_dev_good.jsonl"  # MedQA-derived; all_craft_md.jsonl is dermatology only
 OUT_PATH = REPO_ROOT / "data" / "processed" / "mediq" / "subset.jsonl"
+#: Every other eligible diagnosis case: design and debug here, never on the frozen 50.
+DEV_PATH = REPO_ROOT / "data" / "processed" / "mediq" / "dev.jsonl"
 
 SEED = 0
 N_CASES = 50
@@ -189,6 +191,13 @@ def sample(cases: list[MediQCase], n: int = N_CASES, seed: int = SEED) -> list[M
     return sorted(picked, key=lambda c: c.source_id)
 
 
+def dev_split(eligible: list[MediQCase], test: list[MediQCase]) -> list[MediQCase]:
+    """Eligible cases not in the test sample, in source order. Disjoint from ``test``."""
+    held_out = {c.source_id for c in test}
+    return sorted((c for c in eligible if c.source_id not in held_out),
+                  key=lambda c: c.source_id)
+
+
 def write_subset(cases: list[MediQCase], path: Path = OUT_PATH) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("".join(json.dumps(asdict(c)) + "\n" for c in cases))
@@ -199,13 +208,16 @@ def main() -> int:
     eligible = select_diagnosis_cases(all_cases)
     picked = sample(eligible)
     write_subset(picked)
+    dev = dev_split(eligible, picked)
+    write_subset(dev, DEV_PATH)
     n_facts = sorted(len(c.facts) for c in picked)
     print(f"skipped {len(skipped)} records with no facts: {skipped}")
     print(f"{len(all_cases)} records -> {len(eligible)} diagnosis questions "
           f"-> {len(picked)} sampled (seed {SEED})")
     print(f"facts per case: min {n_facts[0]}, median {n_facts[len(n_facts) // 2]}, "
           f"max {n_facts[-1]}")
-    print(f"wrote {OUT_PATH.relative_to(REPO_ROOT)}")
+    print(f"wrote {OUT_PATH.relative_to(REPO_ROOT)} (test, {len(picked)}) and "
+          f"{DEV_PATH.relative_to(REPO_ROOT)} (dev, {len(dev)})")
     return 0
 
 

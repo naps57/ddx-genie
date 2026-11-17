@@ -165,15 +165,15 @@ def ask_question(case: dict[str, Any], known: list[int], history: list[tuple[str
 
 
 def patient_answer(case: dict[str, Any], question: str, known: list[int],
-                   client: LLMClient) -> list[int]:
-    """Fact-select patient over the not-yet-known facts."""
+                   client: LLMClient, tag: str = "asking:patient") -> list[int]:
+    """Fact-select patient over the not-yet-known facts. ``tag`` only labels cost.jsonl."""
     pool = hidden(case, known)
     if not pool or not question:
         return []
     user = f"Facts:\n{_numbered(case['facts'], pool)}\n\nDoctor's question: {question}"
     completion = client.complete(
         [{"role": "system", "content": PATIENT_SYSTEM}, {"role": "user", "content": user}],
-        tag="asking:patient", max_tokens=60,
+        tag=tag, max_tokens=60,
     )
     return _indices(completion.text, "facts", pool)
 
