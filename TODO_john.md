@@ -58,7 +58,9 @@ Stop and show me a plan before step 2.
       writes `data/processed/mediq/reveal_prior_dev.json` (Laplace-smoothed per-field and per-section
       rates). The `differential` policy uses expected value = reveal rate × LLM impact via `--prior`.
       Observed P(asking a field reveals a fact) is in each run's summary (`hits_by_field`).
-- [ ] Run it on all 59 dev cases (~59 cheap calls, needs `--confirmed`, **ask first**).
+- [x] Run it on all 59 dev cases → `reveal_prior_dev.json` (59 calls, $0.021). Section rates:
+      ExamLabs 0.93, HPI 0.87, PMH 0.59, ROS 0.44, Medications 0.39, Social 0.39, Family 0.10,
+      Allergies 0.02.
 - [x] Paragraph for the paper: in README.md, "Why a reveal-rate prior".
 
 ## 5. Metrics ✅ code
@@ -70,10 +72,16 @@ Stop and show me a plan before step 2.
       → The last four need Arda's per-case baseline files (see step 0).
 
 ## 6. Runs (ask me before each one over 5 cases)
-- [ ] Smoke test: 1 case per policy on dev, print cost.
-      `uv run python -m ddx_genie.chart_asker --run-id chart_dev_smoke --policy checklist --limit 1`
-      (repeat with `--policy differential`)
-- [ ] 5 dev cases per policy, inspect traces, fix prompts/fields on dev only.
+- [x] Smoke test: 1 case per policy on dev ($0.0065). Run as
+      `PYTHONPATH=src:../genie-worksheets/src .venv/bin/python -m ddx_genie.chart_asker ...`
+      (macOS keeps re-hiding the venv's `.pth` files under iCloud `~/Documents`).
+- [x] 5 dev cases per policy (`runs/chart_dev5`, `runs/chart_dev5_noprior`, $0.06 total).
+      Top-1 out of 5 at k=0..5: checklist 1,1,1,2,3,3; differential+prior 1,3,5,4,4,4;
+      differential without prior 1,2,4,5,4,4. Hit rate 15/25, 18/25, 16/25. Checklist asked
+      23/25 questions in HPI; the prior moved the differential policy toward ExamLabs (12/25).
+      n=5 is anecdotal; do not read effect sizes from it.
+- [ ] Decide the checklist order (HPI-first vs a section round-robin) on dev before the 50.
+- [ ] Look at why accuracy dips after it peaks (differential+prior 5/5 at k=2, 4/5 at k=5).
 - [ ] **Ask me**, then the frozen 50, new run ids (e.g. `runs/chart_checklist_v1`,
       `runs/chart_differential_v1`). Report via `scripts/baseline_report.py --chart-run`.
 

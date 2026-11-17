@@ -1,0 +1,93 @@
+{
+  "by_k": {
+    "0": {
+      "n": 5,
+      "top1": 0.2,
+      "top5": 0.6,
+      "p_gold": 0.19
+    },
+    "1": {
+      "n": 5,
+      "top1": 0.2,
+      "top5": 0.8,
+      "p_gold": 0.24
+    },
+    "2": {
+      "n": 5,
+      "top1": 0.2,
+      "top5": 0.8,
+      "p_gold": 0.22999999999999998
+    },
+    "3": {
+      "n": 5,
+      "top1": 0.4,
+      "top5": 1.0,
+      "p_gold": 0.27999999999999997
+    },
+    "4": {
+      "n": 5,
+      "top1": 0.6,
+      "top5": 1.0,
+      "p_gold": 0.314
+    },
+    "5": {
+      "n": 5,
+      "top1": 0.6,
+      "top5": 1.0,
+      "p_gold": 0.334
+    }
+  },
+  "behaviour": {
+    "questions": 25,
+    "hit_rate": 0.6,
+    "facts_per_question": 0.8,
+    "target_filled_share": 0.28,
+    "fallback_share": 0.0,
+    "questions_by_section": {
+      "HPI": 23,
+      "PMH": 2
+    },
+    "hits_by_field": {
+      "HPI.aggravating_relieving": [
+        4,
+        5
+      ],
+      "HPI.associated_symptoms": [
+        3,
+        3
+      ],
+      "HPI.duration": [
+        0,
+        1
+      ],
+      "HPI.location": [
+        1,
+        3
+      ],
+      "HPI.onset": [
+        2,
+        4
+      ],
+      "HPI.severity": [
+        4,
+        5
+      ],
+      "HPI.timing": [
+        0,
+        2
+      ],
+      "PMH.chronic_conditions": [
+        1,
+        1
+      ],
+      "PMH.prior_episodes": [
+        0,
+        1
+      ]
+    }
+  },
+  "policy": "checklist",
+  "split": "dev",
+  "n_cases": 5,
+  "usd": 0.011725750000000002
+}

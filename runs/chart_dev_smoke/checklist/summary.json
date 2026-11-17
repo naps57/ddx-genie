@@ -1,0 +1,76 @@
+{
+  "by_k": {
+    "0": {
+      "n": 1,
+      "top1": 0.0,
+      "top5": 1.0,
+      "p_gold": 0.2
+    },
+    "1": {
+      "n": 1,
+      "top1": 0.0,
+      "top5": 1.0,
+      "p_gold": 0.2
+    },
+    "2": {
+      "n": 1,
+      "top1": 0.0,
+      "top5": 1.0,
+      "p_gold": 0.2
+    },
+    "3": {
+      "n": 1,
+      "top1": 1.0,
+      "top5": 1.0,
+      "p_gold": 0.35
+    },
+    "4": {
+      "n": 1,
+      "top1": 1.0,
+      "top5": 1.0,
+      "p_gold": 0.4
+    },
+    "5": {
+      "n": 1,
+      "top1": 1.0,
+      "top5": 1.0,
+      "p_gold": 0.45
+    }
+  },
+  "behaviour": {
+    "questions": 5,
+    "hit_rate": 0.6,
+    "facts_per_question": 1.0,
+    "target_filled_share": 0.4,
+    "fallback_share": 0.0,
+    "questions_by_section": {
+      "HPI": 5
+    },
+    "hits_by_field": {
+      "HPI.aggravating_relieving": [
+        1,
+        1
+      ],
+      "HPI.associated_symptoms": [
+        1,
+        1
+      ],
+      "HPI.location": [
+        0,
+        1
+      ],
+      "HPI.onset": [
+        0,
+        1
+      ],
+      "HPI.severity": [
+        1,
+        1
+      ]
+    }
+  },
+  "policy": "checklist",
+  "split": "dev",
+  "n_cases": 1,
+  "usd": 0.0028237500000000003
+}

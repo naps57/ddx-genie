@@ -1,0 +1,79 @@
+{
+  "by_k": {
+    "0": {
+      "n": 1,
+      "top1": 0.0,
+      "top5": 1.0,
+      "p_gold": 0.2
+    },
+    "1": {
+      "n": 1,
+      "top1": 1.0,
+      "top5": 1.0,
+      "p_gold": 0.4
+    },
+    "2": {
+      "n": 1,
+      "top1": 1.0,
+      "top5": 1.0,
+      "p_gold": 0.4
+    },
+    "3": {
+      "n": 1,
+      "top1": 1.0,
+      "top5": 1.0,
+      "p_gold": 0.4
+    },
+    "4": {
+      "n": 1,
+      "top1": 1.0,
+      "top5": 1.0,
+      "p_gold": 0.4
+    },
+    "5": {
+      "n": 1,
+      "top1": 1.0,
+      "top5": 1.0,
+      "p_gold": 0.4
+    }
+  },
+  "behaviour": {
+    "questions": 5,
+    "hit_rate": 0.4,
+    "facts_per_question": 0.8,
+    "target_filled_share": 0.0,
+    "fallback_share": 0.0,
+    "questions_by_section": {
+      "HPI": 1,
+      "Social": 1,
+      "PMH": 1,
+      "Medications": 2
+    },
+    "hits_by_field": {
+      "HPI.associated_symptoms": [
+        1,
+        1
+      ],
+      "Medications.current_meds": [
+        0,
+        1
+      ],
+      "Medications.recent_changes": [
+        0,
+        1
+      ],
+      "PMH.prior_episodes": [
+        1,
+        1
+      ],
+      "Social.drugs": [
+        0,
+        1
+      ]
+    }
+  },
+  "policy": "differential",
+  "split": "dev",
+  "n_cases": 1,
+  "usd": 0.006455750000000001
+}

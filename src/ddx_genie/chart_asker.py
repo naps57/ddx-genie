@@ -506,13 +506,16 @@ def run(client: LLMClient, run_id: str, policy: str, cases: list[dict[str, Any]]
         fields: list[ChartField], prior: dict[str, float] | None) -> list[dict[str, Any]]:
     out_dir = RUNS_DIR / run_id / policy
     results = []
+    projected = False
     for n, case in enumerate(cases, 1):
         path = out_dir / f"{case['case_id']}.json"
         if path.exists():
             results.append(json.loads(path.read_text()))
             continue
         client.budget.check()
+        before = client.cost_log.total_usd
         res = run_chart(case, client, policy, fields, prior=prior)
+        case_usd = client.cost_log.total_usd - before
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(res, indent=1) + "\n")
         results.append(res)
@@ -520,11 +523,13 @@ def run(client: LLMClient, run_id: str, policy: str, cases: list[dict[str, Any]]
               f"top-1 k0={res['steps'][0]['scored']['match_rank'] == 1} "
               f"k{res['steps'][-1]['k']}={res['steps'][-1]['scored']['match_rank'] == 1} "
               f"| {client.summary()}", flush=True)
-        if n == 1 and len(cases) > 1:
-            per_case = client.cost_log.total_usd
-            projected = per_case * len(cases)
-            print(f"projected run total ${projected:.4f} (cap ${client.budget.max_run_usd:.2f})")
-            if projected > client.budget.max_run_usd:
+        # Project from the first case that actually cost money (cache replays are free,
+        # and the ledger may already hold other policies' spend under the same run id).
+        if not projected and case_usd > 0 and n < len(cases):
+            projected = True
+            total = client.cost_log.total_usd + case_usd * (len(cases) - n)
+            print(f"projected run total ${total:.4f} (cap ${client.budget.max_run_usd:.2f})")
+            if total > client.budget.max_run_usd:
                 raise SystemExit("projected spend exceeds MAX_RUN_USD; aborting the batch")
     return results
 
