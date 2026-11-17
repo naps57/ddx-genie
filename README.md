@@ -24,7 +24,13 @@ the same open-ended diagnose + judge after every step. Each question targets one
 `ClinicalHistory` Genie worksheet and is that field's fixed question. Two policies differ only in
 which field they pick:
 
-- `checklist`: the first unfilled field in schema order.
+- `checklist`: a fixed section round-robin. Sections are visited in the order of their dev reveal
+  rate (Exam/Labs, HPI, PMH, ROS, Medications, Social, Family, Allergies; see
+  `data/processed/mediq/reveal_prior_dev.json`), which is the order they are listed in the YAML.
+  Each question goes to the least-asked section that still has an unfilled, not-yet-asked field
+  (ties go to that order), and asks that section's first such field. It does not look at the
+  differential. An earlier version asked fields strictly in schema order with HPI first and spent
+  23 of 25 dev questions in HPI, so it was replaced before any test run.
 - `differential`: one call scores every unfilled field 0–10 by how much it would change the current
   top-5; optionally weighted by a reveal-rate prior estimated on dev (`--prior`).
 
@@ -49,6 +55,40 @@ uv run python scripts/baseline_report.py --chart-run chart_dev            # char
 The report's comparisons against prompted asking, random facts and best-k (McNemar, equal-facts,
 gap closed, key-fact recall) need the per-case baseline JSONs in `runs/baselines_v1/`. Only
 `summary.json` is in git, so these print `n/a` until those files are present.
+
+#### Dev results (50 dev cases, not the test set)
+
+**The frozen 50 test cases have no reported chart-asker results yet, and `baseline_scores.md` is
+unchanged.** Everything below is on the first 50 cases of `dev.jsonl`, the split used to design the
+arm. Runs: `runs/chart_dev50/{checklist,differential}/` (differential with `--prior`) and
+`runs/chart_dev50_noprior/differential/` (only `summary.json` is in git). Model
+`gemini-3.1-flash-lite`, about $0.47 for all three.
+
+Top-1 (strict judge match) after k questions:
+
+| Variant | k=0 | k=1 | k=2 | k=3 | k=4 | k=5 | Top-5 at k=5 | Questions answered |
+|---|---|---|---|---|---|---|---|---|
+| `checklist` (round-robin) | .18 | .20 | .30 | .40 | .38 | .38 | .58 | 48% |
+| `differential` + prior | .18 | .54 | .58 | .60 | .60 | .68 | .84 | 65% |
+| `differential`, no prior | .18 | .32 | .46 | .52 | .60 | .66 | .82 | 64% |
+
+"Questions answered" is the share of questions for which the patient revealed at least one fact
+(the hit rate; prompted asking gets 43% on the test set). The differential policy fell back to
+checklist order 0 times.
+
+Paired exact McNemar on top-1 (cases only A gets right – only B gets right, two-sided p):
+
+| Comparison | k=1 | k=3 | k=5 |
+|---|---|---|---|
+| differential + prior vs checklist | 17–0, p<.001 | 14–4, p=.031 | 16–1, p<.001 |
+| differential no prior vs checklist | 7–1, p=.070 | 11–5, p=.21 | 16–2, p=.001 |
+| differential + prior vs no prior | 11–0, p=.001 | 6–2, p=.29 | 3–2, p=1.0 |
+
+Reading: choosing questions from the current differential beats the fixed checklist clearly by k=5.
+The prior mainly makes early questions better (k=1); by k=5 the two differential variants tie.
+**Caveat:** the reveal prior was estimated on these same dev cases (`--estimate-prior` uses all 59),
+so it is in-sample here and the "+ prior" numbers are optimistic. The test run has no such overlap.
+With n=50, a 95% interval on a single rate is roughly ±0.13.
 
 **Why a reveal-rate prior.** MediQ has no population statistics for P(finding | diagnosis), so the
 conditional (how much a finding would move the differential) has to come from the LLM. What the data

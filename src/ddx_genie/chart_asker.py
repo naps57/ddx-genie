@@ -8,10 +8,12 @@ worksheet and is that field's fixed question from ``specs/chart_sections.yaml``.
 
 Two policies pick the field; everything else is shared, so they differ ONLY in choice:
 
-- ``checklist``: fixed order, round-robin over sections in schema order: each question goes
-  to the least-asked section that still has an unfilled, not-yet-asked field, and to that
-  section's first such field. (The first version asked fields strictly in schema order and
-  spent 23/25 dev questions in HPI.)
+- ``checklist``: fixed order, a round-robin over sections. Sections are visited in YAML
+  order, which is sorted by dev reveal rate (ExamLabs, HPI, PMH, ROS, Medications, Social,
+  Family, Allergies; ``reveal_prior_dev.json``). Each question goes to the least-asked
+  section that still has an unfilled, not-yet-asked field (ties go to that order), and to
+  that section's first such field. It never looks at the differential. (The first version
+  asked fields strictly in schema order, HPI first, and spent 23/25 dev questions in HPI.)
 - ``differential``: one call scores every unfilled field 0-10 by how much its answer would
   change the current top-5 differential; ask the highest (optionally weighted by a
   per-field reveal-rate prior, see ``--prior``). All scores are logged.
@@ -237,8 +239,9 @@ class Choice:
 
 
 def choose_checklist(askable: list[str], asked: list[str]) -> Choice:
-    """Round-robin over sections in schema order: the least-asked section that still has
-    an askable field (ties go to schema order), then its first askable field.
+    """Round-robin over sections in YAML order (sorted by dev reveal rate): the least-asked
+    section that still has an askable field (ties go to YAML order), then its first askable
+    field.
 
     ``askable`` is in schema order; ``asked`` is every key asked so far, in order.
     """
