@@ -18,6 +18,7 @@ from ddx_genie.chart_asker import (
     ChartField,
     ChartWorksheet,
     apply_tags,
+    choose_checklist,
     estimate_prior,
     genie_spec_rows,
     load_prior,
@@ -159,15 +160,29 @@ CASE = {"case_id": "c1", "source_id": 1, "answer": "Pneumonia", "n_initial": 1,
         "facts": ["A 40-year-old man has a cough.", "He smokes.", "Chest x-ray shows consolidation."]}
 
 
-def test_checklist_asks_in_schema_order_and_never_repeats(spec: Path) -> None:
+def test_choose_checklist_round_robins_sections() -> None:
+    keys = ["A.a1", "A.a2", "A.a3", "B.b1", "C.c1", "C.c2"]
+
+    def next_key(asked: list[str]) -> str:
+        return choose_checklist([k for k in keys if k not in asked], asked).key
+
+    order: list[str] = []
+    for _ in keys:
+        order.append(next_key(order))
+    assert order == ["A.a1", "B.b1", "C.c1", "A.a2", "C.c2", "A.a3"]
+    # A field filled by tagging (not asked) leaves its section's count unchanged.
+    assert choose_checklist(["A.a2", "B.b1"], []).key == "A.a2"
+
+
+def test_checklist_round_robin_and_never_repeats(spec: Path) -> None:
     client = FakeClient()
     res = run_chart(CASE, client, "checklist", FIELDS, k_max=5, spec_path=spec)
     asked = [s["field"] for s in res["steps"][1:]]
-    assert asked == ["onset", "location", "lab_results"]  # then nothing askable is left
-    assert [s["wasted"] for s in res["steps"][1:]] == [True, True, False]
-    assert res["steps"][3]["answered_with"] == [2] and res["steps"][3]["target_filled"]
-    assert res["steps"][2]["scored"]["match_rank"] == 2
-    assert res["steps"][3]["scored"]["match_rank"] == 1
+    assert asked == ["onset", "lab_results", "location"]  # then nothing askable is left
+    assert [s["wasted"] for s in res["steps"][1:]] == [True, False, True]
+    assert res["steps"][2]["answered_with"] == [2] and res["steps"][2]["target_filled"]
+    assert res["steps"][1]["scored"]["match_rank"] == 2
+    assert res["steps"][2]["scored"]["match_rank"] == 1
     assert not any(t.endswith(":score") for t in client.tags)
     assert "chart_checklist:patient" in client.tags
 

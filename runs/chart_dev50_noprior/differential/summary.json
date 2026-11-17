@@ -1,0 +1,154 @@
+{
+  "by_k": {
+    "0": {
+      "n": 50,
+      "top1": 0.18,
+      "top5": 0.32,
+      "p_gold": 0.115
+    },
+    "1": {
+      "n": 50,
+      "top1": 0.32,
+      "top5": 0.44,
+      "p_gold": 0.187
+    },
+    "2": {
+      "n": 50,
+      "top1": 0.46,
+      "top5": 0.62,
+      "p_gold": 0.29100000000000004
+    },
+    "3": {
+      "n": 50,
+      "top1": 0.52,
+      "top5": 0.74,
+      "p_gold": 0.35839999999999994
+    },
+    "4": {
+      "n": 50,
+      "top1": 0.6,
+      "top5": 0.74,
+      "p_gold": 0.4004
+    },
+    "5": {
+      "n": 50,
+      "top1": 0.66,
+      "top5": 0.82,
+      "p_gold": 0.4364
+    }
+  },
+  "behaviour": {
+    "questions": 250,
+    "hit_rate": 0.636,
+    "facts_per_question": 1.268,
+    "target_filled_share": 0.536,
+    "fallback_share": 0.0,
+    "questions_by_section": {
+      "HPI": 59,
+      "Social": 22,
+      "PMH": 24,
+      "ExamLabs": 110,
+      "Medications": 16,
+      "ROS": 12,
+      "Family": 7
+    },
+    "hits_by_field": {
+      "ExamLabs.exam_findings": [
+        39,
+        41
+      ],
+      "ExamLabs.lab_results": [
+        24,
+        43
+      ],
+      "ExamLabs.vitals": [
+        19,
+        26
+      ],
+      "Family.family_history": [
+        3,
+        7
+      ],
+      "HPI.aggravating_relieving": [
+        4,
+        7
+      ],
+      "HPI.associated_symptoms": [
+        22,
+        27
+      ],
+      "HPI.character": [
+        4,
+        5
+      ],
+      "HPI.duration": [
+        1,
+        4
+      ],
+      "HPI.location": [
+        0,
+        2
+      ],
+      "HPI.onset": [
+        10,
+        13
+      ],
+      "HPI.severity": [
+        0,
+        1
+      ],
+      "Medications.current_meds": [
+        3,
+        11
+      ],
+      "Medications.recent_changes": [
+        3,
+        5
+      ],
+      "PMH.chronic_conditions": [
+        9,
+        10
+      ],
+      "PMH.prior_episodes": [
+        3,
+        10
+      ],
+      "PMH.surgeries": [
+        1,
+        4
+      ],
+      "ROS.ros_negatives": [
+        0,
+        3
+      ],
+      "ROS.ros_positives": [
+        3,
+        9
+      ],
+      "Social.alcohol": [
+        2,
+        4
+      ],
+      "Social.drugs": [
+        4,
+        5
+      ],
+      "Social.sexual_history": [
+        1,
+        6
+      ],
+      "Social.smoking": [
+        1,
+        3
+      ],
+      "Social.travel": [
+        3,
+        4
+      ]
+    }
+  },
+  "policy": "differential",
+  "split": "dev",
+  "n_cases": 50,
+  "usd": 0.12355275000000004
+}

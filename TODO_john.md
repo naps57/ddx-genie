@@ -49,9 +49,9 @@ Stop and show me a plan before step 2.
       change the current top-5; ask the highest. All scores logged; falls back to checklist order
       (and logs it) if the call returns nothing usable.
 - [x] Both selectable by `--policy`; same everything else, including the question wording.
-- [ ] **Check on dev:** with 8 HPI fields first, `checklist` will likely spend all 5 questions in HPI
-      and never reach exam/labs. That is a faithful fixed order but maybe a weak one. Decide after
-      the 5-case dev run whether the order should be section round-robin instead.
+- [x] **Check on dev:** HPI-first spent 23/25 questions in HPI. Switched `checklist` to a section
+      round-robin, sections ordered by the dev reveal prior (ExamLabs, HPI, PMH, ROS, Meds, Social,
+      Family, Allergies). Schema-order round-robin was worse on dev5 (9/25 answered).
 
 ## 4. Grounded probabilities ✅ code, ⏳ run
 - [x] Code: `--estimate-prior` tags every dev case's hidden facts into fields (1 call per case) and
@@ -80,7 +80,14 @@ Stop and show me a plan before step 2.
       differential without prior 1,2,4,5,4,4. Hit rate 15/25, 18/25, 16/25. Checklist asked
       23/25 questions in HPI; the prior moved the differential policy toward ExamLabs (12/25).
       n=5 is anecdotal; do not read effect sizes from it.
-- [ ] Decide the checklist order (HPI-first vs a section round-robin) on dev before the 50.
+- [x] Decide the checklist order → prior-ordered section round-robin (see step 3).
+- [x] 50 dev cases × 3 variants (`runs/chart_dev50/{checklist,differential}`,
+      `runs/chart_dev50_noprior/differential`, ~$0.47 total). Top-1 at k=0..5:
+      checklist .18 .20 .30 .40 .38 .38; differential+prior .18 .54 .58 .60 .60 .68;
+      differential no prior .18 .32 .46 .52 .60 .66. Top-5 at k=5: .58 / .84 / .82.
+      Hit rate 48% / 65% / 64%. 0 fallbacks. Exact McNemar on top-1: diff+prior vs checklist
+      k=3 14–4 p=.031, k=5 16–1 p<.001; no-prior vs checklist k=5 16–2 p=.001; prior vs no-prior
+      k=1 large lead, k=5 3–2 p=1. Caveat: the prior was estimated on these same dev cases.
 - [ ] Look at why accuracy dips after it peaks (differential+prior 5/5 at k=2, 4/5 at k=5).
 - [ ] **Ask me**, then the frozen 50, new run ids (e.g. `runs/chart_checklist_v1`,
       `runs/chart_differential_v1`). Report via `scripts/baseline_report.py --chart-run`.

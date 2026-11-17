@@ -1,0 +1,88 @@
+{
+  "by_k": {
+    "0": {
+      "n": 5,
+      "top1": 0.2,
+      "top5": 0.6,
+      "p_gold": 0.19
+    },
+    "1": {
+      "n": 5,
+      "top1": 0.2,
+      "top5": 0.8,
+      "p_gold": 0.24
+    },
+    "2": {
+      "n": 5,
+      "top1": 0.4,
+      "top5": 0.6,
+      "p_gold": 0.22999999999999998
+    },
+    "3": {
+      "n": 5,
+      "top1": 0.4,
+      "top5": 0.6,
+      "p_gold": 0.22999999999999998
+    },
+    "4": {
+      "n": 5,
+      "top1": 0.4,
+      "top5": 0.6,
+      "p_gold": 0.22999999999999998
+    },
+    "5": {
+      "n": 5,
+      "top1": 0.4,
+      "top5": 0.6,
+      "p_gold": 0.22999999999999998
+    }
+  },
+  "behaviour": {
+    "questions": 25,
+    "hit_rate": 0.36,
+    "facts_per_question": 0.44,
+    "target_filled_share": 0.28,
+    "fallback_share": 0.0,
+    "questions_by_section": {
+      "HPI": 5,
+      "PMH": 5,
+      "Medications": 5,
+      "Allergies": 5,
+      "Social": 5
+    },
+    "hits_by_field": {
+      "Allergies.allergies": [
+        0,
+        5
+      ],
+      "HPI.location": [
+        1,
+        1
+      ],
+      "HPI.onset": [
+        2,
+        4
+      ],
+      "Medications.current_meds": [
+        0,
+        4
+      ],
+      "Medications.recent_changes": [
+        0,
+        1
+      ],
+      "PMH.chronic_conditions": [
+        5,
+        5
+      ],
+      "Social.smoking": [
+        1,
+        5
+      ]
+    }
+  },
+  "policy": "checklist",
+  "split": "dev",
+  "n_cases": 5,
+  "usd": 0.003646999999999999
+}

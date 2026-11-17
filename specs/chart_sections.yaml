@@ -12,13 +12,27 @@
 # - section/field `name`: Python identifier; keys look like "HPI.onset"
 # - description: what counts as filling the field. The tagger sees it, so it is
 #                effectively the definition of "filled".
-# - Section order is the checklist policy's order.
+# - Section order is the checklist policy's round-robin order: sections sorted by how often
+#   the dev cases document them (data/processed/mediq/reveal_prior_dev.json, dev only).
 #
 # Design rule (TODO_john.md step 1): fields and questions are tuned on the dev split only.
 
 worksheet: ClinicalHistory
 
 sections:
+  - name: ExamLabs
+    title: Exam / Labs
+    fields:
+      - name: vitals
+        description: Temperature, blood pressure, pulse, respiratory rate, oxygen saturation, BMI.
+        question: What are the vital signs (temperature, blood pressure, pulse, breathing rate, oxygen level)?
+      - name: exam_findings
+        description: Physical examination findings.
+        question: What does the physical examination show?
+      - name: lab_results
+        description: Laboratory, imaging, pathology, ECG, or other test results.
+        question: What do the laboratory tests, imaging, or other investigations show?
+
   - name: HPI
     title: History of present illness
     fields:
@@ -60,6 +74,16 @@ sections:
         description: Past surgeries or procedures.
         question: Have you had any surgeries or procedures?
 
+  - name: ROS
+    title: Review of systems
+    fields:
+      - name: ros_positives
+        description: Symptoms present in other organ systems not already captured in HPI (e.g. fever, weight loss).
+        question: Have you had any fever, weight change, or symptoms anywhere else in your body?
+      - name: ros_negatives
+        description: Symptoms explicitly denied (pertinent negatives).
+        question: Are there symptoms you have specifically not had, such as fever, pain, or changes in appetite?
+
   - name: Medications
     title: Medications
     fields:
@@ -69,13 +93,6 @@ sections:
       - name: recent_changes
         description: Medications recently started, stopped, or changed, or recent vaccinations.
         question: Have you recently started, stopped, or changed any medication, or had any vaccinations?
-
-  - name: Allergies
-    title: Allergies
-    fields:
-      - name: allergies
-        description: Drug or other allergies and the reaction type, or explicit 'no known allergies'.
-        question: Do you have any allergies?
 
   - name: Social
     title: Social history
@@ -106,25 +123,9 @@ sections:
         description: Diseases in relatives, with age of onset when given.
         question: Does anyone in your family have any medical conditions?
 
-  - name: ROS
-    title: Review of systems
+  - name: Allergies
+    title: Allergies
     fields:
-      - name: ros_positives
-        description: Symptoms present in other organ systems not already captured in HPI (e.g. fever, weight loss).
-        question: Have you had any fever, weight change, or symptoms anywhere else in your body?
-      - name: ros_negatives
-        description: Symptoms explicitly denied (pertinent negatives).
-        question: Are there symptoms you have specifically not had, such as fever, pain, or changes in appetite?
-
-  - name: ExamLabs
-    title: Exam / Labs
-    fields:
-      - name: vitals
-        description: Temperature, blood pressure, pulse, respiratory rate, oxygen saturation, BMI.
-        question: What are the vital signs (temperature, blood pressure, pulse, breathing rate, oxygen level)?
-      - name: exam_findings
-        description: Physical examination findings.
-        question: What does the physical examination show?
-      - name: lab_results
-        description: Laboratory, imaging, pathology, ECG, or other test results.
-        question: What do the laboratory tests, imaging, or other investigations show?
+      - name: allergies
+        description: Drug or other allergies and the reaction type, or explicit 'no known allergies'.
+        question: Do you have any allergies?

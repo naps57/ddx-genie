@@ -1,0 +1,121 @@
+{
+  "by_k": {
+    "0": {
+      "n": 50,
+      "top1": 0.18,
+      "top5": 0.32,
+      "p_gold": 0.115
+    },
+    "1": {
+      "n": 50,
+      "top1": 0.54,
+      "top5": 0.68,
+      "p_gold": 0.318
+    },
+    "2": {
+      "n": 50,
+      "top1": 0.58,
+      "top5": 0.76,
+      "p_gold": 0.37
+    },
+    "3": {
+      "n": 50,
+      "top1": 0.6,
+      "top5": 0.78,
+      "p_gold": 0.38299999999999995
+    },
+    "4": {
+      "n": 50,
+      "top1": 0.6,
+      "top5": 0.84,
+      "p_gold": 0.406
+    },
+    "5": {
+      "n": 50,
+      "top1": 0.68,
+      "top5": 0.84,
+      "p_gold": 0.446
+    }
+  },
+  "behaviour": {
+    "questions": 250,
+    "hit_rate": 0.652,
+    "facts_per_question": 1.324,
+    "target_filled_share": 0.556,
+    "fallback_share": 0.0,
+    "questions_by_section": {
+      "HPI": 81,
+      "ExamLabs": 123,
+      "PMH": 30,
+      "ROS": 7,
+      "Medications": 7,
+      "Social": 2
+    },
+    "hits_by_field": {
+      "ExamLabs.exam_findings": [
+        45,
+        49
+      ],
+      "ExamLabs.lab_results": [
+        23,
+        47
+      ],
+      "ExamLabs.vitals": [
+        20,
+        27
+      ],
+      "HPI.associated_symptoms": [
+        33,
+        41
+      ],
+      "HPI.character": [
+        4,
+        7
+      ],
+      "HPI.duration": [
+        7,
+        14
+      ],
+      "HPI.location": [
+        2,
+        4
+      ],
+      "HPI.onset": [
+        8,
+        14
+      ],
+      "HPI.severity": [
+        0,
+        1
+      ],
+      "Medications.current_meds": [
+        2,
+        7
+      ],
+      "PMH.chronic_conditions": [
+        13,
+        21
+      ],
+      "PMH.prior_episodes": [
+        3,
+        9
+      ],
+      "ROS.ros_negatives": [
+        1,
+        7
+      ],
+      "Social.drugs": [
+        1,
+        1
+      ],
+      "Social.smoking": [
+        1,
+        1
+      ]
+    }
+  },
+  "policy": "differential",
+  "split": "dev",
+  "n_cases": 50,
+  "usd": 0.3496435000000003
+}

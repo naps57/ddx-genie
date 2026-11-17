@@ -8,7 +8,10 @@ worksheet and is that field's fixed question from ``specs/chart_sections.yaml``.
 
 Two policies pick the field; everything else is shared, so they differ ONLY in choice:
 
-- ``checklist``: fixed order. The first unfilled, not-yet-asked field in schema order.
+- ``checklist``: fixed order, round-robin over sections in schema order: each question goes
+  to the least-asked section that still has an unfilled, not-yet-asked field, and to that
+  section's first such field. (The first version asked fields strictly in schema order and
+  spent 23/25 dev questions in HPI.)
 - ``differential``: one call scores every unfilled field 0-10 by how much its answer would
   change the current top-5 differential; ask the highest (optionally weighted by a
   per-field reveal-rate prior, see ``--prior``). All scores are logged.
@@ -233,8 +236,16 @@ class Choice:
     raw: str = ""
 
 
-def choose_checklist(askable: list[str]) -> Choice:
-    return Choice(key=askable[0])
+def choose_checklist(askable: list[str], asked: list[str]) -> Choice:
+    """Round-robin over sections in schema order: the least-asked section that still has
+    an askable field (ties go to schema order), then its first askable field.
+
+    ``askable`` is in schema order; ``asked`` is every key asked so far, in order.
+    """
+    sections = list(dict.fromkeys(k.split(".", 1)[0] for k in askable))
+    counts = Counter(k.split(".", 1)[0] for k in asked)
+    section = min(sections, key=lambda s: (counts[s], sections.index(s)))
+    return Choice(key=next(k for k in askable if k.startswith(section + ".")))
 
 
 def parse_scores(text: str, askable: list[str]) -> dict[str, float]:
@@ -302,17 +313,17 @@ def run_chart(case: dict[str, Any], client: LLMClient, policy: str,
         "worksheet": ws.snapshot(), "scored": asdict(current),
     }]
 
-    asked: set[str] = set()
+    asked: list[str] = []
     for k in range(1, k_max + 1):
         askable = [key for key in ws.unfilled() if key not in asked]
         if not askable:
             break
         if policy == "checklist":
-            choice = choose_checklist(askable)
+            choice = choose_checklist(askable, asked)
         else:
             choice = choose_differential(case, known, current.differential, ws, askable,
                                          client, tag, prior)
-        asked.add(choice.key)
+        asked.append(choice.key)
         target = ws.by_key[choice.key]
 
         got = patient_answer(case, target.question, known, client, tag=f"{tag}:patient")
