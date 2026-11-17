@@ -1,0 +1,779 @@
+{
+  "case_id": "medqa-835",
+  "source": "medqa",
+  "model": "anthropic/claude-haiku-5-5",
+  "patient_model": "anthropic/claude-haiku-5-5",
+  "initial_info": "A 49-year-old Caucasian woman presents to your office for elevated blood pressure.",
+  "question": "Which of the following is the best next step in management?",
+  "options": {
+    "A": "Liver function tests",
+    "B": "Urine microalbumin",
+    "C": "Hemoglobin A1C",
+    "D": "Blood glucose"
+  },
+  "gold_answer": "D",
+  "initial_fields_filled": [
+    "ExamLabs.vitals"
+  ],
+  "initial_tagger_raw": "```json\n{\"fields\": {\"ExamLabs.vitals\": \"elevated blood pressure (reason for visit)\"}}\n```",
+  "initial_worksheet_snapshot": {
+    "HPI.onset": null,
+    "HPI.duration": null,
+    "HPI.character": null,
+    "HPI.location": null,
+    "HPI.severity": null,
+    "HPI.timing": null,
+    "HPI.aggravating_relieving": null,
+    "HPI.associated_symptoms": null,
+    "PMH.chronic_conditions": null,
+    "PMH.prior_episodes": null,
+    "PMH.surgeries": null,
+    "Medications.current_meds": null,
+    "Medications.recent_changes": null,
+    "Allergies.allergies": null,
+    "Social.smoking": null,
+    "Social.alcohol": null,
+    "Social.drugs": null,
+    "Social.occupation": null,
+    "Social.travel": null,
+    "Social.sexual_history": null,
+    "Family.family_history": null,
+    "ROS.ros_positives": null,
+    "ROS.ros_negatives": null,
+    "ExamLabs.vitals": "elevated blood pressure (reason for visit)",
+    "ExamLabs.exam_findings": null,
+    "ExamLabs.lab_results": null
+  },
+  "initial_differential": [
+    {
+      "option": "B",
+      "label": "Urine microalbumin",
+      "confidence": 0.6
+    },
+    {
+      "option": "D",
+      "label": "Blood glucose",
+      "confidence": 0.18
+    },
+    {
+      "option": "C",
+      "label": "Hemoglobin A1C",
+      "confidence": 0.15
+    },
+    {
+      "option": "A",
+      "label": "Liver function tests",
+      "confidence": 0.07
+    }
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "chart_section": "PMH",
+      "target_field": "chronic_conditions",
+      "question": "Do you have any ongoing medical conditions, such as diabetes, kidney problems, or high blood pressure you were already diagnosed with?",
+      "patient_answer": "5. Her past medical history includes laparoscopic cholecystectomy for acute cholecystitis 2 years previously.\n8. She takes no medications and denies smoking.",
+      "fields_filled": [
+        "PMH.surgeries",
+        "PMH.prior_episodes",
+        "Medications.current_meds",
+        "Social.smoking"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": "Acute cholecystitis 2 years ago (treated with cholecystectomy)",
+        "PMH.surgeries": "Laparoscopic cholecystectomy 2 years ago",
+        "Medications.current_meds": "None (takes no medications)",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Denies smoking",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "elevated blood pressure (reason for visit)",
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Urine microalbumin",
+          "confidence": 0.4
+        },
+        {
+          "option": "C",
+          "label": "Hemoglobin A1C",
+          "confidence": 0.35
+        },
+        {
+          "option": "D",
+          "label": "Blood glucose",
+          "confidence": 0.2
+        },
+        {
+          "option": "A",
+          "label": "Liver function tests",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"PMH.surgeries\": \"Laparoscopic cholecystectomy 2 years ago\", \"PMH.prior_episodes\": \"Acute cholecystitis 2 years ago (treated with cholecystectomy)\", \"Medications.current_meds\": \"None (takes no medications)\", \"Social.smoking\": \"Denies smoking\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.4, \"C\": 0.35, \"D\": 0.2}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Do you have any ongoing medical conditions, such as diabetes, kidney problems, or high blood pressure you were already diagnosed with?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 2,
+      "chart_section": "HPI",
+      "target_field": "associated_symptoms",
+      "question": "Apart from the high blood pressure, have you noticed any increased thirst, frequent urination, weight change, headaches, or foamy urine?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": "Acute cholecystitis 2 years ago (treated with cholecystectomy)",
+        "PMH.surgeries": "Laparoscopic cholecystectomy 2 years ago",
+        "Medications.current_meds": "None (takes no medications)",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Denies smoking",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "elevated blood pressure (reason for visit)",
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Urine microalbumin",
+          "confidence": 0.5
+        },
+        {
+          "option": "C",
+          "label": "Hemoglobin A1C",
+          "confidence": 0.2
+        },
+        {
+          "option": "D",
+          "label": "Blood glucose",
+          "confidence": 0.18
+        },
+        {
+          "option": "A",
+          "label": "Liver function tests",
+          "confidence": 0.12
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "{\"A\": 0.12, \"B\": 0.5, \"C\": 0.2, \"D\": 0.18}",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.associated_symptoms\", \"question\": \"Apart from the high blood pressure, have you noticed any increased thirst, frequent urination, weight change, headaches, or foamy urine?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 3,
+      "chart_section": "Family",
+      "target_field": "family_history",
+      "question": "Does anyone in your family have diabetes or kidney disease, and if so, at what age were they diagnosed?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": "Acute cholecystitis 2 years ago (treated with cholecystectomy)",
+        "PMH.surgeries": "Laparoscopic cholecystectomy 2 years ago",
+        "Medications.current_meds": "None (takes no medications)",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Denies smoking",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "elevated blood pressure (reason for visit)",
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Urine microalbumin",
+          "confidence": 0.5
+        },
+        {
+          "option": "D",
+          "label": "Blood glucose",
+          "confidence": 0.23
+        },
+        {
+          "option": "C",
+          "label": "Hemoglobin A1C",
+          "confidence": 0.22
+        },
+        {
+          "option": "A",
+          "label": "Liver function tests",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.5, \"C\": 0.22, \"D\": 0.23}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Family\", \"target_field\": \"Family.family_history\", \"question\": \"Does anyone in your family have diabetes or kidney disease, and if so, at what age were they diagnosed?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 4,
+      "chart_section": "ExamLabs",
+      "target_field": "lab_results",
+      "question": "Have you had any recent blood or urine tests, such as a blood sugar, kidney function, or urine protein test, and if so, do you know the results?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": "Acute cholecystitis 2 years ago (treated with cholecystectomy)",
+        "PMH.surgeries": "Laparoscopic cholecystectomy 2 years ago",
+        "Medications.current_meds": "None (takes no medications)",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Denies smoking",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "elevated blood pressure (reason for visit)",
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Urine microalbumin",
+          "confidence": 0.47
+        },
+        {
+          "option": "C",
+          "label": "Hemoglobin A1C",
+          "confidence": 0.27
+        },
+        {
+          "option": "D",
+          "label": "Blood glucose",
+          "confidence": 0.18
+        },
+        {
+          "option": "A",
+          "label": "Liver function tests",
+          "confidence": 0.08
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.08, \"B\": 0.47, \"C\": 0.27, \"D\": 0.18}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Have you had any recent blood or urine tests, such as a blood sugar, kidney function, or urine protein test, and if so, do you know the results?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 5,
+      "chart_section": "HPI",
+      "target_field": "onset",
+      "question": "When did you first notice that your blood pressure was high, and did it come on suddenly or gradually?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": "Acute cholecystitis 2 years ago (treated with cholecystectomy)",
+        "PMH.surgeries": "Laparoscopic cholecystectomy 2 years ago",
+        "Medications.current_meds": "None (takes no medications)",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Denies smoking",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "elevated blood pressure (reason for visit)",
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Urine microalbumin",
+          "confidence": 0.6
+        },
+        {
+          "option": "C",
+          "label": "Hemoglobin A1C",
+          "confidence": 0.2
+        },
+        {
+          "option": "D",
+          "label": "Blood glucose",
+          "confidence": 0.15
+        },
+        {
+          "option": "A",
+          "label": "Liver function tests",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.6, \"C\": 0.2, \"D\": 0.15}\n```",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.onset\", \"question\": \"When did you first notice that your blood pressure was high, and did it come on suddenly or gradually?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 6,
+      "chart_section": "Social",
+      "target_field": "alcohol",
+      "question": "Do you drink alcohol, and if so, roughly how much per week?",
+      "patient_answer": "9. She drinks 3 glasses of wine a week.",
+      "fields_filled": [
+        "Social.alcohol"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": "Acute cholecystitis 2 years ago (treated with cholecystectomy)",
+        "PMH.surgeries": "Laparoscopic cholecystectomy 2 years ago",
+        "Medications.current_meds": "None (takes no medications)",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Denies smoking",
+        "Social.alcohol": "3 glasses of wine per week",
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "elevated blood pressure (reason for visit)",
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Urine microalbumin",
+          "confidence": 0.52
+        },
+        {
+          "option": "C",
+          "label": "Hemoglobin A1C",
+          "confidence": 0.22
+        },
+        {
+          "option": "D",
+          "label": "Blood glucose",
+          "confidence": 0.18
+        },
+        {
+          "option": "A",
+          "label": "Liver function tests",
+          "confidence": 0.08
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"Social.alcohol\": \"3 glasses of wine per week\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.08, \"B\": 0.52, \"C\": 0.22, \"D\": 0.18}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.alcohol\", \"question\": \"Do you drink alcohol, and if so, roughly how much per week?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 7,
+      "chart_section": "Medications",
+      "target_field": "recent_changes",
+      "question": "Have you recently started or stopped any medicines, including over-the-counter pain relievers like ibuprofen or naproxen, decongestants, supplements, or hormone pills?",
+      "patient_answer": "8. She takes no medications and denies smoking.",
+      "fields_filled": [
+        "Medications.current_meds",
+        "Social.smoking"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": "Acute cholecystitis 2 years ago (treated with cholecystectomy)",
+        "PMH.surgeries": "Laparoscopic cholecystectomy 2 years ago",
+        "Medications.current_meds": "takes no medications",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Denies smoking; denies smoking",
+        "Social.alcohol": "3 glasses of wine per week",
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "elevated blood pressure (reason for visit)",
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Urine microalbumin",
+          "confidence": 0.6
+        },
+        {
+          "option": "C",
+          "label": "Hemoglobin A1C",
+          "confidence": 0.2
+        },
+        {
+          "option": "D",
+          "label": "Blood glucose",
+          "confidence": 0.15
+        },
+        {
+          "option": "A",
+          "label": "Liver function tests",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "```json\n{\"fields\": {\"Medications.current_meds\": \"takes no medications\", \"Social.smoking\": \"denies smoking\"}}\n```",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.6, \"C\": 0.2, \"D\": 0.15}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Medications\", \"target_field\": \"Medications.recent_changes\", \"question\": \"Have you recently started or stopped any medicines, including over-the-counter pain relievers like ibuprofen or naproxen, decongestants, supplements, or hormone pills?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 8,
+      "chart_section": "ROS",
+      "target_field": "ros_positives",
+      "question": "Have you noticed any swelling in your ankles, legs, or around your eyes?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": "Acute cholecystitis 2 years ago (treated with cholecystectomy)",
+        "PMH.surgeries": "Laparoscopic cholecystectomy 2 years ago",
+        "Medications.current_meds": "takes no medications",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Denies smoking; denies smoking",
+        "Social.alcohol": "3 glasses of wine per week",
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "elevated blood pressure (reason for visit)",
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Urine microalbumin",
+          "confidence": 0.5
+        },
+        {
+          "option": "C",
+          "label": "Hemoglobin A1C",
+          "confidence": 0.25
+        },
+        {
+          "option": "D",
+          "label": "Blood glucose",
+          "confidence": 0.2
+        },
+        {
+          "option": "A",
+          "label": "Liver function tests",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.5, \"C\": 0.25, \"D\": 0.2}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"Have you noticed any swelling in your ankles, legs, or around your eyes?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 9,
+      "chart_section": "Social",
+      "target_field": "drugs",
+      "question": "Do you use any recreational or illicit drugs, such as cocaine, amphetamines, or stimulant supplements?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": "Acute cholecystitis 2 years ago (treated with cholecystectomy)",
+        "PMH.surgeries": "Laparoscopic cholecystectomy 2 years ago",
+        "Medications.current_meds": "takes no medications",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Denies smoking; denies smoking",
+        "Social.alcohol": "3 glasses of wine per week",
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "elevated blood pressure (reason for visit)",
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Urine microalbumin",
+          "confidence": 0.7
+        },
+        {
+          "option": "C",
+          "label": "Hemoglobin A1C",
+          "confidence": 0.13
+        },
+        {
+          "option": "D",
+          "label": "Blood glucose",
+          "confidence": 0.12
+        },
+        {
+          "option": "A",
+          "label": "Liver function tests",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.7, \"C\": 0.13, \"D\": 0.12}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.drugs\", \"question\": \"Do you use any recreational or illicit drugs, such as cocaine, amphetamines, or stimulant supplements?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 10,
+      "chart_section": "HPI",
+      "target_field": "timing",
+      "question": "Do your high blood pressure readings stay elevated all the time, or do they come and go?",
+      "patient_answer": "3. She presents with readings ranging between 163/101 and 156/94 mm Hg.\n10. Her blood pressure in the office after more than 10 minutes of rest was 153/89 mm Hg in her left arm and 145/90 mm Hg in her right arm.\n11. A review of her medical record reveals that her blood pressure was 142/92 mm Hg at her visit 1 year ago.",
+      "fields_filled": [
+        "ExamLabs.vitals"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": "Acute cholecystitis 2 years ago (treated with cholecystectomy)",
+        "PMH.surgeries": "Laparoscopic cholecystectomy 2 years ago",
+        "Medications.current_meds": "takes no medications",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Denies smoking; denies smoking",
+        "Social.alcohol": "3 glasses of wine per week",
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": "elevated blood pressure (reason for visit); Blood pressure readings 156/94 to 163/101 mm Hg; office BP after 10+ minutes of rest 153/89 mm Hg (left arm) and 145/90 mm Hg (right arm); BP 142/92 mm Hg at a visit 1 year ago per medical record",
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Urine microalbumin",
+          "confidence": 0.45
+        },
+        {
+          "option": "C",
+          "label": "Hemoglobin A1C",
+          "confidence": 0.3
+        },
+        {
+          "option": "D",
+          "label": "Blood glucose",
+          "confidence": 0.15
+        },
+        {
+          "option": "A",
+          "label": "Liver function tests",
+          "confidence": 0.1
+        }
+      ],
+      "decision": "answer",
+      "tagger_raw": "```json\n{\"fields\": {\"ExamLabs.vitals\": \"Blood pressure readings 156/94 to 163/101 mm Hg; office BP after 10+ minutes of rest 153/89 mm Hg (left arm) and 145/90 mm Hg (right arm); BP 142/92 mm Hg at a visit 1 year ago per medical record\"}}\n```",
+      "ranker_raw": "{\"A\": 0.1, \"B\": 0.45, \"C\": 0.3, \"D\": 0.15}",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.timing\", \"question\": \"Do your high blood pressure readings stay elevated all the time, or do they come and go?\"}",
+      "question_writer_fallback": false
+    }
+  ],
+  "final_answer": "B",
+  "correct": false,
+  "num_questions": 10,
+  "stop_reason": "max_questions",
+  "floor_answer": "B",
+  "floor_correct": false,
+  "ceiling_answer": "B",
+  "ceiling_correct": false,
+  "ceiling_differential": [
+    {
+      "option": "B",
+      "label": "Urine microalbumin",
+      "confidence": 0.52
+    },
+    {
+      "option": "C",
+      "label": "Hemoglobin A1C",
+      "confidence": 0.2
+    },
+    {
+      "option": "D",
+      "label": "Blood glucose",
+      "confidence": 0.2
+    },
+    {
+      "option": "A",
+      "label": "Liver function tests",
+      "confidence": 0.08
+    }
+  ],
+  "ceiling_ranker_raw": "```json\n{\"A\": 0.08, \"B\": 0.52, \"C\": 0.2, \"D\": 0.2}\n```",
+  "full_context": "A 49-year-old Caucasian woman presents to your office for elevated blood pressure. She is a nurse and checks her blood pressure regularly while working in the wards. She presents with readings ranging between 163/101 and 156/94 mm Hg. After some research she conducted on her own, she has been exercising and following a low-fat, low-salt diet for the past 3 months. Her past medical history includes laparoscopic cholecystectomy for acute cholecystitis 2 years previously. Her mother and father have hypertension and her father had myocardial infarction at the age of 68 years. She takes no medications and denies smoking. She drinks 3 glasses of wine a week. Her blood pressure in the office after more than 10 minutes of rest was 153/89 mm Hg in her left arm and 145/90 mm Hg in her right arm. A review of her medical record reveals that her blood pressure was 142/92 mm Hg at her visit 1 year ago.",
+  "patient_facts": [
+    "1. A 49-year-old Caucasian woman presents to your office for elevated blood pressure.",
+    "2. She is a nurse and checks her blood pressure regularly while working in the wards.",
+    "3. She presents with readings ranging between 163/101 and 156/94 mm Hg.",
+    "4. After some research she conducted on her own, she has been exercising and following a low-fat, low-salt diet for the past 3 months.",
+    "5. Her past medical history includes laparoscopic cholecystectomy for acute cholecystitis 2 years previously.",
+    "6. Her mother and father have hypertension.",
+    "7. Her father had myocardial infarction at the age of 68 years.",
+    "8. She takes no medications and denies smoking.",
+    "9. She drinks 3 glasses of wine a week.",
+    "10. Her blood pressure in the office after more than 10 minutes of rest was 153/89 mm Hg in her left arm and 145/90 mm Hg in her right arm.",
+    "11. A review of her medical record reveals that her blood pressure was 142/92 mm Hg at her visit 1 year ago."
+  ],
+  "run": {
+    "max_questions": 10,
+    "stop_rule": "fixed",
+    "answer_confidence_threshold": 0.8,
+    "temperature": null,
+    "seconds": 129.0,
+    "timestamp": "2026-11-13T05:27:48+00:00",
+    "usage": {
+      "num_calls": 37,
+      "calls_by_tag": {
+        "tagger": 5,
+        "ranker": 11,
+        "question_writer": 10,
+        "patient": 10,
+        "ceiling_ranker": 1
+      },
+      "prompt_tokens": 35150,
+      "completion_tokens": 15608,
+      "cost_usd": 0.011319
+    }
+  }
+}

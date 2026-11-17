@@ -16,6 +16,16 @@ MediQ subset → partial views (reveal p of the facts) → diagnosis (one-shot o
 
 See `CLAUDE.md` for the design contract.
 
+### `demo/`: Genie worksheet-guided asker (prototype)
+
+`demo/` is a separate, self-contained prototype of the chart-section asker: a Genie `ClinicalHistory`
+worksheet whose unfilled fields drive the questions, run against MediQ's own `FactSelectPatient`, with
+a turn-by-turn replay app (`streamlit run demo/app.py`) and a static replay page (`demo/site/index.html`).
+It has its own setup, dependencies and model config; see [demo/README.md](demo/README.md) and
+[demo/NOTES.md](demo/NOTES.md). Its numbers are **not** comparable to `baseline_scores.md` yet: it
+scores multiple-choice option ranking on 10 different cases with Claude Haiku. Porting it into this
+harness as an arm (same 50 cases, open-ended top-5 + judge, same model and patient) is the next step.
+
 ## Setup
 
 This repo expects the Genie Worksheets clone as a **sibling directory**:

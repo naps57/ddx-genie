@@ -1,0 +1,767 @@
+{
+  "case_id": "medqa-867",
+  "source": "medqa",
+  "model": "anthropic/claude-haiku-5-5",
+  "patient_model": "anthropic/claude-haiku-5-5",
+  "initial_info": "A 25-year-old female is admitted to the hospital for an intrauterine fetal demise (IUFD) during her 30th gestational week.",
+  "question": "Which of the following genes was most likely mutated in this fetus?",
+  "options": {
+    "A": "Hox",
+    "B": "Wnt-7",
+    "C": "Sonic hedgehog",
+    "D": "BMP"
+  },
+  "gold_answer": "C",
+  "initial_fields_filled": [],
+  "initial_tagger_raw": "{\"fields\": {}}",
+  "initial_worksheet_snapshot": {
+    "HPI.onset": null,
+    "HPI.duration": null,
+    "HPI.character": null,
+    "HPI.location": null,
+    "HPI.severity": null,
+    "HPI.timing": null,
+    "HPI.aggravating_relieving": null,
+    "HPI.associated_symptoms": null,
+    "PMH.chronic_conditions": null,
+    "PMH.prior_episodes": null,
+    "PMH.surgeries": null,
+    "Medications.current_meds": null,
+    "Medications.recent_changes": null,
+    "Allergies.allergies": null,
+    "Social.smoking": null,
+    "Social.alcohol": null,
+    "Social.drugs": null,
+    "Social.occupation": null,
+    "Social.travel": null,
+    "Social.sexual_history": null,
+    "Family.family_history": null,
+    "ROS.ros_positives": null,
+    "ROS.ros_negatives": null,
+    "ExamLabs.vitals": null,
+    "ExamLabs.exam_findings": null,
+    "ExamLabs.lab_results": null
+  },
+  "initial_differential": [
+    {
+      "option": "C",
+      "label": "Sonic hedgehog",
+      "confidence": 0.5
+    },
+    {
+      "option": "B",
+      "label": "Wnt-7",
+      "confidence": 0.2
+    },
+    {
+      "option": "A",
+      "label": "Hox",
+      "confidence": 0.15
+    },
+    {
+      "option": "D",
+      "label": "BMP",
+      "confidence": 0.15
+    }
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "chart_section": "ExamLabs",
+      "target_field": "lab_results",
+      "question": "Did any of your prenatal ultrasounds or the fetal autopsy show specific abnormalities in the baby, such as limb, finger, face, brain, or genital findings?",
+      "patient_answer": "Relevant facts:\n\n4. The patient did not receive any prenatal care or screenings.\n8. On autopsy, the fetus is discovered to have severe facial abnormalities.\n9. On autopsy, the fetus is discovered to have a brain lacking the normal sagittal fissure.",
+      "fields_filled": [
+        "ExamLabs.lab_results"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Fetal autopsy: severe facial abnormalities; brain lacking the normal sagittal fissure"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.92
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.03
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.03
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"ExamLabs.lab_results\": \"Fetal autopsy: severe facial abnormalities; brain lacking the normal sagittal fissure\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.03, \"B\": 0.02, \"C\": 0.92, \"D\": 0.03}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Did any of your prenatal ultrasounds or the fetal autopsy show specific abnormalities in the baby, such as limb, finger, face, brain, or genital findings?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 2,
+      "chart_section": "Family",
+      "target_field": "family_history",
+      "question": "Do you or the baby's father have any family members with similar facial features, brain malformations, or unexplained stillbirths or miscarriages, especially in the same generation or on either side?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Fetal autopsy: severe facial abnormalities; brain lacking the normal sagittal fissure"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.9
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.04
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.03
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.03, \"C\": 0.90, \"D\": 0.03}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Family\", \"target_field\": \"Family.family_history\", \"question\": \"Do you or the baby's father have any family members with similar facial features, brain malformations, or unexplained stillbirths or miscarriages, especially in the same generation or on either side?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 3,
+      "chart_section": "Social",
+      "target_field": "alcohol",
+      "question": "Did you drink any alcohol during this pregnancy, and if so, how much and how often?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Fetal autopsy: severe facial abnormalities; brain lacking the normal sagittal fissure"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.86
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.05
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.05
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.04
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "{\"A\": 0.05, \"B\": 0.04, \"C\": 0.86, \"D\": 0.05}",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.alcohol\", \"question\": \"Did you drink any alcohol during this pregnancy, and if so, how much and how often?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 4,
+      "chart_section": "PMH",
+      "target_field": "chronic_conditions",
+      "question": "Did you have any ongoing medical conditions during this pregnancy or before it, such as diabetes?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Fetal autopsy: severe facial abnormalities; brain lacking the normal sagittal fissure"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.9
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.04
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.03
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "{\"A\": 0.04, \"B\": 0.03, \"C\": 0.9, \"D\": 0.03}",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.chronic_conditions\", \"question\": \"Did you have any ongoing medical conditions during this pregnancy or before it, such as diabetes?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 5,
+      "chart_section": "Medications",
+      "target_field": "current_meds",
+      "question": "During this pregnancy, did you take any medications, supplements, or prenatal vitamins, or use any other substances that a doctor may not have known about?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Fetal autopsy: severe facial abnormalities; brain lacking the normal sagittal fissure"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.85
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.05
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.05
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.05, \"C\": 0.85, \"D\": 0.05}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Medications\", \"target_field\": \"Medications.current_meds\", \"question\": \"During this pregnancy, did you take any medications, supplements, or prenatal vitamins, or use any other substances that a doctor may not have known about?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 6,
+      "chart_section": "ROS",
+      "target_field": "ros_positives",
+      "question": "Did you have any fever, rash, or flu-like illness during the first few months of this pregnancy?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Fetal autopsy: severe facial abnormalities; brain lacking the normal sagittal fissure"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.9
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.04
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.03
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.03, \"C\": 0.9, \"D\": 0.03}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"ROS\", \"target_field\": \"ROS.ros_positives\", \"question\": \"Did you have any fever, rash, or flu-like illness during the first few months of this pregnancy?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 7,
+      "chart_section": "PMH",
+      "target_field": "prior_episodes",
+      "question": "Have you had any earlier pregnancies, and if so, did any of those babies or pregnancies have similar facial or brain problems, or end in stillbirth or miscarriage?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Fetal autopsy: severe facial abnormalities; brain lacking the normal sagittal fissure"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.93
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.03
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.02
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "{\"A\": 0.03, \"B\": 0.02, \"C\": 0.93, \"D\": 0.02}",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Have you had any earlier pregnancies, and if so, did any of those babies or pregnancies have similar facial or brain problems, or end in stillbirth or miscarriage?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 8,
+      "chart_section": "ExamLabs",
+      "target_field": "exam_findings",
+      "question": "Did the autopsy report any limb, finger, or genital abnormalities, or any midline defects such as a cleft lip or palate, in addition to the facial and brain findings?",
+      "patient_answer": "The provided facts do not report any limb, finger, genital, cleft lip, or cleft palate abnormalities. The only autopsy findings listed are:\n\n\"On autopsy, the fetus is discovered to have severe facial abnormalities.\"\n\n\"On autopsy, the fetus is discovered to have a brain lacking the normal sagittal fissure.\"",
+      "fields_filled": [
+        "ExamLabs.lab_results"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Fetal autopsy: severe facial abnormalities; brain lacking the normal sagittal fissure; Autopsy (fetus): severe facial abnormalities; brain lacking the normal sagittal fissure. No limb, finger, genital, cleft lip, or cleft palate abnormalities reported."
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.92
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.03
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.03
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.02
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "```json\n{\"fields\": {\"ExamLabs.lab_results\": \"Autopsy (fetus): severe facial abnormalities; brain lacking the normal sagittal fissure. No limb, finger, genital, cleft lip, or cleft palate abnormalities reported.\"}}\n```",
+      "ranker_raw": "{\"A\": 0.03, \"B\": 0.02, \"C\": 0.92, \"D\": 0.03}",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.exam_findings\", \"question\": \"Did the autopsy report any limb, finger, or genital abnormalities, or any midline defects such as a cleft lip or palate, in addition to the facial and brain findings?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 9,
+      "chart_section": "Social",
+      "target_field": "travel",
+      "question": "During this pregnancy, did you travel anywhere or have any exposure to animals, chemicals, or other environmental hazards?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Fetal autopsy: severe facial abnormalities; brain lacking the normal sagittal fissure; Autopsy (fetus): severe facial abnormalities; brain lacking the normal sagittal fissure. No limb, finger, genital, cleft lip, or cleft palate abnormalities reported."
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.9
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.04
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.03
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.03, \"C\": 0.9, \"D\": 0.03}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.travel\", \"question\": \"During this pregnancy, did you travel anywhere or have any exposure to animals, chemicals, or other environmental hazards?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 10,
+      "chart_section": "Social",
+      "target_field": "drugs",
+      "question": "Have you used any recreational or illicit drugs, including cocaine, marijuana, or injected drugs, at any point during this pregnancy?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": null,
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "Fetal autopsy: severe facial abnormalities; brain lacking the normal sagittal fissure; Autopsy (fetus): severe facial abnormalities; brain lacking the normal sagittal fissure. No limb, finger, genital, cleft lip, or cleft palate abnormalities reported."
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Sonic hedgehog",
+          "confidence": 0.9
+        },
+        {
+          "option": "A",
+          "label": "Hox",
+          "confidence": 0.04
+        },
+        {
+          "option": "B",
+          "label": "Wnt-7",
+          "confidence": 0.03
+        },
+        {
+          "option": "D",
+          "label": "BMP",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "answer",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.03, \"C\": 0.9, \"D\": 0.03}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.drugs\", \"question\": \"Have you used any recreational or illicit drugs, including cocaine, marijuana, or injected drugs, at any point during this pregnancy?\"}",
+      "question_writer_fallback": false
+    }
+  ],
+  "final_answer": "C",
+  "correct": true,
+  "num_questions": 10,
+  "stop_reason": "max_questions",
+  "floor_answer": "C",
+  "floor_correct": true,
+  "ceiling_answer": "C",
+  "ceiling_correct": true,
+  "ceiling_differential": [
+    {
+      "option": "C",
+      "label": "Sonic hedgehog",
+      "confidence": 0.9
+    },
+    {
+      "option": "B",
+      "label": "Wnt-7",
+      "confidence": 0.05
+    },
+    {
+      "option": "A",
+      "label": "Hox",
+      "confidence": 0.03
+    },
+    {
+      "option": "D",
+      "label": "BMP",
+      "confidence": 0.02
+    }
+  ],
+  "ceiling_ranker_raw": "```json\n{\"A\": 0.03, \"B\": 0.05, \"C\": 0.9, \"D\": 0.02}\n```",
+  "full_context": "A 25-year-old female is admitted to the hospital for an intrauterine fetal demise (IUFD) during her 30th gestational week. The patient did not receive any prenatal care or screenings. The baby is delivered via C-section and the family wishes to conduct an autopsy to understand the reason for the IUFD and to better prepare for future pregnancies. On autopsy, the fetus is discovered to have severe facial abnormalities as well as a brain lacking the normal sagittal fissure.",
+  "patient_facts": [
+    "1. A 25-year-old female is admitted to the hospital.",
+    "2. The patient is admitted for an intrauterine fetal demise (IUFD).",
+    "3. The patient is in her 30th gestational week.",
+    "4. The patient did not receive any prenatal care or screenings.",
+    "5. The baby is delivered via C-section.",
+    "6. The family wishes to conduct an autopsy.",
+    "7. The purpose of the autopsy is to understand the reason for the IUFD and to better prepare for future pregnancies.",
+    "8. On autopsy, the fetus is discovered to have severe facial abnormalities.",
+    "9. On autopsy, the fetus is discovered to have a brain lacking the normal sagittal fissure."
+  ],
+  "run": {
+    "max_questions": 10,
+    "stop_rule": "fixed",
+    "answer_confidence_threshold": 0.8,
+    "temperature": null,
+    "seconds": 97.9,
+    "timestamp": "2026-11-13T05:18:02+00:00",
+    "usage": {
+      "num_calls": 35,
+      "calls_by_tag": {
+        "tagger": 3,
+        "ranker": 11,
+        "question_writer": 10,
+        "patient": 10,
+        "ceiling_ranker": 1
+      },
+      "prompt_tokens": 34796,
+      "completion_tokens": 11314,
+      "cost_usd": 0.009137
+    }
+  }
+}

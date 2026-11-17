@@ -31,3 +31,7 @@ __pycache__/
 .DS_Store
 dump.rdb
 logs/
+
+# demo/ (John's MediQ chart-section demo)
+external/
+.streamlit/secrets.toml

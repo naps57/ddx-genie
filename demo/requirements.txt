@@ -1,0 +1,8 @@
+genie-worksheets @ git+https://github.com/stanford-oval/genie-worksheets.git@af3f2d32c198a9c03d84f473762e3c243dae86c9
+overrides   # imported by genie-worksheets (worksheets/llm/llm.py) but not declared in its pyproject
+litellm
+streamlit
+altair
+pandas
+pyyaml
+python-dotenv

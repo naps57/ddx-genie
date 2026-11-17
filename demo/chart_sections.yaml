@@ -1,0 +1,116 @@
+# Chart-section schema for the ClinicalHistory Genie worksheet.
+#
+# Edit questions, descriptions, or fields here; demo/worksheet.py turns this into
+# real Genie Worksheet classes (one GenieWorksheet per section, nested under
+# ClinicalHistory). No code changes needed.
+#
+# Genie has no YAML spec format of its own (it reads CSV / JSON / Google Sheets),
+# so this file is our format and worksheet.py builds the classes via Genie's Python API.
+#
+# - name:        Python identifier; snapshot keys look like "HPI.onset"
+# - description: what counts as filling this field. The field tagger LLM sees this,
+#                so it is effectively the definition of "filled".
+# - opening_question / follow_ups: hints given to the agent's question writer.
+
+worksheet: ClinicalHistory
+
+sections:
+  - name: HPI
+    title: History of present illness
+    opening_question: "When did this start, and how has it changed?"
+    follow_ups: ["character", "severity", "triggers", "associated symptoms"]
+    fields:
+      - name: onset
+        description: When the current problem began, or how it began (sudden or gradual).
+      - name: duration
+        description: How long the problem has lasted, or how long each episode lasts.
+      - name: character
+        description: Quality or nature of the main symptom (e.g. sharp, dull, productive cough, watery stool).
+      - name: location
+        description: Where on the body the symptom is, including radiation.
+      - name: severity
+        description: How bad the symptom is (scale, functional impact, progression).
+      - name: timing
+        description: Pattern or frequency (constant, intermittent, nocturnal, after meals).
+      - name: aggravating_relieving
+        description: Anything that makes it worse or better, including treatments tried.
+      - name: associated_symptoms
+        description: Other symptoms occurring with the main complaint.
+
+  - name: PMH
+    title: Past medical history
+    opening_question: "Any ongoing medical conditions?"
+    follow_ups: ["prior similar episodes", "hospitalizations"]
+    fields:
+      - name: chronic_conditions
+        description: Known chronic diseases or diagnoses (diabetes, HIV, hypertension, etc.).
+      - name: prior_episodes
+        description: Previous episodes of a similar problem, prior hospitalizations, or pregnancies.
+      - name: surgeries
+        description: Past surgeries or procedures.
+
+  - name: Medications
+    title: Medications
+    opening_question: "What medications do you take?"
+    follow_ups: ["anything new or changed recently"]
+    fields:
+      - name: current_meds
+        description: Medications, supplements, or contraception currently taken.
+      - name: recent_changes
+        description: Medications recently started, stopped, or changed, or recent vaccinations.
+
+  - name: Allergies
+    title: Allergies
+    opening_question: "Any allergies to medications?"
+    follow_ups: ["reaction type"]
+    fields:
+      - name: allergies
+        description: Drug or other allergies and the reaction type, or explicit 'no known allergies'.
+
+  - name: Social
+    title: Social history
+    opening_question: "Do you smoke or drink?"
+    follow_ups: ["exposures", "travel", "occupation"]
+    fields:
+      - name: smoking
+        description: Tobacco use, amount, duration.
+      - name: alcohol
+        description: Alcohol use and amount.
+      - name: drugs
+        description: Recreational or illicit drug use, including IV drug use.
+      - name: occupation
+        description: Job, occupational exposures, or living situation.
+      - name: travel
+        description: Recent travel, camping, animal or environmental exposures.
+      - name: sexual_history
+        description: Sexual activity, partners, protection, STI history.
+
+  - name: Family
+    title: Family history
+    opening_question: "Any conditions that run in your family?"
+    follow_ups: ["age of onset in relatives"]
+    fields:
+      - name: family_history
+        description: Diseases in relatives, with age of onset when given.
+
+  - name: ROS
+    title: Review of systems
+    opening_question: "Any fever, weight loss, or night sweats?"
+    follow_ups: ["system specific negatives"]
+    fields:
+      - name: ros_positives
+        description: Symptoms present in other organ systems not already captured in HPI (e.g. fever, weight loss).
+      - name: ros_negatives
+        description: Symptoms explicitly denied (pertinent negatives).
+
+  - name: ExamLabs
+    title: Exam / Labs
+    opening_question: "What were the vitals and exam findings?"
+    follow_ups: ["targeted findings"]
+    fields:
+      - name: vitals
+        description: Temperature, blood pressure, pulse, respiratory rate, oxygen saturation, BMI.
+      - name: exam_findings
+        description: Physical examination findings.
+      - name: lab_results
+        description: Laboratory, imaging, pathology, ECG, or other test results.

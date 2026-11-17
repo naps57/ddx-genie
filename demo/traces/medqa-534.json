@@ -1,0 +1,783 @@
+{
+  "case_id": "medqa-534",
+  "source": "medqa",
+  "model": "anthropic/claude-haiku-5-5",
+  "patient_model": "anthropic/claude-haiku-5-5",
+  "initial_info": "A 25-year-old arrives at a gynecology clinic for a consult as she and her husband plan to conceive a baby soon.",
+  "question": "What is the most likely cause of this patient\u2019s high blood pressure?",
+  "options": {
+    "A": "Atherosclerosis",
+    "B": "Adult polycystic kidney disease",
+    "C": "Fibromuscular hyperplasia",
+    "D": "Pheochromocytoma"
+  },
+  "gold_answer": "C",
+  "initial_fields_filled": [
+    "Social.sexual_history"
+  ],
+  "initial_tagger_raw": "{\"fields\": {\"Social.sexual_history\": \"Has a husband (partner); she and her husband are planning to conceive soon\"}}",
+  "initial_worksheet_snapshot": {
+    "HPI.onset": null,
+    "HPI.duration": null,
+    "HPI.character": null,
+    "HPI.location": null,
+    "HPI.severity": null,
+    "HPI.timing": null,
+    "HPI.aggravating_relieving": null,
+    "HPI.associated_symptoms": null,
+    "PMH.chronic_conditions": null,
+    "PMH.prior_episodes": null,
+    "PMH.surgeries": null,
+    "Medications.current_meds": null,
+    "Medications.recent_changes": null,
+    "Allergies.allergies": null,
+    "Social.smoking": null,
+    "Social.alcohol": null,
+    "Social.drugs": null,
+    "Social.occupation": null,
+    "Social.travel": null,
+    "Social.sexual_history": "Has a husband (partner); she and her husband are planning to conceive soon",
+    "Family.family_history": null,
+    "ROS.ros_positives": null,
+    "ROS.ros_negatives": null,
+    "ExamLabs.vitals": null,
+    "ExamLabs.exam_findings": null,
+    "ExamLabs.lab_results": null
+  },
+  "initial_differential": [
+    {
+      "option": "C",
+      "label": "Fibromuscular hyperplasia",
+      "confidence": 0.7
+    },
+    {
+      "option": "B",
+      "label": "Adult polycystic kidney disease",
+      "confidence": 0.17
+    },
+    {
+      "option": "D",
+      "label": "Pheochromocytoma",
+      "confidence": 0.1
+    },
+    {
+      "option": "A",
+      "label": "Atherosclerosis",
+      "confidence": 0.03
+    }
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "chart_section": "Family",
+      "target_field": "family_history",
+      "question": "Does anyone in your family have kidney disease, kidney cysts, or high blood pressure at a young age?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Has a husband (partner); she and her husband are planning to conceive soon",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Adult polycystic kidney disease",
+          "confidence": 0.6
+        },
+        {
+          "option": "C",
+          "label": "Fibromuscular hyperplasia",
+          "confidence": 0.25
+        },
+        {
+          "option": "D",
+          "label": "Pheochromocytoma",
+          "confidence": 0.1
+        },
+        {
+          "option": "A",
+          "label": "Atherosclerosis",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.6, \"C\": 0.25, \"D\": 0.1}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"Family\", \"target_field\": \"Family.family_history\", \"question\": \"Does anyone in your family have kidney disease, kidney cysts, or high blood pressure at a young age?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 2,
+      "chart_section": "HPI",
+      "target_field": "associated_symptoms",
+      "question": "Along with the high blood pressure, have you had any episodes of pounding headache, racing heartbeat, or sweating that come on suddenly, or any flank pain or ringing in the ears?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": null,
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Has a husband (partner); she and her husband are planning to conceive soon",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": null
+      },
+      "differential": [
+        {
+          "option": "B",
+          "label": "Adult polycystic kidney disease",
+          "confidence": 0.6
+        },
+        {
+          "option": "C",
+          "label": "Fibromuscular hyperplasia",
+          "confidence": 0.22
+        },
+        {
+          "option": "D",
+          "label": "Pheochromocytoma",
+          "confidence": 0.15
+        },
+        {
+          "option": "A",
+          "label": "Atherosclerosis",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.03, \"B\": 0.6, \"C\": 0.22, \"D\": 0.15}\n```",
+      "question_writer_raw": "```json\n{\"chart_section\": \"HPI\", \"target_field\": \"HPI.associated_symptoms\", \"question\": \"Along with the high blood pressure, have you had any episodes of pounding headache, racing heartbeat, or sweating that come on suddenly, or any flank pain or ringing in the ears?\"}\n```",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 3,
+      "chart_section": "ExamLabs",
+      "target_field": "lab_results",
+      "question": "Have you ever had any kidney ultrasound, CT scan, urine test, or blood work done, and do you know if anything was seen on the kidneys?",
+      "patient_answer": "15. Tests are run to find out the etiology of the patient's elevated blood pressure.\n16. Everything is within the normal range except for a renal angiogram shown in the picture.",
+      "fields_filled": [
+        "PMH.chronic_conditions",
+        "ExamLabs.lab_results"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "Elevated blood pressure (being investigated for etiology)",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": null,
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Has a husband (partner); she and her husband are planning to conceive soon",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "All results within normal range except a renal angiogram, which is abnormal (shown in a picture, findings not described in text)"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Fibromuscular hyperplasia",
+          "confidence": 0.8
+        },
+        {
+          "option": "D",
+          "label": "Pheochromocytoma",
+          "confidence": 0.08
+        },
+        {
+          "option": "B",
+          "label": "Adult polycystic kidney disease",
+          "confidence": 0.07
+        },
+        {
+          "option": "A",
+          "label": "Atherosclerosis",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "```json\n{\"fields\": {\"PMH.chronic_conditions\": \"Elevated blood pressure (being investigated for etiology)\", \"ExamLabs.lab_results\": \"All results within normal range except a renal angiogram, which is abnormal (shown in a picture, findings not described in text)\"}}\n```",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.07, \"C\": 0.8, \"D\": 0.08}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.lab_results\", \"question\": \"Have you ever had any kidney ultrasound, CT scan, urine test, or blood work done, and do you know if anything was seen on the kidneys?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 4,
+      "chart_section": "Social",
+      "target_field": "smoking",
+      "question": "Do you smoke or use any tobacco or nicotine products, and if so, how much and for how long?",
+      "patient_answer": "The patient does not smoke.",
+      "fields_filled": [
+        "Social.smoking"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": null,
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "Elevated blood pressure (being investigated for etiology)",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Does not smoke",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Has a husband (partner); she and her husband are planning to conceive soon",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "All results within normal range except a renal angiogram, which is abnormal (shown in a picture, findings not described in text)"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Fibromuscular hyperplasia",
+          "confidence": 0.82
+        },
+        {
+          "option": "B",
+          "label": "Adult polycystic kidney disease",
+          "confidence": 0.1
+        },
+        {
+          "option": "A",
+          "label": "Atherosclerosis",
+          "confidence": 0.04
+        },
+        {
+          "option": "D",
+          "label": "Pheochromocytoma",
+          "confidence": 0.04
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"Social.smoking\": \"Does not smoke\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.10, \"C\": 0.82, \"D\": 0.04}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.smoking\", \"question\": \"Do you smoke or use any tobacco or nicotine products, and if so, how much and for how long?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 5,
+      "chart_section": "HPI",
+      "target_field": "timing",
+      "question": "Is your blood pressure high all the time, or does it come and go, with spells where it suddenly spikes?",
+      "patient_answer": "12. The patient's primary care physician told her that her blood pressure was elevated on most of her visits.",
+      "fields_filled": [
+        "HPI.timing"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": "Blood pressure reported as elevated on most visits to the PCP (intermittent or persistent pattern not fully specified; no spikes described)",
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "Elevated blood pressure (being investigated for etiology)",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Does not smoke",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Has a husband (partner); she and her husband are planning to conceive soon",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "All results within normal range except a renal angiogram, which is abnormal (shown in a picture, findings not described in text)"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Fibromuscular hyperplasia",
+          "confidence": 0.8
+        },
+        {
+          "option": "B",
+          "label": "Adult polycystic kidney disease",
+          "confidence": 0.08
+        },
+        {
+          "option": "D",
+          "label": "Pheochromocytoma",
+          "confidence": 0.07
+        },
+        {
+          "option": "A",
+          "label": "Atherosclerosis",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"HPI.timing\": \"Blood pressure reported as elevated on most visits to the PCP (intermittent or persistent pattern not fully specified; no spikes described)\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.08, \"C\": 0.8, \"D\": 0.07}\n```",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.timing\", \"question\": \"Is your blood pressure high all the time, or does it come and go, with spells where it suddenly spikes?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 6,
+      "chart_section": "PMH",
+      "target_field": "prior_episodes",
+      "question": "Have you ever been hospitalized for high blood pressure, or did you have high blood pressure or preeclampsia during any previous pregnancy?",
+      "patient_answer": "12. The patient's primary care physician told her that her blood pressure was elevated on most of her visits.",
+      "fields_filled": [
+        "PMH.chronic_conditions"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": "Blood pressure reported as elevated on most visits to the PCP (intermittent or persistent pattern not fully specified; no spikes described)",
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "Elevated blood pressure (being investigated for etiology); Blood pressure reported as elevated on most visits to primary care physician",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": null,
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Does not smoke",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Has a husband (partner); she and her husband are planning to conceive soon",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "All results within normal range except a renal angiogram, which is abnormal (shown in a picture, findings not described in text)"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Fibromuscular hyperplasia",
+          "confidence": 0.82
+        },
+        {
+          "option": "B",
+          "label": "Adult polycystic kidney disease",
+          "confidence": 0.1
+        },
+        {
+          "option": "D",
+          "label": "Pheochromocytoma",
+          "confidence": 0.05
+        },
+        {
+          "option": "A",
+          "label": "Atherosclerosis",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"PMH.chronic_conditions\": \"Blood pressure reported as elevated on most visits to primary care physician\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.03, \"B\": 0.1, \"C\": 0.82, \"D\": 0.05}\n```",
+      "question_writer_raw": "{\"chart_section\": \"PMH\", \"target_field\": \"PMH.prior_episodes\", \"question\": \"Have you ever been hospitalized for high blood pressure, or did you have high blood pressure or preeclampsia during any previous pregnancy?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 7,
+      "chart_section": "Medications",
+      "target_field": "current_meds",
+      "question": "What medications, supplements, or contraception are you currently taking, including any blood pressure medicines, decongestants, or stimulants?",
+      "patient_answer": "3. The patient is not taking any medications.",
+      "fields_filled": [
+        "Medications.current_meds"
+      ],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": "Blood pressure reported as elevated on most visits to the PCP (intermittent or persistent pattern not fully specified; no spikes described)",
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "Elevated blood pressure (being investigated for etiology); Blood pressure reported as elevated on most visits to primary care physician",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": "Not taking any medications",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Does not smoke",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Has a husband (partner); she and her husband are planning to conceive soon",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "All results within normal range except a renal angiogram, which is abnormal (shown in a picture, findings not described in text)"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Fibromuscular hyperplasia",
+          "confidence": 0.85
+        },
+        {
+          "option": "B",
+          "label": "Adult polycystic kidney disease",
+          "confidence": 0.09
+        },
+        {
+          "option": "A",
+          "label": "Atherosclerosis",
+          "confidence": 0.03
+        },
+        {
+          "option": "D",
+          "label": "Pheochromocytoma",
+          "confidence": 0.03
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "{\"fields\": {\"Medications.current_meds\": \"Not taking any medications\"}}",
+      "ranker_raw": "```json\n{\"A\": 0.03, \"B\": 0.09, \"C\": 0.85, \"D\": 0.03}\n```",
+      "question_writer_raw": "{\"chart_section\": \"Medications\", \"target_field\": \"Medications.current_meds\", \"question\": \"What medications, supplements, or contraception are you currently taking, including any blood pressure medicines, decongestants, or stimulants?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 8,
+      "chart_section": "HPI",
+      "target_field": "onset",
+      "question": "When was your high blood pressure first noticed, and did it start suddenly or build up gradually over time?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": "Blood pressure reported as elevated on most visits to the PCP (intermittent or persistent pattern not fully specified; no spikes described)",
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "Elevated blood pressure (being investigated for etiology); Blood pressure reported as elevated on most visits to primary care physician",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": "Not taking any medications",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Does not smoke",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Has a husband (partner); she and her husband are planning to conceive soon",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "All results within normal range except a renal angiogram, which is abnormal (shown in a picture, findings not described in text)"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Fibromuscular hyperplasia",
+          "confidence": 0.8
+        },
+        {
+          "option": "B",
+          "label": "Adult polycystic kidney disease",
+          "confidence": 0.1
+        },
+        {
+          "option": "A",
+          "label": "Atherosclerosis",
+          "confidence": 0.05
+        },
+        {
+          "option": "D",
+          "label": "Pheochromocytoma",
+          "confidence": 0.05
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.05, \"B\": 0.1, \"C\": 0.8, \"D\": 0.05}\n```",
+      "question_writer_raw": "{\"chart_section\": \"HPI\", \"target_field\": \"HPI.onset\", \"question\": \"When was your high blood pressure first noticed, and did it start suddenly or build up gradually over time?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 9,
+      "chart_section": "ExamLabs",
+      "target_field": "exam_findings",
+      "question": "Has any clinician ever listened over your abdomen or sides with a stethoscope and noticed a whooshing sound, or told you about one?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": "Blood pressure reported as elevated on most visits to the PCP (intermittent or persistent pattern not fully specified; no spikes described)",
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "Elevated blood pressure (being investigated for etiology); Blood pressure reported as elevated on most visits to primary care physician",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": "Not taking any medications",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Does not smoke",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Has a husband (partner); she and her husband are planning to conceive soon",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "All results within normal range except a renal angiogram, which is abnormal (shown in a picture, findings not described in text)"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Fibromuscular hyperplasia",
+          "confidence": 0.84
+        },
+        {
+          "option": "B",
+          "label": "Adult polycystic kidney disease",
+          "confidence": 0.08
+        },
+        {
+          "option": "A",
+          "label": "Atherosclerosis",
+          "confidence": 0.04
+        },
+        {
+          "option": "D",
+          "label": "Pheochromocytoma",
+          "confidence": 0.04
+        }
+      ],
+      "decision": "ask",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "```json\n{\"A\": 0.04, \"B\": 0.08, \"C\": 0.84, \"D\": 0.04}\n```",
+      "question_writer_raw": "{\"chart_section\": \"ExamLabs\", \"target_field\": \"ExamLabs.exam_findings\", \"question\": \"Has any clinician ever listened over your abdomen or sides with a stethoscope and noticed a whooshing sound, or told you about one?\"}",
+      "question_writer_fallback": false
+    },
+    {
+      "turn": 10,
+      "chart_section": "Social",
+      "target_field": "drugs",
+      "question": "Do you use any recreational or illicit drugs, such as cocaine or amphetamines, now or in the past?",
+      "patient_answer": "The patient cannot answer this question, please do not ask this question again.",
+      "fields_filled": [],
+      "worksheet_snapshot": {
+        "HPI.onset": null,
+        "HPI.duration": null,
+        "HPI.character": null,
+        "HPI.location": null,
+        "HPI.severity": null,
+        "HPI.timing": "Blood pressure reported as elevated on most visits to the PCP (intermittent or persistent pattern not fully specified; no spikes described)",
+        "HPI.aggravating_relieving": null,
+        "HPI.associated_symptoms": null,
+        "PMH.chronic_conditions": "Elevated blood pressure (being investigated for etiology); Blood pressure reported as elevated on most visits to primary care physician",
+        "PMH.prior_episodes": null,
+        "PMH.surgeries": null,
+        "Medications.current_meds": "Not taking any medications",
+        "Medications.recent_changes": null,
+        "Allergies.allergies": null,
+        "Social.smoking": "Does not smoke",
+        "Social.alcohol": null,
+        "Social.drugs": null,
+        "Social.occupation": null,
+        "Social.travel": null,
+        "Social.sexual_history": "Has a husband (partner); she and her husband are planning to conceive soon",
+        "Family.family_history": null,
+        "ROS.ros_positives": null,
+        "ROS.ros_negatives": null,
+        "ExamLabs.vitals": null,
+        "ExamLabs.exam_findings": null,
+        "ExamLabs.lab_results": "All results within normal range except a renal angiogram, which is abnormal (shown in a picture, findings not described in text)"
+      },
+      "differential": [
+        {
+          "option": "C",
+          "label": "Fibromuscular hyperplasia",
+          "confidence": 0.84
+        },
+        {
+          "option": "B",
+          "label": "Adult polycystic kidney disease",
+          "confidence": 0.08
+        },
+        {
+          "option": "A",
+          "label": "Atherosclerosis",
+          "confidence": 0.04
+        },
+        {
+          "option": "D",
+          "label": "Pheochromocytoma",
+          "confidence": 0.04
+        }
+      ],
+      "decision": "answer",
+      "tagger_raw": "(skipped: patient could not answer)",
+      "ranker_raw": "{\"A\": 0.04, \"B\": 0.08, \"C\": 0.84, \"D\": 0.04}",
+      "question_writer_raw": "{\"chart_section\": \"Social\", \"target_field\": \"Social.drugs\", \"question\": \"Do you use any recreational or illicit drugs, such as cocaine or amphetamines, now or in the past?\"}",
+      "question_writer_fallback": false
+    }
+  ],
+  "final_answer": "C",
+  "correct": true,
+  "num_questions": 10,
+  "stop_reason": "max_questions",
+  "floor_answer": "C",
+  "floor_correct": true,
+  "ceiling_answer": "C",
+  "ceiling_correct": true,
+  "ceiling_differential": [
+    {
+      "option": "C",
+      "label": "Fibromuscular hyperplasia",
+      "confidence": 0.92
+    },
+    {
+      "option": "A",
+      "label": "Atherosclerosis",
+      "confidence": 0.03
+    },
+    {
+      "option": "D",
+      "label": "Pheochromocytoma",
+      "confidence": 0.03
+    },
+    {
+      "option": "B",
+      "label": "Adult polycystic kidney disease",
+      "confidence": 0.02
+    }
+  ],
+  "ceiling_ranker_raw": "{\"A\": 0.03, \"B\": 0.02, \"C\": 0.92, \"D\": 0.03}",
+  "full_context": "A 25-year-old arrives at a gynecology clinic for a consult as she and her husband plan to conceive a baby soon. She is currently taking no medications, doesn\u2019t smoke, and drinks alcohol socially. Her father passed away at the age of 51 due to heart failure. Her vital signs include blood pressure 150/100 mm Hg, heart rate 67/min, respiratory rate 16/min, and temperature 36.7\u00b0C (98.0\u00b0F). Physical examination is unremarkable. When asked about her high blood pressure, the patient says that her primary care physician once told her that her blood pressure was elevated on most of her visits; the physician emphasized that she should exercise and control her diet, but she never followed up with him as she always felt good. A number of tests are run to find out the etiology of her elevated blood pressure. Everything is within the normal range except for a renal angiogram shown in the picture.",
+  "patient_facts": [
+    "1. A 25-year-old is at a gynecology clinic for a consult.",
+    "2. The patient and her husband plan to conceive a baby soon.",
+    "3. The patient is not taking any medications.",
+    "4. The patient does not smoke.",
+    "5. The patient drinks alcohol socially.",
+    "6. The patient's father passed away at the age of 51 due to heart failure.",
+    "7. The patient's blood pressure is 150/100 mm Hg.",
+    "8. The patient's heart rate is 67/min.",
+    "9. The patient's respiratory rate is 16/min.",
+    "10. The patient's temperature is 36.7\u00b0C (98.0\u00b0F).",
+    "11. The physical examination is unremarkable.",
+    "12. The patient's primary care physician told her that her blood pressure was elevated on most of her visits.",
+    "13. The primary care physician emphasized that the patient should exercise and control her diet.",
+    "14. The patient never followed up with her primary care physician as she always felt good.",
+    "15. Tests are run to find out the etiology of the patient's elevated blood pressure.",
+    "16. Everything is within the normal range except for a renal angiogram shown in the picture."
+  ],
+  "run": {
+    "max_questions": 10,
+    "stop_rule": "fixed",
+    "answer_confidence_threshold": 0.8,
+    "temperature": null,
+    "seconds": 111.3,
+    "timestamp": "2026-11-13T05:21:55+00:00",
+    "usage": {
+      "num_calls": 38,
+      "calls_by_tag": {
+        "tagger": 6,
+        "ranker": 11,
+        "question_writer": 10,
+        "patient": 10,
+        "ceiling_ranker": 1
+      },
+      "prompt_tokens": 38627,
+      "completion_tokens": 13521,
+      "cost_usd": 0.010623
+    }
+  }
+}

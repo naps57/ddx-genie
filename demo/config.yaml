@@ -1,0 +1,30 @@
+# One place to swap models. Any LiteLLM model string works
+# (e.g. "gpt-4o-mini", "anthropic/claude-...", "together_ai/...").
+# Keys are read from .env (OPENAI_API_KEY, ANTHROPIC_API_KEY, ...).
+#
+# claude-haiku-5-5 (cheapest current Claude, $0.10 / $0.50 per M tokens) is a placeholder
+# until we can read Arda's baseline and match its model. Needs ANTHROPIC_API_KEY in .env.
+# For OpenAI instead: model: gpt-4o-mini, temperature: 0.0, OPENAI_API_KEY in .env.
+
+model: anthropic/claude-haiku-5-5            # expert: question writer, field tagger, option ranker
+patient_model: anthropic/claude-haiku-5-5    # MediQ FactSelectPatient
+# null = don't send temperature. Current Claude models reject any value other than the
+# default (1.0), so runs are not deterministic; set 0.0 for models that allow it.
+temperature: null
+
+# Stock MediQ *asks* for 50 tokens per patient answer but its helper ignores that and
+# uses its default of 256. On thinking models (all current Claude models) the thinking
+# tokens count against this cap: at 256, Haiku 5.5 spent ~220-260 tokens thinking and
+# 34% of patient answers came back empty or truncated. 2048 leaves room for both.
+# Use 256 to reproduce stock MediQ on non-thinking models. See NOTES.md.
+patient_max_tokens: 2048
+
+# Agent policy (our minimal baseline, demo/agent.py)
+#   fixed:      always ask --max-questions questions (or until no askable fields remain),
+#               then answer with the top option of the final ranking.
+#   confidence: stop early once the top option's confidence >= answer_confidence_threshold.
+stop_rule: fixed
+answer_confidence_threshold: 0.8   # used only when stop_rule: confidence
+
+# MediQ data location (pinned clone, see README)
+mediq_dir: external/mediQ
