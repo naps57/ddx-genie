@@ -1,0 +1,101 @@
+{
+  "by_k": {
+    "0": {
+      "n": 50,
+      "top1": 0.18,
+      "top5": 0.36,
+      "p_gold": 0.1054
+    },
+    "1": {
+      "n": 50,
+      "top1": 0.16,
+      "top5": 0.4,
+      "p_gold": 0.10300000000000001
+    },
+    "2": {
+      "n": 50,
+      "top1": 0.22,
+      "top5": 0.5,
+      "p_gold": 0.1406
+    },
+    "3": {
+      "n": 50,
+      "top1": 0.28,
+      "top5": 0.64,
+      "p_gold": 0.2206
+    },
+    "4": {
+      "n": 50,
+      "top1": 0.28,
+      "top5": 0.66,
+      "p_gold": 0.2266
+    },
+    "5": {
+      "n": 50,
+      "top1": 0.28,
+      "top5": 0.68,
+      "p_gold": 0.2286
+    }
+  },
+  "behaviour": {
+    "questions": 250,
+    "hit_rate": 0.412,
+    "facts_per_question": 0.712,
+    "target_filled_share": 0.32,
+    "fallback_share": 0.0,
+    "questions_by_section": {
+      "ExamLabs": 50,
+      "HPI": 50,
+      "PMH": 50,
+      "ROS": 49,
+      "Medications": 50,
+      "Social": 1
+    },
+    "hits_by_field": {
+      "ExamLabs.vitals": [
+        29,
+        50
+      ],
+      "HPI.duration": [
+        2,
+        6
+      ],
+      "HPI.location": [
+        1,
+        1
+      ],
+      "HPI.onset": [
+        24,
+        43
+      ],
+      "Medications.current_meds": [
+        6,
+        45
+      ],
+      "Medications.recent_changes": [
+        1,
+        5
+      ],
+      "PMH.chronic_conditions": [
+        33,
+        50
+      ],
+      "ROS.ros_negatives": [
+        0,
+        8
+      ],
+      "ROS.ros_positives": [
+        7,
+        41
+      ],
+      "Social.smoking": [
+        0,
+        1
+      ]
+    }
+  },
+  "policy": "checklist",
+  "split": "test",
+  "n_cases": 50,
+  "usd": 0.11365125
+}

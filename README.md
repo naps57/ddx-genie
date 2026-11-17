@@ -58,9 +58,8 @@ gap closed, key-fact recall) need the per-case baseline JSONs in `runs/baselines
 
 #### Dev results (50 dev cases, not the test set)
 
-**The frozen 50 test cases have no reported chart-asker results yet, and `baseline_scores.md` is
-unchanged.** Everything below is on the first 50 cases of `dev.jsonl`, the split used to design the
-arm. Runs: `runs/chart_dev50/{checklist,differential}/` (differential with `--prior`) and
+Everything in this subsection is on the first 50 cases of `dev.jsonl`, the split used to design the
+arm. The frozen-50 test results are in the next subsection. Runs: `runs/chart_dev50/{checklist,differential}/` (differential with `--prior`) and
 `runs/chart_dev50_noprior/differential/` (only `summary.json` is in git). Model
 `gemini-3.1-flash-lite`, about $0.47 for all three.
 
@@ -89,6 +88,41 @@ The prior mainly makes early questions better (k=1); by k=5 the two differential
 **Caveat:** the reveal prior was estimated on these same dev cases (`--estimate-prior` uses all 59),
 so it is in-sample here and the "+ prior" numbers are optimistic. The test run has no such overlap.
 With n=50, a 95% interval on a single rate is roughly ±0.13.
+
+#### Test results (frozen 50, run once on 2026-11-16)
+
+Run once, after the design was fixed on dev, with no changes afterwards: `runs/chart_test_v1/{checklist,differential}/`
+(differential with `--prior`) and `runs/chart_test_v1_noprior/differential/`. Same 50 cases, views,
+diagnosis prompt, judge and model as `baseline_scores.md`, which is unchanged. About $0.45 for all three.
+
+| k | `checklist` | `differential` + prior | `differential`, no prior | prompted asking | random facts |
+|---|---|---|---|---|---|
+| 0 | .18 | .18 | .18 | .18 | .18 |
+| 1 | .16 | .48 | .40 | .36 | .28 |
+| 2 | .22 | .60 | .54 | .32 | .48 |
+| 3 | .28 | .64 | .60 | .36 | .50 |
+| 4 | .28 | .68 | .62 | .44 | .68 |
+| 5 | .28 | .68 | .64 | .50 | .62 |
+
+Top-1 (strict). The last two columns are the frozen baselines; the full case gives .78.
+
+| | `checklist` | `differential` + prior | `differential`, no prior | prompted asking |
+|---|---|---|---|---|
+| Top-5 at k=5 | .68 | .78 | .72 | .64 |
+| P(gold) at k=3 | .22 | .42 | .38 | .24 |
+| Gap closed at k=3 (P(gold), vs best-k .58) | 24% | 66% | 59% | 27% |
+| Questions answered | 41% | 62% | 56% | 43% |
+
+Paired exact McNemar on top-1 (only A right – only B right):
+
+| Comparison | k=1 | k=3 | k=5 |
+|---|---|---|---|
+| differential + prior vs checklist | 17–1, p<.001 | 18–0, p<.001 | 20–0, p<.001 |
+| differential no prior vs checklist | 13–1, p=.002 | 17–1, p<.001 | 19–1, p<.001 |
+| differential + prior vs no prior | 7–3, p=.34 | 3–1, p=.63 | 3–1, p=.63 |
+
+The paired test against prompted asking and the per-fact / key-fact comparisons still need Arda's
+per-case `runs/baselines_v1/` files; gap closed above is computed from the aggregate P(gold) means.
 
 **Why a reveal-rate prior.** MediQ has no population statistics for P(finding | diagnosis), so the
 conditional (how much a finding would move the differential) has to come from the LLM. What the data

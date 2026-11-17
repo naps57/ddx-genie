@@ -7,8 +7,8 @@ Context for the agent: read `CLAUDE.md`, `README.md`, `baseline_scores.md`, `dem
 asking me first**. Do not edit the genie-worksheets source or the frozen numbers in `baseline_scores.md`.
 Stop and show me a plan before step 2.
 
-> **Status (2026-11-16):** steps 1–5 are built and unit-tested offline (103 tests pass, no LLM
-> calls made). Step 6 is blocked on a Gemini key in `.env`. Steps 7–8 need real runs.
+> **Status (2026-11-16):** steps 1–6 done, including the one-time frozen-50 test run.
+> Steps 7–8 remain.
 
 ## 0. Admin (me, not the agent)
 - [ ] Send the weekly update (was due Mon Nov 16, 12:00 PM PT): demo merged into `demo/`, next step is
@@ -89,8 +89,13 @@ Stop and show me a plan before step 2.
       k=3 14–4 p=.031, k=5 16–1 p<.001; no-prior vs checklist k=5 16–2 p=.001; prior vs no-prior
       k=1 large lead, k=5 3–2 p=1. Caveat: the prior was estimated on these same dev cases.
 - [ ] Look at why accuracy dips after it peaks (differential+prior 5/5 at k=2, 4/5 at k=5).
-- [ ] **Ask me**, then the frozen 50, new run ids (e.g. `runs/chart_checklist_v1`,
-      `runs/chart_differential_v1`). Report via `scripts/baseline_report.py --chart-run`.
+- [x] Frozen 50, run once (2026-11-16): `runs/chart_test_v1/{checklist,differential}`,
+      `runs/chart_test_v1_noprior/differential`, ~$0.45. Top-1 at k=0..5: checklist
+      .18 .16 .22 .28 .28 .28; differential+prior .18 .48 .60 .64 .68 .68; no prior
+      .18 .40 .54 .60 .62 .64 (prompted asking .36 at k=3, .50 at k=5; full case .78).
+      Gap closed at k=3: 24% / 66% / 59% (asking 27%, random 40%). Hit rate 41% / 62% / 56%.
+      McNemar diff+prior vs checklist k=5 20–0; prior vs no prior n.s. Tables in README.
+- [ ] Paired McNemar vs prompted asking + key-fact recall: needs Arda's per-case files.
 
 ## 7. Per-step traces and demo
 - [x] Per-case JSON per step: section, field, question, patient answer, facts gained, worksheet

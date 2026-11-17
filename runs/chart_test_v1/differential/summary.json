@@ -1,0 +1,121 @@
+{
+  "by_k": {
+    "0": {
+      "n": 50,
+      "top1": 0.18,
+      "top5": 0.36,
+      "p_gold": 0.1054
+    },
+    "1": {
+      "n": 50,
+      "top1": 0.48,
+      "top5": 0.64,
+      "p_gold": 0.3046
+    },
+    "2": {
+      "n": 50,
+      "top1": 0.6,
+      "top5": 0.74,
+      "p_gold": 0.40700000000000003
+    },
+    "3": {
+      "n": 50,
+      "top1": 0.64,
+      "top5": 0.72,
+      "p_gold": 0.41700000000000004
+    },
+    "4": {
+      "n": 50,
+      "top1": 0.68,
+      "top5": 0.76,
+      "p_gold": 0.434
+    },
+    "5": {
+      "n": 50,
+      "top1": 0.68,
+      "top5": 0.78,
+      "p_gold": 0.433
+    }
+  },
+  "behaviour": {
+    "questions": 250,
+    "hit_rate": 0.62,
+    "facts_per_question": 1.248,
+    "target_filled_share": 0.516,
+    "fallback_share": 0.0,
+    "questions_by_section": {
+      "ExamLabs": 132,
+      "PMH": 29,
+      "HPI": 71,
+      "Medications": 8,
+      "Social": 1,
+      "ROS": 9
+    },
+    "hits_by_field": {
+      "ExamLabs.exam_findings": [
+        46,
+        50
+      ],
+      "ExamLabs.lab_results": [
+        24,
+        50
+      ],
+      "ExamLabs.vitals": [
+        19,
+        32
+      ],
+      "HPI.associated_symptoms": [
+        30,
+        38
+      ],
+      "HPI.character": [
+        4,
+        7
+      ],
+      "HPI.duration": [
+        4,
+        14
+      ],
+      "HPI.location": [
+        1,
+        3
+      ],
+      "HPI.onset": [
+        6,
+        8
+      ],
+      "HPI.timing": [
+        1,
+        1
+      ],
+      "Medications.current_meds": [
+        2,
+        8
+      ],
+      "PMH.chronic_conditions": [
+        12,
+        21
+      ],
+      "PMH.prior_episodes": [
+        3,
+        8
+      ],
+      "ROS.ros_negatives": [
+        2,
+        8
+      ],
+      "ROS.ros_positives": [
+        0,
+        1
+      ],
+      "Social.occupation": [
+        1,
+        1
+      ]
+    }
+  },
+  "policy": "differential",
+  "split": "test",
+  "n_cases": 50,
+  "usd": 0.3452915
+}
